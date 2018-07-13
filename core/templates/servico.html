@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item">Cadastro</li>
+    <li class="breadcrumb-item active">Serviço</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" autofocus>
+                            {% csrf_token %}
+
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Tipo de Serviço</label>
+                                        {{ form.tipo_servico }}
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Serviço</label>
+                                        {{ form.servico }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label class="small">Produto</label>
+                                        {{ form.tipo_produto }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Valor por Peça</label>
+                                        {{ form.valor_peca }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pull-right">
+                                <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
+                                <a href="/grupoServico">
+                                    <input type="button" class="btn btn-dark btn-md" value="Cancelar">
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}

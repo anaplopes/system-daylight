@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item">Cadastro</li>
+    <li class="breadcrumb-item active">Grupo de Fornecedor</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <h6 class="card-header">Pesquisa</h6>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="name-input" class="small">Fornecedor</label>
+                                <input class="form-control small" type="text" id="name-input">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="cpf-input" class="small">CNPJ/CPF</label>
+                                        <input class="form-control small" type="text" id="cpf-input">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="email-input" class="small">E-mail</label>
+                                        <input class="form-control small" type="email" id="email-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-dark btn-md pull-right">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <table class="table table-hover text-center">
+                <thead class="card-header">
+                    <tr class="card-header">
+                        <th scope="col">Id</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Classificação Fiscal</th>
+                        <th scope="col">CNPJ/CPF</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Bras Tecidos</td>
+                        <td>@brastec</td>
+                        <td>1175940070</td>
+                        <td>PJ</td>
+                        <td>33010678000110</td>
+                        <td>
+                            <button class="btn btn-primary btn-xs">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger btn-xs">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card-body">
+                <br />
+                <a href="/fornecedor">
+                    <input type="button" class="btn btn-dark btn-md pull-right" value="Novo">
+                </a>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}

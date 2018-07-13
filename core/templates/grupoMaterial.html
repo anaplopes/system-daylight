@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item">Cadastro</li>
+    <li class="breadcrumb-item active">Grupo de Material</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <h6 class="card-header">Pesquisa</h6>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <form role="form">
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="codigo" class="small">Código do Material</label>
+                                        <input class="form-control small" type="text" id="codigo">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fabricante" class="small">Fabricante</label>
+                                <input class="form-control small" type="text" id="fabricante">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="tipo_produto" class="small">Tipo de Material</label>
+                                        <input class="form-control small" type="email" id="tipo_produto">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="produto" class="small">Descrição do Material</label>
+                                <input class="form-control small" type="text" id="produto">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-dark btn-md pull-right">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <table class="table table-hover text-center">
+                <thead class="card-header">
+                    <tr class="card-header">
+                        <th scope="col">Id</th>
+                        <th scope="col">Tipo de Material</th>
+                        <th scope="col">Classificação</th>
+                        <th scope="col">Descrição do Material</th>
+                        <th scope="col">Cor</th>
+                        <th scope="col">Código Material</th>
+                        <th scope="col">Fabricante</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Tecido</td>
+                        <td>Algodão</td>
+                        <td>Tricoline Estampado</td>
+                        <td>Rosa</td>
+                        <td>2030-10</td>
+                        <td>Arrezo</td>
+                        <td>
+                            <button class="btn btn-primary btn-xs">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger btn-xs">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card-body">
+                <br />
+                <a href="/material">
+                    <input type="button" class="btn btn-dark btn-md pull-right" value="Novo">
+                </a>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}
