@@ -10,9 +10,8 @@
         </a>
     </li>
     <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Produto</li>
+    <li class="breadcrumb-item active">Usuário</li>
 </ol>
-
 
 <div class="row">
     <div class="col-sm-12">
@@ -24,26 +23,10 @@
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Classificação</label>
-                                        {{ form.classificacao }}
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Tipo de Produto</label>
-                                        {{ form.tipo_produto }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Descrição do Produto</label>
-                                        {{ form.produto }}
+                                        <label class="small">Nome</label>
+                                        {{ form.nome }}
                                     </div>
                                 </div>
                             </div>
@@ -51,15 +34,15 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Modelo</label>
-                                        {{ form.modelo }}
+                                        <label class="small">CPF</label>
+                                        {{ form.cpf }}
                                     </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Tamanho</label>
-                                        {{ form.tamanho }}
+                                        <label class="small">Telefone</label>
+                                        {{ form.telefone }}
                                     </div>
                                 </div>
                             </div>
@@ -67,31 +50,47 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Cor</label>
-                                        {{ form.cor }}
+                                        <label class="small">Data de Nascimento</label>
+                                        {{ form.dt_nascimento }}
                                     </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Valor da Venda</label>
-                                        {{ form.valor_venda }}
+                                        <label class="small">E-mail</label>
+                                        {{ form.email }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Especificação</label>
-                                        {{ form.especificacao }}
+                                        <label class="small">Perfil</label>
+                                        {{ form.perfil }}
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Ativo?</label>
+                                        {{ form.status_user }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Senha</label>
+                                        {{ form.password }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
-                                <a href="/grupoProduto">
+                                <a href="/grupo/grupoUsuario">
                                     <input type="button" class="btn btn-dark btn-md" value="Cancelar">
                                 </a>
                             </div>

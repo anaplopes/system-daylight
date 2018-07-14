@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Grupo de Serviço</li>
+    <li class="breadcrumb-item active">Grupo de Fornecedor</li>
 </ol>
 
 <div class="row">
@@ -19,26 +19,25 @@
             <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-8">
                         <form role="form">
                             <div class="form-group">
-                                <div class="form-group">
-                                    <label for="servico-list" class="small">Tipo de Serviço</label>
-                                    <select id="servico-list" class="form-control">
-                                        <option>--Selecione--</option>
-                                        <option>Fabricação</option>
-                                        <option>Reparo</option>
-                                    </select>
-                                </div>
+                                <label for="name-input" class="small">Fornecedor</label>
+                                <input class="form-control small" type="text" id="name-input">
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="servico-list" class="small">Serviço</label>
-                                    <select id="servico-list" class="form-control">
-                                        <option>--Selecione--</option>
-                                        <option>Costura</option>
-                                        <option>Estampa</option>
-                                        <option>Bordado</option>
-                                    </select>
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="cpf-input" class="small">CNPJ/CPF</label>
+                                        <input class="form-control small" type="text" id="cpf-input">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="email-input" class="small">E-mail</label>
+                                        <input class="form-control small" type="email" id="email-input">
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -59,20 +58,22 @@
                 <thead class="card-header">
                     <tr class="card-header">
                         <th scope="col">Id</th>
-                        <th scope="col">Tipo de Serviço</th>
-                        <th scope="col">Serviço</th>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Valor por Peça</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Classificação Fiscal</th>
+                        <th scope="col">CNPJ/CPF</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Reparo</td>
-                        <td>Costura</td>
-                        <td>Camisa Polo</td>
-                        <td>1,50</td>
+                        <td>Bras Tecidos</td>
+                        <td>@brastec</td>
+                        <td>1175940070</td>
+                        <td>PJ</td>
+                        <td>33010678000110</td>
                         <td>
                             <button class="btn btn-primary btn-xs">
                                 <i class="fa fa-pencil"></i>
@@ -86,7 +87,7 @@
             </table>
             <div class="card-body">
                 <br />
-                <a href="/servico">
+                <a href="/cadastro/fornecedor">
                     <input type="button" class="btn btn-dark btn-md pull-right" value="Novo">
                 </a>
                 <br />

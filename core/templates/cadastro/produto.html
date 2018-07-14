@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block main %}
+
 <!-- CABEÇALHO PAGINA -->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -9,8 +10,9 @@
         </a>
     </li>
     <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Cliente</li>
+    <li class="breadcrumb-item active">Produto</li>
 </ol>
+
 
 <div class="row">
     <div class="col-sm-12">
@@ -24,16 +26,15 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Classificação Fiscal</label>
-                                        {{ form.class_fiscal }}
+                                        <label class="small">Classificação</label>
+                                        {{ form.classificacao }}
                                     </div>
                                 </div>
-                            
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">CNPJ/CPF</label>
-                                        {{ form.numero_fiscal}}
+                                        <label class="small">Tipo de Produto</label>
+                                        {{ form.tipo_produto }}
                                     </div>
                                 </div>
                             </div>
@@ -41,8 +42,8 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Cliente</label>
-                                        {{ form.clientename }}
+                                        <label class="small">Descrição do Produto</label>
+                                        {{ form.produto }}
                                     </div>
                                 </div>
                             </div>
@@ -50,15 +51,31 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">E-mail</label>
-                                        {{ form.email }}
+                                        <label class="small">Modelo</label>
+                                        {{ form.modelo }}
                                     </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Telefone</label>
-                                        {{ form.telefone }}
+                                        <label class="small">Tamanho</label>
+                                        {{ form.tamanho }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Cor</label>
+                                        {{ form.cor }}
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Valor da Venda</label>
+                                        {{ form.valor_venda }}
                                     </div>
                                 </div>
                             </div>
@@ -66,47 +83,15 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Endereço</label>
-                                        {{ form.endereco }}
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Bairro</label>
-                                        {{ form.bairro }}
-                                    </div>
-                                </div>
-                            
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Cidade</label>
-                                        {{ form.cidade }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-1">
-                                    <div class="form-group">
-                                        <label class="small">UF</label>
-                                        {{ form.uf }}
-                                    </div>
-                                </div>
-                            
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">CEP</label>
-                                        {{ form.cep }}
+                                        <label class="small">Especificação</label>
+                                        {{ form.especificacao }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
-                                <a href="/grupoCliente">
+                                <a href="/grupo/grupoProduto">
                                     <input type="button" class="btn btn-dark btn-md" value="Cancelar">
                                 </a>
                             </div>

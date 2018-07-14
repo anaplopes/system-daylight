@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Fornecedor</li>
+    <li class="breadcrumb-item active">Material</li>
 </ol>
 
 <div class="row">
@@ -25,16 +25,24 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Classificação Fiscal</label>
-                                        {{ form.class_fiscal }}
+                                        <label class="small">Tipo de Material</label>
+                                        {{ form.tipo_mprima }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Classificação</label>
+                                        {{ form.classificacao }}
                                     </div>
                                 </div>
 
-
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">CNPJ/CPF</label>
-                                        {{ form.numero_fiscal}}
+                                        <label class="small">Cor</label>
+                                        {{ form.cor }}
                                     </div>
                                 </div>
                             </div>
@@ -42,8 +50,8 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Fornecedor</label>
-                                        {{ form.fornecedorname }}
+                                        <label class="small">Descrição do Material</label>
+                                        {{ form.material }}
                                     </div>
                                 </div>
                             </div>
@@ -51,15 +59,8 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">E-mail</label>
-                                        {{ form.email }}
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Telefone</label>
-                                        {{ form.telefone }}
+                                        <label class="small">Código do Material</label>
+                                        {{ form.cod_mprima }}
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +68,8 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Endereço</label>
-                                        {{ form.endereco }}
+                                        <label class="small">Fabricante</label>
+                                        {{ form.nome_fabricante }}
                                     </div>
                                 </div>
                             </div>
@@ -76,38 +77,18 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Bairro</label>
-                                        {{ form.bairro }}
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Cidade</label>
-                                        {{ form.cidade }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-1">
-                                    <div class="form-group">
-                                        <label class="small">UF</label>
-                                        {{ form.uf }}
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">CEP</label>
-                                        {{ form.cep }}
+                                        <label class="small">Somente para tecido</label>
+                                        <br />
+                                        <a href="/cadastro/unidadeMedida">
+                                            <input type="button" class="btn btn-dark btn-md" value="Unidade de Medida">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
-                                <a href="/grupoFornecedor">
+                                <a href="/grupo/grupoMaterial">
                                     <input type="button" class="btn btn-dark btn-md" value="Cancelar">
                                 </a>
                             </div>

@@ -35,7 +35,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     dt_nascimento = models.DateField('Data de Nascimento', max_length=10, null=True, blank=True)
     telefone = models.CharField('Telefone', max_length=11)
     perfil = models.CharField('Perfil', choices=PERFIL_CHOICES, max_length=1, null=False, blank=False)
-    is_active = models.BooleanField("Ativo", default=True)
+    status_user = models.BooleanField("Ativo", default=True)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'

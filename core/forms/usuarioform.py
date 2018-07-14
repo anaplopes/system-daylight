@@ -16,6 +16,6 @@ class UsuarioForm(forms.ModelForm):
             'dt_nascimento': forms.DateInput(attrs={'class':'form-control', 'pattern':'\d{2}/\d{2}/\d{4}', 'title':'Data formato 00/00/0000'}),
             'telefone': forms.TextInput(attrs={'class':'form-control', 'pattern':'\d{11}', 'title':'FONE formato ddd + numero'}),
             'perfil': forms.Select(attrs={'class':'form-control'}),
-            'is_active': forms.NullBooleanSelect(attrs={'class':'form-control'}),
+            'status_user': forms.NullBooleanSelect(attrs={'class':'form-control'}),
             'password': forms.PasswordInput(attrs={'class':'form-control'}),
         }

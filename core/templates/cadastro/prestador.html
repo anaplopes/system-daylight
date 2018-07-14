@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Material</li>
+    <li class="breadcrumb-item active">Prestador</li>
 </ol>
 
 <div class="row">
@@ -25,24 +25,16 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Tipo de Material</label>
-                                        {{ form.tipo_mprima }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Classificação</label>
-                                        {{ form.classificacao }}
+                                        <label class="small">Classificação Fiscal</label>
+                                        {{ form.class_fiscal }}
                                     </div>
                                 </div>
 
+
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Cor</label>
-                                        {{ form.cor }}
+                                        <label class="small">CNPJ/CPF</label>
+                                        {{ form.numero_fiscal}}
                                     </div>
                                 </div>
                             </div>
@@ -50,8 +42,8 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Descrição do Material</label>
-                                        {{ form.material }}
+                                        <label class="small">Prestador</label>
+                                        {{ form.prestadorname }}
                                     </div>
                                 </div>
                             </div>
@@ -59,8 +51,15 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Código do Material</label>
-                                        {{ form.cod_mprima }}
+                                        <label class="small">E-mail</label>
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Telefone</label>
+                                        {{ form.telefone }}
                                     </div>
                                 </div>
                             </div>
@@ -68,8 +67,8 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Fabricante</label>
-                                        {{ form.nome_fabricante }}
+                                        <label class="small">Endereço</label>
+                                        {{ form.endereco }}
                                     </div>
                                 </div>
                             </div>
@@ -77,18 +76,38 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Somente para tecido</label>
-                                        <br />
-                                        <a href="/unidadeMedida">
-                                            <input type="button" class="btn btn-dark btn-md" value="Unidade de Medida">
-                                        </a>
+                                        <label class="small">Bairro</label>
+                                        {{ form.bairro }}
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Cidade</label>
+                                        {{ form.cidade }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-1">
+                                    <div class="form-group">
+                                        <label class="small">UF</label>
+                                        {{ form.uf }}
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">CEP</label>
+                                        {{ form.cep }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
-                                <a href="/grupoMaterial">
+                                <a href="/grupo/grupoPrestador">
                                     <input type="button" class="btn btn-dark btn-md" value="Cancelar">
                                 </a>
                             </div>

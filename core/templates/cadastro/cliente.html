@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block main %}
-
 <!-- CABEÇALHO PAGINA -->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -10,7 +9,7 @@
         </a>
     </li>
     <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Usuário</li>
+    <li class="breadcrumb-item active">Cliente</li>
 </ol>
 
 <div class="row">
@@ -23,10 +22,27 @@
                             {% csrf_token %}
 
                             <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Classificação Fiscal</label>
+                                        {{ form.class_fiscal }}
+                                    </div>
+                                </div>
+                            
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">CNPJ/CPF</label>
+                                        {{ form.numero_fiscal}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Nome</label>
-                                        {{ form.nome }}
+                                        <label class="small">Cliente</label>
+                                        {{ form.clientename }}
                                     </div>
                                 </div>
                             </div>
@@ -34,8 +50,8 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">CPF</label>
-                                        {{ form.cpf }}
+                                        <label class="small">E-mail</label>
+                                        {{ form.email }}
                                     </div>
                                 </div>
 
@@ -48,49 +64,49 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Data de Nascimento</label>
-                                        {{ form.dt_nascimento }}
+                                        <label class="small">Endereço</label>
+                                        {{ form.endereco }}
                                     </div>
                                 </div>
-
+                            </div>
+                            
+                            <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">E-mail</label>
-                                        {{ form.email }}
+                                        <label class="small">Bairro</label>
+                                        {{ form.bairro }}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Cidade</label>
+                                        {{ form.cidade }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-1">
                                     <div class="form-group">
-                                        <label class="small">Perfil</label>
-                                        {{ form.perfil }}
+                                        <label class="small">UF</label>
+                                        {{ form.uf }}
                                     </div>
                                 </div>
-
-                                <div class="col-4">
+                            
+                                <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Ativo?</label>
-                                        {{ form.ativo }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Senha</label>
-                                        {{ form.password }}
+                                        <label class="small">CEP</label>
+                                        {{ form.cep }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
-                                <a href="/grupoUsuario">
+                                <a href="/grupo/grupoCliente">
                                     <input type="button" class="btn btn-dark btn-md" value="Cancelar">
                                 </a>
                             </div>

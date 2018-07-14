@@ -10,8 +10,9 @@
         </a>
     </li>
     <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Grupo de Material</li>
+    <li class="breadcrumb-item active">Grupo de Produto</li>
 </ol>
+
 
 <div class="row">
     <div class="col-sm-12">
@@ -25,28 +26,30 @@
                             <div class="form-row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="codigo" class="small">Código do Material</label>
+                                        <label for="codigo" class="small">Código</label>
                                         <input class="form-control small" type="text" id="codigo">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="fabricante" class="small">Fabricante</label>
-                                <input class="form-control small" type="text" id="fabricante">
-                            </div>
-
                             <div class="form-row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="tipo_produto" class="small">Tipo de Material</label>
+                                        <label for="tipo_produto" class="small">Tipo de Produto</label>
                                         <input class="form-control small" type="email" id="tipo_produto">
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="classificacao" class="small">Classificação</label>
+                                        <input class="form-control small" type="email" id="classificacao">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="produto" class="small">Descrição do Material</label>
+                                <label for="produto" class="small">Descrição do Produto</label>
                                 <input class="form-control small" type="text" id="produto">
                             </div>
 
@@ -68,24 +71,26 @@
                 <thead class="card-header">
                     <tr class="card-header">
                         <th scope="col">Id</th>
-                        <th scope="col">Tipo de Material</th>
                         <th scope="col">Classificação</th>
-                        <th scope="col">Descrição do Material</th>
+                        <th scope="col">Tipo de Produto</th>
+                        <th scope="col">Descrição do Produto</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Tamanho</th>
                         <th scope="col">Cor</th>
-                        <th scope="col">Código Material</th>
-                        <th scope="col">Fabricante</th>
+                        <th scope="col">Especificação</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Tecido</td>
-                        <td>Algodão</td>
-                        <td>Tricoline Estampado</td>
-                        <td>Rosa</td>
-                        <td>2030-10</td>
-                        <td>Arrezo</td>
+                        <td>Restaurante</td>
+                        <td>Avental</td>
+                        <td>Avental para Garçom</td>
+                        <td>Unissex</td>
+                        <td>Único</td>
+                        <td>Amarelo</td>
+                        <td><i class="fa fa-eye fa-2x"></i></td>
                         <td>
                             <button class="btn btn-primary btn-xs">
                                 <i class="fa fa-pencil"></i>
@@ -99,7 +104,7 @@
             </table>
             <div class="card-body">
                 <br />
-                <a href="/material">
+                <a href="/cadastro/produto">
                     <input type="button" class="btn btn-dark btn-md pull-right" value="Novo">
                 </a>
                 <br />

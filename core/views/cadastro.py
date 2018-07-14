@@ -3,23 +3,6 @@ from core.forms import *
 from core.models import *
 
 
-# Create your views here.
-
-def home(request):
-    return render(request, "index.html")
-
-
-
-def login(request):
-    return render(request, "login.html")
-
-
-
-def grupoUsuario(request):
-    context = {}
-    template = "grupoUsuario.html"
-    return render(request, template, context)
-
 def usuario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -27,14 +10,8 @@ def usuario(request):
             form.save()
     else:
         form = UsuarioForm()
-    return render(request, 'usuario.html', { "form" : form })
+    return render(request, 'cadastro/usuario.html', { "form" : form })
 
-
-
-def grupoCliente(request):
-    context = {}
-    template = "grupoCliente.html"
-    return render(request, template, context)
 
 def cliente(request):
     if request.method == 'POST':
@@ -43,14 +20,8 @@ def cliente(request):
             form.save()
     else:
         form = ClienteForm()
-    return render(request, 'cliente.html', { "form" : form })
+    return render(request, 'cadastro/cliente.html', { "form" : form })
 
-
-
-def grupoFornecedor(request):
-    context = {}
-    template = "grupoFornecedor.html"
-    return render(request, template, context)
 
 def fornecedor(request):
     if request.method == 'POST':
@@ -59,14 +30,8 @@ def fornecedor(request):
             form.save()
     else:
         form = FornecedorForm()
-    return render(request, 'fornecedor.html', { "form" : form })
+    return render(request, 'cadastro/fornecedor.html', { "form" : form })
 
-
-
-def grupoPrestador(request):
-    context = {}
-    template = "grupoPrestador.html"
-    return render(request, template, context)
 
 def prestador(request):
     if request.method == 'POST':
@@ -75,13 +40,8 @@ def prestador(request):
             form.save()
     else:
         form = PrestadorForm()
-    return render(request, 'prestador.html', { "form" : form })
+    return render(request, 'cadastro/prestador.html', { "form" : form })
 
-
-def grupoProduto(request):
-    context = {}
-    template = "grupoProduto.html"
-    return render(request, template, context)
 
 def produto(request):
     if request.method == 'POST':
@@ -90,14 +50,8 @@ def produto(request):
             form.save()
     else:
         form = ProdutoForm()
-    return render(request, 'produto.html', { "form" : form })
+    return render(request, 'cadastro/produto.html', { "form" : form })
 
-
-
-def grupoServico(request):
-    context = {}
-    template = "grupoServico.html"
-    return render(request, template, context)
 
 def servico(request):
     if request.method == 'POST':
@@ -106,13 +60,8 @@ def servico(request):
             form.save()
     else:
         form = ServicoForm()
-    return render(request, 'servico.html', { "form" : form })
+    return render(request, 'cadastro/servico.html', { "form" : form })
 
-
-def grupoMaterial(request):
-    context = {}
-    template = "grupoMaterial.html"
-    return render(request, template, context)
 
 def material(request):
     if request.method == 'POST':
@@ -121,7 +70,8 @@ def material(request):
             form.save()
     else:
         form = MaterialForm()
-    return render(request, 'material.html', { "form" : form })
+    return render(request, 'cadastro/material.html', { "form" : form })
+
 
 def unidadeMedida(request):
     if request.method == 'POST':
@@ -130,4 +80,4 @@ def unidadeMedida(request):
             form.save()
     else:
         form = UnidadeMedidaForm()
-    return render(request, 'unidadeMedida.html', { "form" : form })
+    return render(request, 'cadastro/unidadeMedida.html', { "form" : form })
