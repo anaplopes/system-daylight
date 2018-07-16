@@ -1,4 +1,6 @@
 from .index import home
 from .login import login
-from .cadastro import usuario, cliente, fornecedor, prestador, produto, servico, material, unidadeMedida
-from .grupo import grupoUsuario, grupoCliente, grupoFornecedor, grupoPrestador, grupoProduto, grupoServico, grupoMaterial
+from .cadastro import create_usuario
+from .lista import list_usuario
+from .exclui import delete_usuario
+from .atualizacao import update_usuario

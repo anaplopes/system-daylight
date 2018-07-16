@@ -45,26 +45,33 @@
                         <th scope="col">Id</th>
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Ativo</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Status usuario</th>
                         <th scope="col">Perfil</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
+                {% for user in lista_usuario %}
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>@mdo</td>
-                        <td>Sim</td>
-                        <td>Gerente</td>
-                        <td><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.nome }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.cpf }}</td>
+                        <td>{{ user.status_user }}</td>
+                        <td>{{ user.perfil }}</td>
+
+                        {% if user %}
+                        <td><a href="{% url 'update_usuario' user.id %}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                            <a href="{% url 'delete_usuario' user.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
+                        {% endif %}
                     </tr>
                 </tbody>
+                {% endfor %}
             </table>
             <div class="card-body">
             <br />
-                <a href="/cadastro/usuario"><input type="button" class="btn btn-dark btn-md pull-right" value="Novo"></a>
+                <a href="{% url 'create_usuario' %}"><button type="submit" class="btn btn-dark btn-md pull-right">Novo</button></a>
             <br />
             </div>
         </div>

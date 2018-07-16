@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item">Excluir</li>
+    <li class="breadcrumb-item active">Usuário</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" autofocus>
+                            {% csrf_token %}
+
+                            <h2>Confirma a exclusão do usuário {{ delete_usuario.nome }} ?</h2>
+
+                            <div class="pull-right">
+                                <input class="btn btn-dark btn-md" type="submit" value="Sim" />
+                                <a href="/grupo/grupoUsuario">
+                                    <input type="button" class="btn btn-dark btn-md" value="Não">
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br /> {% endblock %}
