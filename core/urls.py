@@ -10,7 +10,7 @@ urlpatterns = [
 
     path('cadastro/usuario/', create_usuario, name='create_usuario'),
     path('grupo/grupoUsuario/', list_usuario, name='list_usuario'),
-    path('grupo/grupoUsuario/<id>', delete_usuario, name='delete_usuario'),
-    path('cadastro/usuario/<id>', update_usuario, name='update_usuario'),
+    path('grupo/grupoUsuario/(?P<id>\d+)/', delete_usuario, name='delete_usuario'),
+    path('cadastro/usuario/(?P<id>\d+)/', update_usuario, name='update_usuario'),
 
 ]

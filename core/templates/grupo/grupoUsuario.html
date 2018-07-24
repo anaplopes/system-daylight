@@ -15,20 +15,32 @@
             <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-8">
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name-input" class="small">Nome</label>
-                                <input class="form-control small" type="text" id="name-input">
+                    <div class="col-11">
+                        <form method="POST" action="{% url 'list_usuario' %}" autofocus>
+                            {% csrf_token %}
+                        
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="small">Nome</label>
+                                        <input class="form-control small" type="text" id="name-input">
+                                    </div>
+                                </div>
+
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <label class="small">E-mail</label>
+                                        <input class="form-control small" type="email" id="email-input">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="email-input" class="small">E-mail</label>
-                                <input class="form-control small" type="email" id="email-input">
+
+                            <div class="pull-right">
+                                <input class="btn btn-dark btn-md" type="submit" value="Buscar" />
                             </div>
                         </form>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-dark btn-md pull-right">Buscar</button>
             </div>
         </div>
     </div>
@@ -62,8 +74,8 @@
                         <td>{{ user.perfil }}</td>
 
                         {% if user %}
-                        <td><a href="{% url 'update_usuario' user.id %}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                            <a href="{% url 'delete_usuario' user.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
+                        <td><a href="{% url 'update_usuario' user.id %}"><button class="btn btn-primary btn-xs"><i class="fas fa-edit"></i></button></a>
+                            <a href="{% url 'delete_usuario' user.id %}"><button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>
