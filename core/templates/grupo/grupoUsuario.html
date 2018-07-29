@@ -15,28 +15,17 @@
             <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-11">
-                        <form method="POST" action="{% url 'list_usuario' %}" autofocus>
-                            {% csrf_token %}
-                        
-                            <div class="form-row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label class="small">Nome</label>
-                                        <input class="form-control small" type="text" id="name-input">
-                                    </div>
-                                </div>
-
-                                <div class="col-5">
-                                    <div class="form-group">
-                                        <label class="small">E-mail</label>
-                                        <input class="form-control small" type="email" id="email-input">
-                                    </div>
-                                </div>
+                    <div class="col-lg-8">
+                        <form method="POST" autofocus>
+                             {% csrf_token %}
+                            <div class="form-group">
+                                <label for="nome" class="small">Nome</label>
+                                <input class="form-control small" type="text" id="nome" name="nome" >
                             </div>
-
                             <div class="pull-right">
-                                <input class="btn btn-dark btn-md" type="submit" value="Buscar" />
+                                <a href="{% url 'update_usuario' user.id %}">
+                                    <input class="btn btn-dark btn-md" type="submit" value="Buscar" />
+                                </a>
                             </div>
                         </form>
                     </div>
