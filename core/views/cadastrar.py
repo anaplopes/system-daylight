@@ -3,12 +3,12 @@ from core.forms import *
 from core.models import *
 
 
-def create_usuario(request):   
+def create_usuario(request):
     if request.method == 'POST':
-        form = UsuarioForm(request.POST)
+        form = UsuarioForm(request.POST or None)
         if form.is_valid():
             form.save()
-            return redirect('list_usuario')
+        return redirect('list_usuario')
     else:
         form = UsuarioForm()
     return render(request, 'cadastro/usuario.html', { 'form' : form })
