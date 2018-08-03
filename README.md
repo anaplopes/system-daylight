@@ -7,10 +7,6 @@ RA	Nome Completo	E-mail
 Ana Paula Lopes	
 anapalopes0103@gmail.com
 
-+ 1701377
-Carlos Rian da Silva
-obcarlosryan@hotmail.com
-
 + 1701394	
 Caio Henrique de Melo Moreira
 cahenri20@hotmail.com
