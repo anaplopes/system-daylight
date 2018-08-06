@@ -8,27 +8,28 @@ PERFIL_CHOICES = (('G', 'Gerente'), ('A', 'Assistente'), ('V', 'Vendedor'),)
 
 ###################### Criação e administração do usuário e superuser.
 class UsuarioManager(BaseUserManager):
-    use_in_migrations = True
-
-    def create_user(self, email, password):
+    
+    def _create_user(self, email, password, is_staff, is_superuser, **extra_fields):
         now = timezone.now()
         if not email:
-            raise ValueError('Email precisa ser preenchido')
-        user = self.model(email=email, last_login=now)
+            raise ValueError(_('Email precisa ser preenchido'))
+        email = self.normalize_email(email)
+        user = self.model(email=email, is_staff=is_staff, last_login=now, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password):
-        user = self.create_user(email, password)
-        user.is_staff = True
-        user.is_superuser = True
+    def create_user(self, email=None, password=None, **extra_fields):
+        return self._create_user(email, password, False, False, **extra_fields)
+
+    def create_superuser(self, email, password, **extra_fields):
+        user=self._create_user(email, password, True, True, **extra_fields)
+        user.is_active=True
         user.save(using=self._db)
         return user
 
-				
 
-class Usuario(AbstractBaseUser, PermissionsMixin):
+class Usuario(AbstractBaseUser):
     nome = models.CharField('Nome', max_length=50, null=False, blank=False)
     email = models.EmailField('E-mail', max_length=100, unique=True, null=False, blank=False)
     cpf = models.CharField('CPF', max_length=11, unique=True, null=False, blank=False)

@@ -89,10 +89,8 @@
                             </div>
 
                             <div class="pull-right">
-                                <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
-                                <a href="/grupo/grupoUsuario">
-                                    <input type="button" class="btn btn-dark btn-md" value="Cancelar">
-                                </a>
+                                <a href="{% url 'create_usuario' %}"><input type="submit" class="btn btn-dark btn-md" value="Salvar"></a>
+                                <a href="/grupo/grupoUsuario"><input type="button" class="btn btn-dark btn-md" value="Cancelar"></a>
                             </div>
                         </form>
                     </div>

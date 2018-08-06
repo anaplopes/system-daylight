@@ -12,5 +12,10 @@ urlpatterns = [
     path('grupo/grupoUsuario/', list_usuario, name='list_usuario'),
     path('grupo/grupoUsuario/<id>/', delete_usuario, name='delete_usuario'),
     path('cadastro/usuario/<id>/', update_usuario, name='update_usuario'),
+    
+    path('cadastro/cliente/', create_cliente, name='create_cliente'),
+    path('grupo/grupoCliente/', list_cliente, name='list_cliente'),
+    path('grupo/grupoCliente/<id>/', delete_cliente, name='delete_cliente'),
+    path('cadastro/cliente/<id>/', update_cliente, name='update_cliente'),
 
 ]

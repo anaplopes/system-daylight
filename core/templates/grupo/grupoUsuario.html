@@ -19,10 +19,15 @@
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label class="small">Nome</label>
-                                        <input class="form-control small" type="text" id="nome" name="nome">
+                                        <input class="form-control small" type="text" id="nome_usuario" name="nome_usuario">
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label class="small">Email</label>
+                                        <input class="form-control small" type="email" id="email_usuario" name="email_usuario">
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +55,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">CPF</th>
-                        <th scope="col">Status usuario</th>
+                        <th scope="col">Status usuário</th>
                         <th scope="col">Perfil</th>
                         <th scope="col"></th>
                     </tr>
