@@ -23,6 +23,6 @@ isabellappicirillo@gmail.com
 Johnny de Jesus dos Santos
 johnny_santos1994@hotmail.com
 
-+ 1601019
-Samuel da Silva Oliveira
-sanuel10@live.com
++ 1700073
+Vinicius Lucas Silvestre
+vinicius.silvestre1@hotmail.com
