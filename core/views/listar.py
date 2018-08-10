@@ -44,7 +44,25 @@ def list_cliente(request):
    
 
 def list_fornecedor(request):
-    return render(request, "grupo/grupoFornecedor.html")
+    if request.method == 'POST':
+        
+        search = request.POST.get('nome_fornecedor')
+        list_fornecedor = Fornecedor.objects.filter(fornecedorname__contains=search)
+
+        if search == "":
+            search = request.POST.get('email_fornecedor')
+            list_fornecedor = Fornecedor.objects.filter(email__contains=search)
+
+            if search == "":
+                search = request.POST.get('cpf/cnpj_cliente')
+                list_fornecedor = Fornecedor.objects.filter(numero_fiscal=search)
+
+                if search == "":
+                    return render(request, "grupo/grupoFornecedor.html")
+
+        return render(request, "grupo/grupoFornecedor.html", {'list_fornecedor':list_fornecedor})
+    else:
+        return render(request, "grupo/grupoFornecedor.html")
 
 
 def list_prestador(request):
