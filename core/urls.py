@@ -33,6 +33,8 @@ urlpatterns = [
     path('grupo/grupoMaterial/<id>/', delete_material, name='delete_material'),
     path('cadastro/material/<id>/', update_material, name='update_material'),
     
+    path('cadastro/unidadeMedida/', create_medida, name='create_medida'),
+    
     path('cadastro/produto/', create_produto, name='create_produto'),
     path('grupo/grupoProduto/', list_produto, name='list_produto'),
     path('grupo/grupoProduto/<id>/', delete_produto, name='delete_produto'),
