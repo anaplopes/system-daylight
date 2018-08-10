@@ -41,3 +41,23 @@ def list_cliente(request):
         return render(request, "grupo/grupoCliente.html", {'lista_cliente':lista_cliente})
     else:
         return render(request, "grupo/grupoCliente.html")
+   
+
+def list_fornecedor(request):
+    return render(request, "grupo/grupoFornecedor.html")
+
+
+def list_prestador(request):
+    return render(request, "grupo/grupoPrestador.html")
+
+
+def list_material(request):
+    return render(request, "grupo/grupoMaterial.html")
+
+
+def list_produto(request):
+    return render(request, "grupo/grupoProduto.html")
+
+
+def list_servico(request):
+    return render(request, "grupo/grupoServico.html")
