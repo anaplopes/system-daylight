@@ -74,7 +74,7 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                {% for cliente in lista_fornecedor %}
+                {% for fornecedor in lista_fornecedor %}
                 <tbody>
                     <tr>
                         <th scope="row">{{ fornecedor.id }}</th>
@@ -84,7 +84,7 @@
                         <td>{{ fornecedor.class_fiscal }}</td>
                         <td>{{ fornecedor.numero_fiscal }}</td>
 
-                        {% if user %}
+                        {% if fornecedor %}
                         <td><a href="{% url 'update_fornecedor' fornecedor.id %}"><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></button></a>
                             <a href="{% url 'delete_fornecedor' fornecedor.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
