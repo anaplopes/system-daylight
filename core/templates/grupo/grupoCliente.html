@@ -84,7 +84,7 @@
                         <td>{{ cliente.class_fiscal }}</td>
                         <td>{{ cliente.numero_fiscal }}</td>
 
-                        {% if user %}
+                        {% if cliente %}
                         <td><a href="{% url 'update_cliente' cliente.id %}"><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></button></a>
                             <a href="{% url 'delete_cliente' cliente.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
