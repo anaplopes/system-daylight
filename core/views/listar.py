@@ -54,7 +54,7 @@ def list_fornecedor(request):
             list_fornecedor = Fornecedor.objects.filter(email__contains=search)
 
             if search == "":
-                search = request.POST.get('cpf/cnpj_cliente')
+                search = request.POST.get('cpf/cnpj_fornecedor')
                 list_fornecedor = Fornecedor.objects.filter(numero_fiscal=search)
 
                 if search == "":
@@ -66,7 +66,25 @@ def list_fornecedor(request):
 
 
 def list_prestador(request):
-    return render(request, "grupo/grupoPrestador.html")
+    if request.method == 'POST':
+        
+        search = request.POST.get('nome_prestador')
+        list_prestador = PrestadorServico.objects.filter(prestadorname__contains=search)
+
+        if search == "":
+            search = request.POST.get('email_prestador')
+            list_prestador = PrestadorServico.objects.filter(email__contains=search)
+
+            if search == "":
+                search = request.POST.get('cpf/cnpj_prestador')
+                list_prestador = PrestadorServico.objects.filter(numero_fiscal=search)
+
+                if search == "":
+                    return render(request, "grupo/grupoPrestador.html")
+
+        return render(request, "grupo/grupoPrestador.html", {'list_prestador':list_prestador})
+    else:
+        return render(request, "grupo/grupoPrestador.html")
 
 
 def list_material(request):
