@@ -106,10 +106,8 @@
                             </div>
 
                             <div class="pull-right">
-                                <input class="btn btn-dark btn-md" type="submit" value="Salvar" />
-                                <a href="/grupo/grupoPrestador">
-                                    <input type="button" class="btn btn-dark btn-md" value="Cancelar">
-                                </a>
+                                <a href="{% url 'create_prestador' %}"><input type="submit" class="btn btn-dark btn-md" value="Salvar"></a>
+                                <a href="/grupo/grupoPrestador"><input type="button" class="btn btn-dark btn-md" value="Cancelar"></a>
                             </div>
                         </form>
                     </div>
