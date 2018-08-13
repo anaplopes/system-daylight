@@ -66,7 +66,7 @@ def create_medida(request):
         return redirect('list_medida')
     else:
         form = UnidadeMedidaForm()
-    return render(request, 'cadastro/unidadeMedida.html', { 'form' : form })
+    return render(request, 'cadastro/unidademedida.html', { 'form' : form })
 
 
 def create_produto(request):

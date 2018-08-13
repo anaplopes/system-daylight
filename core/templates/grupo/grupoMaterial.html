@@ -19,41 +19,52 @@
             <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-8">
-                        <form role="form">
+                    <div class="col-lg-12">
+                        <form method="POST" autofocus>
+                            {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label for="codigo" class="small">Código do Material</label>
-                                        <input class="form-control small" type="text" id="codigo">
+                                        <label class="small">Código do Material</label>
+                                        <input class="form-control small" type="text" size="50" id="cod_material" name="cod_material">
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Tipo de Material</label>
+                                        <input class="form-control small" type="text" size="50" id="tipo_material" name="tipo_material">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="fabricante" class="small">Fabricante</label>
-                                <input class="form-control small" type="text" id="fabricante">
-                            </div>
-
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-8">
                                     <div class="form-group">
-                                        <label for="tipo_produto" class="small">Tipo de Material</label>
-                                        <input class="form-control small" type="email" id="tipo_produto">
+                                        <label class="small">Fabricante</label>
+                                        <input class="form-control small" type="text" size="50" id="fabricante" name="fabricante">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="produto" class="small">Descrição do Material</label>
-                                <input class="form-control small" type="text" id="produto">
+                            <div class="form-row">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label class="small">Descrição do Material</label>
+                                        <input class="form-control small" type="text" size="100" id="desc_material" name="desc_material">
+                                    </div>
+                                </div>
                             </div>
 
+                            <div class="pull-right">
+                                <a href="{% url 'list_material' %}">
+                                    <button type="submit" class="btn btn-secundary btn-md pull-right">Buscar</button>
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-dark btn-md pull-right">Buscar</button>
             </div>
         </div>
     </div>
@@ -77,35 +88,33 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
+                {% for material in lista_material %}
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Tecido</td>
-                        <td>Algodão</td>
-                        <td>Tricoline Estampado</td>
-                        <td>Rosa</td>
-                        <td>2030-10</td>
-                        <td>Arrezo</td>
-                        <td>
-                            <button class="btn btn-primary btn-xs">
-                                <i class="fa fa-pencil"></i>
-                            </button>
-                            <button class="btn btn-danger btn-xs">
-                                <i class="fa fa-trash-o"></i>
-                            </button>
+                        <th scope="row">{{ material.id }}</th>
+                        <td>{{ material.tipo_mprima }}</td>
+                        <td>{{ material.classificacao }}</td>
+                        <td>{{ material.material }}</td>
+                        <td>{{ material.cor }}</td>
+                        <td>{{ material.cod_mprima }}</td>
+                        <td>{{ material.nome_fabricante }}</td>
+
+                         {% if material %}
+                        <td><a href="{% url 'update_material' material.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_material' material.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
+                        {% endif %}
                     </tr>
                 </tbody>
+                {% endfor %}
             </table>
-            <div class="card-body">
-                <br />
-                <a href="/cadastro/material">
-                    <input type="button" class="btn btn-dark btn-md pull-right" value="Novo">
-                </a>
-                <br />
-            </div>
+        </div>
+        <div class="card-body">
+            <a href="/cadastro/material">
+                <button type="submit" class="btn btn-primary btn-md pull-right">Novo</button>
+            </a>
         </div>
     </div>
 </div>
-<br />
+<br /> 
 {% endblock %}

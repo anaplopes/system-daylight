@@ -16,6 +16,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
+            <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
@@ -23,32 +24,32 @@
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-8">
                                     <div class="form-group">
                                         <label class="small">Cliente</label>
-                                        <input class="form-control small" type="text" id="nome_cliente" name="nome_cliente">
+                                        <input class="form-control small" type="text" size="100" id="nome_cliente" name="nome_cliente">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Email</label>
-                                        <input class="form-control small" type="email" id="email_cliente" name="email_cliente">
+                                        <input class="form-control small" type="email" size="100" id="email_cliente" name="email_cliente">
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">CPF/CNPJ</label>
-                                        <input class="form-control small" type="text" id="cpf/cnpj_cliente" name="cpf/cnpj_cliente">
+                                        <input class="form-control small" type="text" maxlength="14" size="14" id="cpf/cnpj_cliente" name="cpf/cnpj_cliente">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <a href="{% url 'list_cliente' %}">
-                                    <button type="submit" class="btn btn-dark btn-md pull-right">Buscar</button>
+                                    <button type="submit" class="btn btn-secundary btn-md pull-right">Buscar</button>
                                 </a>
                             </div>
                         </form>
@@ -85,7 +86,7 @@
                         <td>{{ cliente.numero_fiscal }}</td>
 
                         {% if cliente %}
-                        <td><a href="{% url 'update_cliente' cliente.id %}"><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></button></a>
+                        <td><a href="{% url 'update_cliente' cliente.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
                             <a href="{% url 'delete_cliente' cliente.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
@@ -93,11 +94,9 @@
                 </tbody>
                 {% endfor %}
             </table>
-            <div class="card-body">
-                <br />
-                <a href="{% url 'create_cliente' %}"><button type="submit" class="btn btn-dark btn-md pull-right">Novo</button></a>
-                <br />
-            </div>
+        </div>
+        <div class="card-body">
+            <a href="/cadastro/cliente"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
         </div>
     </div>
 </div>

@@ -14,11 +14,15 @@ def list_usuario(request):
             lista_usuario = Usuario.objects.filter(email__contains=search)
 
             if search == "":
-                return render(request, "grupo/grupoUsuario.html")
+                search = request.POST.get('cpf_usuario')
+                lista_usuario = Usuario.objects.filter(cpf=search)
 
-        return render(request, "grupo/grupoUsuario.html", {'lista_usuario':lista_usuario})
+                if search == "":
+                    return render(request, "grupo/grupousuario.html")
+
+        return render(request, "grupo/grupousuario.html", {'lista_usuario':lista_usuario})
     else:
-        return render(request, "grupo/grupoUsuario.html")
+        return render(request, "grupo/grupousuario.html")
 
 
 def list_cliente(request):
@@ -36,64 +40,86 @@ def list_cliente(request):
                 lista_cliente = Cliente.objects.filter(numero_fiscal=search)
 
                 if search == "":
-                    return render(request, "grupo/grupoCliente.html")
+                    return render(request, "grupo/grupocliente.html")
 
-        return render(request, "grupo/grupoCliente.html", {'lista_cliente':lista_cliente})
+        return render(request, "grupo/grupocliente.html", {'lista_cliente':lista_cliente})
     else:
-        return render(request, "grupo/grupoCliente.html")
+        return render(request, "grupo/grupocliente.html")
    
 
 def list_fornecedor(request):
     if request.method == 'POST':
         
         search = request.POST.get('nome_fornecedor')
-        list_fornecedor = Fornecedor.objects.filter(fornecedorname__contains=search)
+        lista_fornecedor = Fornecedor.objects.filter(fornecedorname__contains=search)
 
         if search == "":
             search = request.POST.get('email_fornecedor')
-            list_fornecedor = Fornecedor.objects.filter(email__contains=search)
+            lista_fornecedor = Fornecedor.objects.filter(email__contains=search)
 
             if search == "":
                 search = request.POST.get('cpf/cnpj_fornecedor')
-                list_fornecedor = Fornecedor.objects.filter(numero_fiscal=search)
+                lista_fornecedor = Fornecedor.objects.filter(numero_fiscal=search)
 
                 if search == "":
-                    return render(request, "grupo/grupoFornecedor.html")
+                    return render(request, "grupo/grupofornecedor.html")
 
-        return render(request, "grupo/grupoFornecedor.html", {'list_fornecedor':list_fornecedor})
+        return render(request, "grupo/grupofornecedor.html", {'lista_fornecedor':lista_fornecedor})
     else:
-        return render(request, "grupo/grupoFornecedor.html")
+        return render(request, "grupo/grupofornecedor.html")
 
 
 def list_prestador(request):
     if request.method == 'POST':
         
         search = request.POST.get('nome_prestador')
-        list_prestador = PrestadorServico.objects.filter(prestadorname__contains=search)
+        lista_prestador = PrestadorServico.objects.filter(prestadorname__contains=search)
 
         if search == "":
             search = request.POST.get('email_prestador')
-            list_prestador = PrestadorServico.objects.filter(email__contains=search)
+            lista_prestador = PrestadorServico.objects.filter(email__contains=search)
 
             if search == "":
                 search = request.POST.get('cpf/cnpj_prestador')
-                list_prestador = PrestadorServico.objects.filter(numero_fiscal=search)
+                lista_prestador = PrestadorServico.objects.filter(numero_fiscal=search)
 
                 if search == "":
-                    return render(request, "grupo/grupoPrestador.html")
+                    return render(request, "grupo/grupoprestador.html")
 
-        return render(request, "grupo/grupoPrestador.html", {'list_prestador':list_prestador})
+        return render(request, "grupo/grupoprestador.html", {'lista_prestador':lista_prestador})
     else:
-        return render(request, "grupo/grupoPrestador.html")
+        return render(request, "grupo/grupoprestador.html")
 
 
 def list_material(request):
-    return render(request, "grupo/grupoMaterial.html")
+    if request.method == 'POST':
+        
+        search = request.POST.get('cod_material')
+        lista_material = Material.objects.filter(cod_mprima=search)
+
+        if search == "":
+            search = request.POST.get('tipo_material')
+            lista_material = Material.objects.filter(tipo_mprima__contains=search)
+
+            if search == "":
+                search = request.POST.get('fabricante')
+                lista_material = Material.objects.filter(nome_fabricante__contains=search)
+
+                if search == "":
+                    search = request.POST.get('desc_material')
+                    lista_material = Material.objects.filter(material__contains=search)
+
+                    if search == "":
+                        return render(request, "grupo/grupomaterial.html")
+
+        return render(request, "grupo/grupomaterial.html", {'lista_material':lista_material})
+    else:
+        return render(request, "grupo/grupomaterial.html")
 
 
 def list_produto(request):
-    return render(request, "grupo/grupoProduto.html")
+    return render(request, "grupo/grupoproduto.html")
 
 
 def list_servico(request):
-    return render(request, "grupo/grupoServico.html")
+    return render(request, "grupo/gruposervico.html")

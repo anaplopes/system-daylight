@@ -12,6 +12,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
+            <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
@@ -19,22 +20,32 @@
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Nome</label>
-                                        <input class="form-control small" type="text" id="nome_usuario" name="nome_usuario">
+                                        <label class="small">Usuário</label>
+                                        <input class="form-control small" type="text" size="50" id="nome_usuario" name="nome_usuario">
                                     </div>
-                                
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Email</label>
-                                        <input class="form-control small" type="email" id="email_usuario" name="email_usuario">
+                                        <input class="form-control small" type="email" size="100" id="email_usuario" name="email_usuario">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">CPF</label>
+                                        <input class="form-control small" type="text" maxlength="11" size="11" id="cpf_usuario" name="cpf_usuario">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <a href="{% url 'list_usuario' %}">
-                                    <button type="submit" class="btn btn-dark btn-md pull-right">Buscar</button>
+                                    <button type="submit" class="btn btn-secundary btn-md pull-right">Buscar</button>
                                 </a>
                             </div>
                         </form>
@@ -60,29 +71,27 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                {% for user in lista_usuario %}
+                {% for usuario in lista_usuario %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ user.id }}</th>
-                        <td>{{ user.nome }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.cpf }}</td>
-                        <td>{{ user.status_user }}</td>
-                        <td>{{ user.perfil }}</td>
+                        <th scope="row">{{ usuario.id }}</th>
+                        <td>{{ usuario.nome }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.cpf }}</td>
+                        <td>{{ usuario.status_user }}</td>
+                        <td>{{ usuario.perfil }}</td>
 
-                        {% if user %}
-                        <td><a href="{% url 'update_usuario' user.id %}"><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_usuario' user.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a></td>
+                        {% if usuario %}
+                        <td><a href="{% url 'update_usuario' usuario.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_usuario' usuario.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>
                 {% endfor %}
             </table>
-            <div class="card-body">
-            <br />
-                <a href="{% url 'create_usuario' %}"><button type="submit" class="btn btn-dark btn-md pull-right">Novo</button></a>
-            <br />
-            </div>
+        </div>
+        <div class="card-body">
+            <a href="/cadastro/usuario"><button type="button" class="btn btn-primary btn-md pull-right">Novo</button></a>
         </div>
     </div>
 </div>

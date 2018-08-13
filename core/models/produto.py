@@ -14,7 +14,10 @@ class Produto(models.Model):
     tamanho = models.CharField('Tamanho do Produto', choices=TAMANHOPRODUTO_CHOICES, max_length=5, null=False, blank=False)  # P, M, G e etc.
     cor = models.CharField('Cor do Produto', max_length=50, null=False, blank=False)
     valor_venda = models.DecimalField('Valor do Produto', max_digits=10, decimal_places=2, null=False, blank=False)
-    especificacao = models.TextField('Especificação do Produto', max_length=1000)
+    especificacao = models.TextField('Especificação do Produto', max_length=1000, null=False, blank=False)
 
     class Meta:
         db_table = 'Produto'
+    
+    def __str__(self):
+        return '{} - {} - {} - {} - {} - {}'.format(self.tipo_produto, self.classificacao, self.produto, self.modelo, self.tamanho, self.cor)

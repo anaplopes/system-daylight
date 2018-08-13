@@ -16,6 +16,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
+            <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
@@ -23,32 +24,32 @@
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-8">
                                     <div class="form-group">
                                         <label class="small">Fornecedor</label>
-                                        <input class="form-control small" type="text" id="nome_fornecedor" name="nome_fornecedor">
+                                        <input class="form-control small" type="text" size="100" id="nome_fornecedor" name="nome_fornecedor">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Email</label>
-                                        <input class="form-control small" type="email" id="email_fornecedor" name="email_fornecedor">
+                                        <input class="form-control small" type="email" size="100" id="email_fornecedor" name="email_fornecedor">
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">CPF/CNPJ</label>
-                                        <input class="form-control small" type="text" id="cpf/cnpj_fornecedor" name="cpf/cnpj_fornecedor">
+                                        <input class="form-control small" type="text" maxlength="14" size="14" id="cpf/cnpj_fornecedor" name="cpf/cnpj_fornecedor">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <a href="{% url 'list_fornecedor' %}">
-                                    <button type="submit" class="btn btn-dark btn-md pull-right">Buscar</button>
+                                    <button type="submit" class="btn btn-secundary btn-md pull-right">Buscar</button>
                                 </a>
                             </div>
                         </form>
@@ -85,7 +86,7 @@
                         <td>{{ fornecedor.numero_fiscal }}</td>
 
                         {% if fornecedor %}
-                        <td><a href="{% url 'update_fornecedor' fornecedor.id %}"><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></button></a>
+                        <td><a href="{% url 'update_fornecedor' fornecedor.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
                             <a href="{% url 'delete_fornecedor' fornecedor.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
@@ -93,11 +94,9 @@
                 </tbody>
                 {% endfor %}
             </table>
-            <div class="card-body">
-                <br />
-                <a href="{% url 'create_fornecedor' %}"><button type="submit" class="btn btn-dark btn-md pull-right">Novo</button></a>
-                <br />
-            </div>
+        </div>
+        <div class="card-body">
+            <a href="/cadastro/fornecedor"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
         </div>
     </div>
 </div>
