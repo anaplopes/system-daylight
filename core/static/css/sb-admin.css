@@ -355,48 +355,43 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   color: #adb5bd;
 }
 
-#cadastro{
+#comercial{
   background: #D30401;
 }
-#comercial{
+#producao{
   background: #07B23C;
 }
-#producao{
+#estoque{
   background: #E8500C;
 }
-#estoque{
+#financeiro{
   background: rgba(20, 12, 135, 0.822);
 }
-#financeiro{
+#planorota{
   background: #5a137a;
 }
-#planorota{
+#gerencial{
   background: #B5095F;
 }
-#gerencial{
-  background: rgba(216, 182, 10, 0.521);
-}
 
-#itemcadastro a:hover{
+
+#itemcomercial a:hover{
     background-color: #D30401;
 }
-#itemcomercial a:hover{
+#itemproducao a:hover{
     background-color: #07B23C;
 }
-#itemproducao a:hover{
+#itemestoque a:hover{
     background-color: #E8500C;
 }
-#itemestoque a:hover{
+#itemfinanceiro a:hover{
     background-color: rgba(20, 12, 135, 0.822);
 }
-#itemfinanceiro a:hover {
+#itemplanorota a:hover {
     background-color: #5a137a;
 }
-#itemplanorota a:hover{
-    background-color: #B5095F;
-}
 #itemgerencial a:hover{
-    background-color: rgba(236, 199, 11, 0.664);
+    background-color: #B5095F;
 }
 
 @media (min-width: 992px) {

@@ -13,3 +13,6 @@ class Material(models.Model):
 
     class Meta:
         db_table = 'Material'
+
+    def __str__(self):
+        return '{} {} {} ( {} )'.format(self.tipo_mprima, self.classificacao, self.cor, self.nome_fabricante)

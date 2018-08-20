@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block main %}
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
 
 <!-- CABEÇALHO PAGINA -->
 <ol class="breadcrumb">
@@ -7,8 +9,7 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Excluir</li>
-    <li class="breadcrumb-item active">Usuário</li>
+    <li class="breadcrumb-item">Confirmação de Exclusão</li>
 </ol>
 
 <div class="row">
@@ -23,10 +24,10 @@
                             <h2>Confirma a exclusão?</h2>
 
                             <div class="pull-right">
-                                <input class="btn btn-dark btn-md" type="submit" value="Sim" />
-                                <a href="">
-                                    <input type="button" class="btn btn-dark btn-md" value="Não">
+                                <a href="/">
+                                    <input type="button" class="btn btn-danger btn-md" value="Não">
                                 </a>
+                                <input class="btn btn-success btn-md" type="submit" value="Sim" />
                             </div>
                         </form>
                     </div>
@@ -35,4 +36,5 @@
         </div>
     </div>
 </div>
-<br /> {% endblock %}
+<br>
+{% endblock %}

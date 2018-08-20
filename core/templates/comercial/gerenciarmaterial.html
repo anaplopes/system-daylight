@@ -9,8 +9,7 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Grupo de Material</li>
+    <li class="breadcrumb-item active">Gerenciar Material</li>
 </ol>
 
 <div class="row">
@@ -78,12 +77,10 @@
             <table class="table table-hover text-center">
                 <thead class="card-header">
                     <tr class="card-header">
-                        <th scope="col">Id</th>
                         <th scope="col">Tipo de Material</th>
                         <th scope="col">Classificação</th>
                         <th scope="col">Descrição do Material</th>
                         <th scope="col">Cor</th>
-                        <th scope="col">Código Material</th>
                         <th scope="col">Fabricante</th>
                         <th scope="col"></th>
                     </tr>
@@ -91,12 +88,10 @@
                 {% for material in lista_material %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ material.id }}</th>
-                        <td>{{ material.tipo_mprima }}</td>
+                        <th scope="row">{{ material.tipo_mprima }}</th>
                         <td>{{ material.classificacao }}</td>
                         <td>{{ material.material }}</td>
                         <td>{{ material.cor }}</td>
-                        <td>{{ material.cod_mprima }}</td>
                         <td>{{ material.nome_fabricante }}</td>
 
                          {% if material %}
@@ -110,11 +105,11 @@
             </table>
         </div>
         <div class="card-body">
-            <a href="/cadastro/material">
+            <a href="/comercial/cadastrarmaterial">
                 <button type="submit" class="btn btn-primary btn-md pull-right">Novo</button>
             </a>
         </div>
     </div>
 </div>
-<br /> 
+<br />
 {% endblock %}

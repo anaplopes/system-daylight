@@ -9,8 +9,10 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Serviço</li>
+    <li class="breadcrumb-item">
+        <a href="/producao/gerenciarprestador">Gerenciar Serviço</a>
+    </li>
+    <li class="breadcrumb-item active">Cadastrar Serviço</li>
 </ol>
 
 <div class="row">
@@ -57,7 +59,7 @@
                             </div>
 
                             <div class="pull-right">
-                                <a href="/grupo/gruposervico"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
+                                <a href="/producao/gerenciarservico"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
                                 <a href="{% url 'create_servico' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>

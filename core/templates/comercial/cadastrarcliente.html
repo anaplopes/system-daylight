@@ -9,10 +9,11 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Produto</li>
+    <li class="breadcrumb-item">
+        <a href="/comercial/gerenciarcliente">Gerenciar Cliente</a>
+    </li>
+    <li class="breadcrumb-item active">Cadastrar Cliente</li>
 </ol>
-
 
 <div class="row">
     <div class="col-sm-12">
@@ -26,15 +27,16 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Classificação</label>
-                                        {{ form.classificacao }}
+                                        <label class="small">Classificação Fiscal</label>
+                                        {{ form.class_fiscal }}
                                     </div>
                                 </div>
+                            
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Tipo de Produto</label>
-                                        {{ form.tipo_produto }}
+                                        <label class="small">CNPJ/CPF</label>
+                                        {{ form.numero_fiscal}}
                                     </div>
                                 </div>
                             </div>
@@ -42,8 +44,8 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Descrição do Produto</label>
-                                        {{ form.produto }}
+                                        <label class="small">Cliente</label>
+                                        {{ form.clientename }}
                                     </div>
                                 </div>
                             </div>
@@ -51,31 +53,15 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Modelo</label>
-                                        {{ form.modelo }}
+                                        <label class="small">E-mail</label>
+                                        {{ form.email }}
                                     </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Tamanho</label>
-                                        {{ form.tamanho }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Cor</label>
-                                        {{ form.cor }}
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Valor da Venda</label>
-                                        {{ form.valor_venda }}
+                                        <label class="small">Telefone</label>
+                                        {{ form.telefone }}
                                     </div>
                                 </div>
                             </div>
@@ -83,15 +69,47 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Especificação</label>
-                                        {{ form.especificacao }}
+                                        <label class="small">Endereço</label>
+                                        {{ form.endereco }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Bairro</label>
+                                        {{ form.bairro }}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Cidade</label>
+                                        {{ form.cidade }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-1">
+                                    <div class="form-group">
+                                        <label class="small">UF</label>
+                                        {{ form.uf }}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">CEP</label>
+                                        {{ form.cep }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
-                                <a href="/grupo/grupoproduto"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'create_produto' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
+                                <a href="/comercial/gerenciarcliente"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
+                                <a href="{% url 'create_cliente' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

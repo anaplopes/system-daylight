@@ -9,8 +9,7 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Grupo de Prestador</li>
+    <li class="breadcrumb-item active">Gerenciar Prestador de Serviço</li>
 </ol>
 
 <div class="row">
@@ -68,7 +67,6 @@
             <table class="table table-hover text-center">
                 <thead class="card-header">
                     <tr class="card-header">
-                        <th scope="col">Id</th>
                         <th scope="col">Prestador</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Telefone</th>
@@ -80,8 +78,7 @@
                 {% for prestador in lista_prestador %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ prestador.id }}</th>
-                        <td>{{ prestador.prestadorname }}</td>
+                        <th scope="row">{{ prestador.prestadorname }}</th>
                         <td>{{ prestador.email }}</td>
                         <td>{{ prestador.telefone }}</td>
                         <td>{{ prestador.class_fiscal }}</td>
@@ -98,7 +95,7 @@
             </table>
         </div>
         <div class="card-body">
-            <a href="/cadastro/prestador"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
+            <a href="/producao/cadastrarprestador"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
         </div>
     </div>
 </div>

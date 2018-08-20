@@ -29,32 +29,20 @@
     <nav class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="menu">
 
-        <!-- ITEM CADASTRO -->
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Cadastro">
-          <a class="nav-link nav-link-collapse collapsed" id="cadastro" data-toggle="collapse" href="#itemcadastro">
-            <span class="nav-link-text">Cadastro</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="itemcadastro">
-            <li><a href="/grupo/grupousuario">Grupo de Usuário</a></li>
-            <li><a href="/grupo/grupocliente">Grupo de Cliente</a></li>
-            <li><a href="/grupo/grupofornecedor">Grupo de Fornecedor</a></li>
-            <li><a href="/grupo/grupoprestador">Grupo de Prestador</a></li>
-            <li><a href="/grupo/grupomaterial">Grupo de Material</a></li>
-            <li><a href="/grupo/grupoproduto">Grupo de Produto</a></li>
-            <li><a href="/grupo/gruposervico">Grupo de Serviço</a></li>
-          </ul>
-        </li>
-
         <!-- ITEM COMERCIAL -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Comercial">
           <a class="nav-link nav-link-collapse collapsed" id="comercial" data-toggle="collapse" href="#itemcomercial">
             <span class="nav-link-text">Comercial</span>
           </a>
           <ul class="sidenav-second-level collapse" id="itemcomercial">
-            <li><a href="#">Registrar Pedido</a></li>
-            <li><a href="#">Gerenciar Pedido</a></li>
-            <li><a href="#">Ordem de Compra</a></li>
-            <li><a href="#">Gerenciar Compra</a></li>
+            <li><a href="/comercial/gerenciarcliente">Gerenciar Cliente</a></li>
+            <li><a href="/comercial/gerenciarfornecedor">Gerenciar Fornecedor</a></li>
+            <li><a href="/comercial/gerenciarmaterial">Gerenciar Material</a></li>
+            <li><a href="/comercial/gerenciarproduto">Gerenciar Produto</a></li>
+            <li><a href="/">Registrar Pedido</a></li>
+            <li><a href="/">Gerenciar Pedido</a></li>
+            <li><a href="/">Ordem de Compra</a></li>
+            <li><a href="/">Gerenciar Compra</a></li>
           </ul>
         </li>
 
@@ -64,8 +52,10 @@
             <span class="nav-link-text">Produção</span>
           </a>
           <ul class="sidenav-second-level collapse" id="itemproducao">
-            <li><a href="#">Ordem de Serviço</a></li>
-            <li><a href="#">Gerenciar Serviço</a></li>
+            <li><a href="/producao/gerenciarprestador">Gerenciar Prestador</a></li>
+            <li><a href="/producao/gerenciarservico">Gerenciar Serviço</a></li>
+            <li><a href="/">Ordem de Serviço</a></li>
+            <li><a href="/">Gerenciar Serviço</a></li>
           </ul>
         </li>
 
@@ -75,10 +65,10 @@
             <span class="nav-link-text">Estoque</span>
           </a>
           <ul class="sidenav-second-level collapse" id="itemestoque">
-            <li><a href="#">Registrar de Entrada</a></li>
-            <li><a href="#">Registrar de Saída</a></li>
-            <li><a href="#">Registrar de Devolução</a></li>
-            <li><a href="#">Gerenciar Estoque</a></li>
+            <li><a href="/">Registrar de Entrada</a></li>
+            <li><a href="/">Registrar de Saída</a></li>
+            <li><a href="/">Registrar de Devolução</a></li>
+            <li><a href="/">Gerenciar Estoque</a></li>
           </ul>
         </li>
 
@@ -88,8 +78,8 @@
             <span class="nav-link-text">Financeiro</span>
           </a>
           <ul class="sidenav-second-level collapse" id="itemfinanceiro">
-            <li><a href="#">Contas a Pagar</a></li>
-            <li><a href="#">Contas a Receber</a></li>
+            <li><a href="/">Contas a Pagar</a></li>
+            <li><a href="/">Contas a Receber</a></li>
           </ul>
         </li>
 
@@ -99,8 +89,8 @@
             <span class="nav-link-text">Plano de Rota</span>
           </a>
             <ul class="sidenav-second-level collapse" id="itemplanorota">
-              <li><a href="#">Registrar Distribuição</a></li>
-              <li><a href="#">Gerenciar Logistica</a></li>
+              <li><a href="/">Registrar Distribuição</a></li>
+              <li><a href="/">Gerenciar Logistica</a></li>
             </ul>
         </li>
 
@@ -110,9 +100,10 @@
             <span class="nav-link-text">Gerencial</span>
           </a>
             <ul class="sidenav-second-level collapse" id="itemgerencial">
-              <li><a href="#">Visão Geral</a></li>
-              <li><a href="#">Receita Mensal</a></li>
-              <li><a href="#">Despesa Mensal</a></li>
+              <li><a href="/gerencial/gerenciarusuario">Gerenciar Usuário</a></li>
+              <li><a href="/">Visão Geral</a></li>
+              <li><a href="/">Receita Mensal</a></li>
+              <li><a href="/">Despesa Mensal</a></li>
             </ul>
         </li>
       </ul>
@@ -175,9 +166,9 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Deseja sair?</div>
+        <div class="modal-body">Deseja sair do sistema?</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
           <a class="btn btn-primary" href="/login">Sair</a>
         </div>
       </div>

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Gerenciar Produto</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <h6 class="card-header">Pesquisa</h6>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" autofocus>
+                            {% csrf_token %}
+
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="tipo_produto" class="small">Tipo de Produto</label>
+                                        <input class="form-control small" type="text" size="50" id="tipo_produto" name="tipo_produto">
+                                    </div>
+                                </div>
+                            
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="classificacao" class="small">Classificação</label>
+                                        <input class="form-control small" type="text" size="50" id="classificacao_produto" name="classificacao_produto">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label for="produto" class="small">Descrição do Produto</label>
+                                        <input class="form-control small" type="text" size="100" id="desc_produto" name="desc_produto">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pull-right">
+                                <a href="{% url 'list_produto' %}">
+                                    <button type="submit" class="btn btn-secundary btn-md pull-right">Buscar</button>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <table class="table table-hover text-center">
+                <thead class="card-header">
+                    <tr class="card-header">
+                        <th scope="col">Tipo de Produto</th>
+                        <th scope="col">Classificação</th>
+                        <th scope="col">Descrição do Produto</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Tamanho</th>
+                        <th scope="col">Cor</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                {% for produto in lista_produto %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ produto.tipo_produto }}</th>
+                        <td>{{ produto.classificacao }}</td>
+                        <td>{{ produto.produto }}</td>
+                        <td>{{ produto.modelo }}</td>
+                        <td>{{ produto.tamanho }}</td>
+                        <td>{{ produto.cor }}</td>
+
+                         {% if produto %}
+                        <td><a data-toggle="modal" data-target="#especificacaoProdutoModal"><button class="btn btn-secundary btn-xs"><i class="fa far fa-eye"></i></button></a>
+                            <a href="{% url 'update_produto' produto.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_produto' produto.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="card-body">
+            <a href="/comercial/cadastrarproduto">
+                <button type="submit" class="btn btn-primary btn-md pull-right">Novo</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<!-- Especificação Produto Modal-->
+{% for produto in lista_produto %}
+<div class="modal fade" id="especificacaoProdutoModal" tabindex="-1" role="dialog" aria-labelledby="especificacaoProdutoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="especificacaoProdutoModalLabel">Especificação</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">{{ produto.especificacao }}</div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Sair</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

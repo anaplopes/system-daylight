@@ -1,12 +1,15 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block main %}
 
 <!-- CABEÇALHO PAGINA -->
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
-    <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Grupo de Usuário</li>
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Gerenciar Fornecedor</li>
 </ol>
 
 <div class="row">
@@ -22,29 +25,29 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Usuário</label>
-                                        <input class="form-control small" type="text" size="50" id="nome_usuario" name="nome_usuario">
+                                        <label class="small">Fornecedor</label>
+                                        <input class="form-control small" type="text" size="100" id="nome_fornecedor" name="nome_fornecedor">
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Email</label>
-                                        <input class="form-control small" type="email" size="100" id="email_usuario" name="email_usuario">
+                                        <input class="form-control small" type="email" size="100" id="email_fornecedor" name="email_fornecedor">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">CPF</label>
-                                        <input class="form-control small" type="text" maxlength="11" size="11" id="cpf_usuario" name="cpf_usuario">
+                                        <label class="small">CPF/CNPJ</label>
+                                        <input class="form-control small" type="text" maxlength="14" size="14" id="cpf/cnpj_fornecedor" name="cpf/cnpj_fornecedor">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
-                                <a href="{% url 'list_usuario' %}">
+                                <a href="{% url 'list_fornecedor' %}">
                                     <button type="submit" class="btn btn-secundary btn-md pull-right">Buscar</button>
                                 </a>
                             </div>
@@ -62,28 +65,27 @@
             <table class="table table-hover text-center">
                 <thead class="card-header">
                     <tr class="card-header">
-                        <th scope="col">Id</th>
-                        <th scope="col">Nome</th>
+                        <th scope="col">Fornecedor</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">Status usuário</th>
-                        <th scope="col">Perfil</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Classificação Fiscal</th>
+                        <th scope="col">CNPJ/CPF</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                {% for usuario in lista_usuario %}
+                {% for fornecedor in lista_fornecedor %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ usuario.id }}</th>
-                        <td>{{ usuario.nome }}</td>
-                        <td>{{ usuario.email }}</td>
-                        <td>{{ usuario.cpf }}</td>
-                        <td>{{ usuario.status_user }}</td>
-                        <td>{{ usuario.perfil }}</td>
+                        <th scope="row">{{ fornecedor.fornecedorname }}</th>
+                        <td>{{ fornecedor.email }}</td>
+                        <td>{{ fornecedor.telefone }}</td>
+                        <td>{{ fornecedor.class_fiscal }}</td>
+                        <td>{{ fornecedor.numero_fiscal }}</td>
 
-                        {% if usuario %}
-                        <td><a href="{% url 'update_usuario' usuario.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_usuario' usuario.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a></td>
+                        {% if fornecedor %}
+                        <td><a href="{% url 'update_fornecedor' fornecedor.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_fornecedor' fornecedor.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        </td>
                         {% endif %}
                     </tr>
                 </tbody>
@@ -91,7 +93,7 @@
             </table>
         </div>
         <div class="card-body">
-            <a href="/cadastro/usuario"><button type="button" class="btn btn-primary btn-md pull-right">Novo</button></a>
+            <a href="/comercial/cadastrarfornecedor"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
         </div>
     </div>
 </div>

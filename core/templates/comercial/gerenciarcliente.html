@@ -9,8 +9,7 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Grupo de Cliente</li>
+    <li class="breadcrumb-item active">Gerenciar Cliente</li>
 </ol>
 
 <div class="row">
@@ -66,7 +65,6 @@
             <table class="table table-hover text-center">
                 <thead class="card-header">
                     <tr class="card-header">
-                        <th scope="col">Id</th>
                         <th scope="col">Cliente</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Telefone</th>
@@ -78,8 +76,7 @@
                 {% for cliente in lista_cliente %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ cliente.id }}</th>
-                        <td>{{ cliente.clientename }}</td>
+                        <th scope="row">{{ cliente.clientename }}</th>
                         <td>{{ cliente.email }}</td>
                         <td>{{ cliente.telefone }}</td>
                         <td>{{ cliente.class_fiscal }}</td>
@@ -96,7 +93,7 @@
             </table>
         </div>
         <div class="card-body">
-            <a href="/cadastro/cliente"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
+            <a href="/comercial/cadastrarcliente"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
         </div>
     </div>
 </div>

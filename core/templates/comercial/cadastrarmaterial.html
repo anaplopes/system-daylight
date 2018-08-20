@@ -9,8 +9,10 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Cadastro</li>
-    <li class="breadcrumb-item active">Material</li>
+    <li class="breadcrumb-item">
+        <a href="/comercial/gerenciarmaterial">Gerenciar Material</a>
+    </li>
+    <li class="breadcrumb-item active">Cadastrar Material</li>
 </ol>
 
 <div class="row">
@@ -29,13 +31,34 @@
                                         {{ form.cod_mprima }}
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="col-8">
+
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Fabricante</label>
                                         {{ form.nome_fabricante }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Tipo de Material</label>
+                                        {{ form.tipo_mprima }}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Classificação</label>
+                                        {{ form.classificacao }}
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label class="small">Cor</label>
+                                        {{ form.cor }}
                                     </div>
                                 </div>
                             </div>
@@ -52,40 +75,15 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Tipo de Material</label>
-                                        {{ form.tipo_mprima }}
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Classificação</label>
-                                        {{ form.classificacao }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Cor</label>
-                                        {{ form.cor }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
                                         <label class="small">Somente para tecido</label>
                                         <br />
-                                        <a href="/cadastro/unidademedida"><input type="button" class="btn btn-dark btn-md" value="Unidade de Medida"></a>
+                                        <a href="/comercial/cadastrarmedida"><input type="button" class="btn btn-dark btn-md" value="Unidade de Medida"></a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
-                                <a href="/grupo/grupomaterial"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
+                                <a href="/comercial/gerenciarmaterial"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
                                 <a href="{% url 'create_material' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
