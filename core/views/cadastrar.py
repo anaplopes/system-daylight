@@ -59,7 +59,7 @@ def create_material(request):
                 return redirect('list_material')
     else:
         form = MaterialForm()
-    return render(request, 'comercial/cadastrarmaterial.html', { 'form' : form })
+    return render(request, 'comercial/cadastrarmaterial.html', { 'form' : form})
 
 
 def create_medida(request):
@@ -67,7 +67,7 @@ def create_medida(request):
         form = UnidadeMedidaForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('list_medida')
+            return redirect('list_medida')
     else:
         form = UnidadeMedidaForm()
     return render(request, 'comercial/cadastrarmedida.html', { 'form' : form })

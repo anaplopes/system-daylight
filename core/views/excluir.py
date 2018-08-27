@@ -43,6 +43,14 @@ def delete_material(request, id):
     return render(request, "exclusaoConf.html", {'delete_material': delete_material})
 
 
+def delete_medida(request, id):
+    delete_medida = UnidadeMedida.objects.get(id=id)
+    if request.method == 'POST':
+        delete_medida.delete()
+        return redirect('create_medida')
+    return render(request, "exclusaoConf.html", {'delete_medida': delete_medida})
+
+
 def delete_produto(request, id):
     delete_produto = Produto.objects.get(id=id)
     if request.method == 'POST':

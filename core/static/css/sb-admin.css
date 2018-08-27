@@ -143,7 +143,6 @@ body.fixed-nav {
   text-overflow: ellipsis;
 }
 
-
 @media (min-width: 992px) {
   #mainNav .navbar-brand {
     width: 250px;
@@ -330,68 +329,33 @@ body.sidenav-toggled .navbar-sidenav .nav-item {
 body.sidenav-toggled .navbar-sidenav-tooltip.show {
   display: flex;
 }
-
+/*
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
-  color: white;
+  color: #868e96;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
-  color: white;
+  color: #868e96;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
+  color: #adb5bd;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
-  color: white;
-  font-size: 14px;
+  color: #868e96;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:focus, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:hover,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:focus,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:hover {
-  color: white;
+  color: #adb5bd;
 }
+*/
 
 #mainNav.navbar-dark .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link:after {
   color: #adb5bd;
-}
-
-#comercial{
-  background: #D30401;
-}
-#producao{
-  background: #07B23C;
-}
-#estoque{
-  background: #E8500C;
-}
-#financeiro{
-  background: rgba(20, 12, 135, 0.822);
-}
-#planorota{
-  background: #5a137a;
-}
-#gerencial{
-  background: #B5095F;
-}
-
-
-#itemcomercial a:hover{
-    background-color: #D30401;
-}
-#itemproducao a:hover{
-    background-color: #07B23C;
-}
-#itemestoque a:hover{
-    background-color: #E8500C;
-}
-#itemfinanceiro a:hover{
-    background-color: rgba(20, 12, 135, 0.822);
-}
-#itemplanorota a:hover {
-    background-color: #5a137a;
-}
-#itemgerencial a:hover{
-    background-color: #B5095F;
 }
 
 @media (min-width: 992px) {
@@ -484,6 +448,14 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   }
 }
 
+.card-login {
+  max-width: 25rem;
+}
+
+.card-register {
+  max-width: 40rem;
+}
+
 footer.sticky-footer {
   position: absolute;
   right: 0;
@@ -492,12 +464,6 @@ footer.sticky-footer {
   height: 56px;
   background-color: #e9ecef;
   line-height: 55px;
-}
-
-.footer {
-  position: absolute;
-	bottom: 10px;
-	width: 100%;
 }
 
 @media (min-width: 992px) {

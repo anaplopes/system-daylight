@@ -34,6 +34,9 @@ urlpatterns = [
     path('comercial/cadastrarmaterial/<id>/', views.update_material, name='update_material'),
     
     path('comercial/cadastrarmedida/', views.create_medida, name='create_medida'),
+    path('comercial/cadastrarmedida/', views.list_medida, name='list_medida'),
+    path('comercial/cadastrarmedida/<id>/', views.delete_medida, name='delete_medida'),
+    path('comercial/cadastrarmedida/<id>/', views.update_medida, name='update_medida'),
     
     path('comercial/cadastrarproduto/', views.create_produto, name='create_produto'),
     path('comercial/gerenciarproduto/', views.list_produto, name='list_produto'),

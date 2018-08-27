@@ -48,6 +48,15 @@ def update_material(request, id):
     return render(request, 'comercial/cadastrarmaterial.html', { 'form' : form, 'update_material':update_material })
 
 
+def update_medida(request, id):
+    update_medida = UnidadeMedida.objects.get(id=id)
+    form = UnidadeMedidaForm(request.POST or None, instance=update_medida)
+    if form.is_valid():
+        form.save()
+        return redirect('create_medida')
+    return render(request, 'comercial/cadastrarmedida.html', { 'form' : form, 'update_medida':update_medida })
+
+
 def update_produto(request, id):
     update_produto = Produto.objects.get(id=id)
     form = ProdutoForm(request.POST or None, instance=update_produto)

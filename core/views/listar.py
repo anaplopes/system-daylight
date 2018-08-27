@@ -96,6 +96,14 @@ def list_material(request):
         return render(request, template)
 
 
+def list_medida(request):
+    template = "comercial/cadastrarmedida.html"
+    search = request.POST.get('tecido')
+    lista_medida = UnidadeMedida.objects.filter(tecido_id=search)
+    return render(requeste, template, {'lista_medida':lista_medida})
+
+
+
 def list_produto(request):
     template = "comercial/gerenciarproduto.html"
     if request.method == 'POST':

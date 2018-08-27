@@ -1,0 +1,47 @@
+/* cor da seta do menu */
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
+  color: #868e96;
+}
+
+/* cor da fonte do menu */
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
+  color: #868e96;
+}
+
+/* cor de seleção do menu */
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
+  color: white;
+}
+
+/* cor de fonte do submenu */
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
+  color: #868e96;
+}
+
+/* cor de seleção do submenu */
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:focus, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:hover,
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:focus,
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:hover {
+  color: white;
+}
+
+#nome_empresa{
+  color: white;
+}
+
+.bg-papaya{
+  background: #E24E42;
+}
+.bg-mustard{
+  background: #E9B000;
+}
+.bg-blush{
+  background: #EB6E80;
+}
+.bg-aqua{
+  background: #008F95;
+}
+.bg-neutral{
+  background: #EFEFEF;
+}
