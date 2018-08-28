@@ -103,7 +103,6 @@ def list_medida(request):
     return render(requeste, template, {'lista_medida':lista_medida})
 
 
-
 def list_produto(request):
     template = "comercial/gerenciarproduto.html"
     if request.method == 'POST':
