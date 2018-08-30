@@ -55,7 +55,7 @@ ROOT_URLCONF = 'daylightproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,3 +133,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 
 AUTH_USER_MODEL = 'core.Usuario'
+LOGIN_REDIRECT_URL = 'home'

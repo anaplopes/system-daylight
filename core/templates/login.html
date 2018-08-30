@@ -4,8 +4,8 @@
 
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>DayLight Manager System</title>
         <link rel="shortcut icon" href="{% static '_img/favicon.png' %}">
 
@@ -13,62 +13,41 @@
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
 
+        <!-- Custom Daylight CSS-->
+        <link href="{% static 'css/custom_daylight.css' %}" rel="stylesheet">
+
         <style>
             .body-Login-back {
                 background-image: url("{% static '_img/fundologin.png' %}");
             }
         </style>
     </head>
-    
-    <body class="body-Login-back bg-danger">
-    
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-sm-4">
-                    <div class="login-panel panel panel-default">
 
-                        <br />
-                        <br />
-                        <br />
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title text-center">DayLight Manage System</h3>
-                            <p class="text-center">Sistema de gerenciamento desenvolvido para Aquarela Uniformes.</p>
+    <body class="body-Login-back">
+        <div class="container col-sm-4 w-50">
+            <div class="panel panel-login mx-auto mt-5">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">DayLight Manage System</h3>
+                    <p class="text-center">Sistema de gerenciamento desenvolvido para Aquarela Uniformes.</p>
+                </div>
+                <div class="panel-body">
+                    <form method="POST" autofocus>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input class="form-control" id="email_user" name="email_user" type="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="password" name="password" type="password" placeholder="Password">
                         </div>
                         
-                        <div class="panel-body text-center">
-                            <form role="form" method="POST" class="form-signin">
-                                 {% csrf_token %}
-
-                                <div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="username" type="email" autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Senha" name="password" type="password" value="">
-                                    </div>
-                                </div>
-                                <a type="submit" href="/" class="btn btn-lg btn-dark btn-block">Login</a>
-                            </form>
-                            <br />
-                            <br />
-                            <a href="#" class="text-dark">Esqueceu sua senha?</a>
+                        <div class="">
+                            <a href="{% url 'login' %}">
+                                <button type="submit" class="btn btn-dark btn-block">Login</button>
+                            </a>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <!-- RODAPÉ -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center small">
-                        <small>&copy; 2018 DayLight Manager System. Todos os direitos reservados.</small>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
     </body>
 </html>
