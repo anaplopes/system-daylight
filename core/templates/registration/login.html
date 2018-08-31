@@ -31,13 +31,17 @@
                     <p class="text-center">Sistema de gerenciamento desenvolvido para Aquarela Uniformes.</p>
                 </div>
                 <div class="panel-body">
-                    <form method="POST" action="{% url 'login' %}" autofocus>
+                    <form method="POST" autofocus>
                         {% csrf_token %}
-                        {{ form.username }}
-                        {{ form.password }}
+                        <div class="form-group">
+                            <input class="form-control" id="username" name="username" type="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                        </div>
                         
                         <div class="">
-                            <input type="submit" class="btn btn-dark btn-block" value="Login">
+                            <a href="{% url 'login' %}"><button type="submit" class="btn btn-dark btn-block">Login</button></a>
                             <input type="hidden" name="next" value="{{ next }}">
                         </div>
                     </form>
