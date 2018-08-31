@@ -6,6 +6,7 @@ from . import views
 # request > urls> views > model > response
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('login/', auth_views.login, name='login'),
     path('logout/', auth_views.logout, {'next_page': 'accounts:login'}, name='logout'),
 
