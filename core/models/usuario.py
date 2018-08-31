@@ -1,7 +1,8 @@
 from django.db import models
 from django.core import validators
 from django.utils import timezone
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import UserManager, PermissionsMixin
 
 
 PERFIL_CHOICES = (('G', 'Gerente'), ('A', 'Assistente'), ('V', 'Vendedor'),)
@@ -18,8 +19,9 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['nome', 'email', 'password']
 
-    objects = UsuarioManager()
+    objects = UserManager()
 
     def get_short_name(self):
         return self.nome
