@@ -18,4 +18,5 @@ class UsuarioForm(forms.ModelForm):
             'perfil': forms.Select(attrs={'class':'form-control'}),
             'status_user': forms.NullBooleanSelect(attrs={'class':'form-control'}),
             'password': forms.PasswordInput(attrs={'class':'form-control'}),
+            'is_staff': forms.NullBooleanSelect(attrs={'class':'form-control'}),
         }
