@@ -10,7 +10,7 @@ from core.models import *
 def login(request):
     template = 'login.html'
     if request.method == 'POST':
-        username = request.POST['email_user']
+        username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, email=username, password=password)
         if user is not None:
