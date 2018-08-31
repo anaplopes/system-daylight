@@ -1,8 +1,7 @@
 from django.db import models
 from django.core import validators
 from django.utils import timezone
-from django.contrib.auth.base_user import AbstractBaseUser
-from django.contrib.auth.models import UserManager, PermissionsMixin
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
 
 PERFIL_CHOICES = (('G', 'Gerente'), ('A', 'Assistente'), ('V', 'Vendedor'),)
@@ -15,8 +14,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     dt_nascimento = models.DateField('Data de Nascimento', max_length=10, null=True, blank=True)
     telefone = models.CharField('Telefone', max_length=11)
     perfil = models.CharField('Perfil', choices=PERFIL_CHOICES, max_length=1, null=False, blank=False)
-    status_user = models.BooleanField("Ativo", default=True)
-    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField("Ativo", default=True)
+    is_admin = models.BooleanField("Acesso", default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['nome', 'password']
@@ -24,7 +23,11 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     def get_short_name(self):
-        return self.nome
+        return self.email
 
     def get_full_name(self):
-        return self.nome
+        return self.email
+    
+    @property
+    def is_staff(self):
+        self.is_admin
