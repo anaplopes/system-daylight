@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms import *
 from core.models import *
 
 
+@login_required(login_url='/login/')
 def create_usuario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -18,6 +20,7 @@ def create_usuario(request):
     return render(request, 'gerencial/cadastrarusuario.html', { 'form' : form })
 
 
+@login_required(login_url='/login/')
 def create_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
@@ -31,6 +34,7 @@ def create_cliente(request):
     return render(request, 'comercial/cadastrarcliente.html', { 'form' : form })
 
 
+@login_required(login_url='/login/')
 def create_fornecedor(request):
     if request.method == 'POST':
         form = FornecedorForm(request.POST)
@@ -44,6 +48,7 @@ def create_fornecedor(request):
     return render(request, 'comercial/cadastrarfornecedor.html', { 'form' : form })
 
 
+@login_required(login_url='/login/')
 def create_prestador(request):
     if request.method == 'POST':
         form = PrestadorForm(request.POST)
@@ -57,6 +62,7 @@ def create_prestador(request):
     return render(request, 'producao/cadastrarprestador.html', { 'form' : form })
 
 
+@login_required(login_url='/login/')
 def create_material(request):
     if request.method == 'POST':
         form = MaterialForm(request.POST)
@@ -74,6 +80,7 @@ def create_material(request):
     return render(request, 'comercial/cadastrarmaterial.html', { 'form' : form})
 
 
+@login_required(login_url='/login/')
 def create_medida(request):
     if request.method == 'POST':
         form = UnidadeMedidaForm(request.POST)
@@ -87,6 +94,7 @@ def create_medida(request):
     return render(request, 'comercial/cadastrarmedida.html', { 'form' : form })
 
 
+@login_required(login_url='/login/')
 def create_produto(request):
     if request.method == 'POST':
         form = ProdutoForm(request.POST)
@@ -100,6 +108,7 @@ def create_produto(request):
     return render(request, 'comercial/cadastrarproduto.html', { 'form' : form })
 
 
+@login_required(login_url='/login/')
 def create_servico(request):
     if request.method == 'POST':
         form = ServicoForm(request.POST)
