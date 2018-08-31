@@ -1,7 +1,7 @@
 from django.db import models
 from django.core import validators
 from django.utils import timezone
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import UserManager, AbstractBaseUser, PermissionsMixin
 
 
 PERFIL_CHOICES = (('G', 'Gerente'), ('A', 'Assistente'), ('V', 'Vendedor'),)
