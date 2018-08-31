@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from core.forms import *
 from core.models import *
 
 
+@login_required(login_url='/login/')
 def list_usuario(request):
     template = "gerencial/gerenciarusuario.html"
     if request.method == 'POST':
@@ -21,6 +23,7 @@ def list_usuario(request):
         return render(request, template)
 
 
+@login_required(login_url='/login/')
 def list_cliente(request):
     template = "comercial/gerenciarcliente.html"
     if request.method == 'POST':
@@ -39,6 +42,7 @@ def list_cliente(request):
         return render(request, template)
    
 
+@login_required(login_url='/login/')
 def list_fornecedor(request):
     template = "comercial/gerenciarfornecedor.html"
     if request.method == 'POST':
@@ -57,6 +61,7 @@ def list_fornecedor(request):
         return render(request, template)
 
 
+@login_required(login_url='/login/')
 def list_prestador(request):
     template = "producao/gerenciarprestador.html"
     if request.method == 'POST':
@@ -75,6 +80,7 @@ def list_prestador(request):
         return render(request, template)
 
 
+@login_required(login_url='/login/')
 def list_material(request):
     template = "comercial/gerenciarmaterial.html"
     if request.method == 'POST':
@@ -96,6 +102,7 @@ def list_material(request):
         return render(request, template)
 
 
+@login_required(login_url='/login/')
 def list_medida(request):
     template = "comercial/cadastrarmedida.html"
     search = request.POST.get('tecido')
@@ -103,6 +110,7 @@ def list_medida(request):
     return render(requeste, template, {'lista_medida':lista_medida})
 
 
+@login_required(login_url='/login/')
 def list_produto(request):
     template = "comercial/gerenciarproduto.html"
     if request.method == 'POST':
@@ -120,7 +128,8 @@ def list_produto(request):
     else:
         return render(request, template)
 
-
+    
+@login_required(login_url='/login/')
 def list_servico(request):
     template = "producao/gerenciarservico.html"
     if request.method == 'POST':
@@ -134,3 +143,4 @@ def list_servico(request):
         return render(request, template, {'lista_servico':lista_servico})
     else:
         return render(request, template)
+    
