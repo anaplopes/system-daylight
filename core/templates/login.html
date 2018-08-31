@@ -43,6 +43,7 @@
                         <div class="">
                             <a href="{% url 'login' %}">
                                 <button type="submit" class="btn btn-dark btn-block">Login</button>
+                                <input type="hidden" name="next" value="{{ next }}">
                             </a>
                         </div>
                     </form>
