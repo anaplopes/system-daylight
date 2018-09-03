@@ -28,6 +28,5 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     def get_full_name(self):
         return self.email
     
-    @property
     def is_staff(self):
-        self.is_admin
+        return True
