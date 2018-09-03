@@ -13,7 +13,8 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, email=username, password=password)
-        if user is not None:
+        if user is not None and user.is_active:
+            login(request, user)
             return redirect('home')
             #return HttpResponse('Authenticated sucessfully')
         else:
