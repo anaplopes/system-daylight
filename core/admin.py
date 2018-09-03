@@ -5,9 +5,3 @@ from django import forms
 
 
 # Register your models here.
-
-class UserForm(forms.ModelForm):
-    class Meta:
-        model = Usuario
-        fields = __all__
-        
