@@ -8,7 +8,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('login/', auth_views.login, name='login'),
-    path('logout/', auth_views.logout, {'next_page': 'accounts:login'}, name='logout'),
+    path('logout/', auth_views.logout, {'next_page': '/login'}, name='logout'),
 
     path('gerencial/cadastrarusuario/', views.create_usuario, name='create_usuario'),
     path('gerencial/gerenciarusuario/', views.list_usuario, name='list_usuario'),
