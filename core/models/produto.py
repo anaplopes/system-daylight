@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 
@@ -7,6 +8,8 @@ TAMANHOPRODUTO_CHOICES = (('Único', 'Único'), ('PP', 'PP'), ('P', 'P'), ('M', 
 ###################### PRODUTO
 
 class Produto(models.Model):
+
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     tipo_produto = models.CharField('Tipo de Produto', max_length=50, null=False, blank=False) # camiseta, avental, calça e etc.
     produto = models.CharField('Nome do Produto', max_length=100, null=False, blank=False) # descrição do produto
     modelo = models.CharField('Modelo do produto', choices=MODELOPRODUTO_CHOICES, max_length=2, null=False, blank=False) # Masculino, Feminina e etc.

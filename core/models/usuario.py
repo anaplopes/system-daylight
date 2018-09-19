@@ -1,32 +1,30 @@
+import uuid
 from django.db import models
+from django.contrib.auth.models import User
 from django.core import validators
-from django.utils import timezone
-from django.contrib.auth.models import UserManager, AbstractBaseUser, PermissionsMixin
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 
 PERFIL_CHOICES = (('G', 'Gerente'), ('A', 'Assistente'), ('V', 'Vendedor'),)
 
-###################### Criação e administração do usuário e superuser.
-class Usuario(AbstractBaseUser, PermissionsMixin):
-    nome = models.CharField('Nome', max_length=50, null=False, blank=False)
-    email = models.EmailField('E-mail', max_length=100, unique=True, null=False, blank=False)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    nome = models.CharField('Nome', max_length=100)
     cpf = models.CharField('CPF', max_length=11, unique=True, null=False, blank=False)
-    dt_nascimento = models.DateField('Data de Nascimento', max_length=10, null=True, blank=True)
+    dt_nascimento = models.DateField('Data de Nascimento', max_length=10, null=True)
     telefone = models.CharField('Telefone', max_length=11)
-    perfil = models.CharField('Perfil', choices=PERFIL_CHOICES, max_length=1, null=False, blank=False)
-    is_active = models.BooleanField("Ativo", default=True)
-    is_admin = models.BooleanField("Acesso", default=False)
+    perfil = models.CharField('Perfil', choices=PERFIL_CHOICES, max_length=1, blank=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nome', 'password']
 
-    objects = UserManager()
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
 
-    def get_short_name(self):
-        return self.email
-
-    def get_full_name(self):
-        return self.email
-    
-    def is_staff(self):
-        return True
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()

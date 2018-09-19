@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 
@@ -6,6 +7,8 @@ FISCAL_CHOICES = (('PF', 'Pessoal Física'), ('PJ', 'Pessoa Jurídica'),)
 ###################### CLIENTE
 
 class Cliente(models.Model):
+
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     class_fiscal = models.CharField('Classificação fiscal', choices=FISCAL_CHOICES, max_length=2, null=False, blank=False)
     clientename = models.CharField('Nome', max_length=200, null=False, blank=False)
     email = models.EmailField('E-mail', max_length=100, unique=True, null=False, blank=False)

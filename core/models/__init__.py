@@ -5,4 +5,4 @@ from .medida import UnidadeMedida
 from .prestador import PrestadorServico
 from .produto import Produto
 from .servico import Servico
-from .usuario import Usuario
+from .usuario import Profile

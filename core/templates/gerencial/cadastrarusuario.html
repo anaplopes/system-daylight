@@ -24,78 +24,105 @@
                         <form method="POST" autofocus>
                             {% csrf_token %}
 
-                            <div class="form-row">
-                                <div class="col-8">
+                            {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
+                            <div class="form-row justify-content-md-center">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Nome</label>
-                                        {{ form.nome }}
+                                        <label class="small">Autorização de Acesso?</label><br />
+                                        {{ user_form.is_staff }}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Usuário Ativo?</label><br />
+                                        {{ user_form.is_active }}
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Username</label>
+                                        {{ user_form.username }}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">E-mail</label>
+                                        {{ user_form.email }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Senha</label>
+                                        {{ user_form.password1 }}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Confirmar Senha</label>
+                                        {{ user_form.password2 }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label class="small">Nome</label>
+                                        {{ profile_form.nome }}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">CPF</label>
-                                        {{ form.cpf }}
+                                        {{ profile_form.cpf }}
                                     </div>
                                 </div>
-
+                            
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Telefone</label>
-                                        {{ form.telefone }}
+                                        {{ profile_form.telefone }}
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Data de Nascimento</label>
-                                        {{ form.dt_nascimento }}
+                                        {{ profile_form.dt_nascimento }}
                                     </div>
                                 </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">E-mail</label>
-                                        {{ form.email }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
+                            
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Perfil</label>
-                                        {{ form.perfil }}
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Ativo?</label>
-                                        {{ form.is_active }}
+                                        {{ profile_form.perfil }}
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Acesso?</label>
-                                        {{ form.is_admin }}
-                                    </div>
-                                </div>
-                                
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Senha</label>
-                                        {{ form.password }}
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="pull-right">
                                 <a href="/gerencial/gerenciarusuario"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>

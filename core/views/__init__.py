@@ -1,5 +1,5 @@
-from .index import home
-from .login import login
+from .index import index
+from .login import login, logout
 from .cadastrar import *
 from .listar import *
 from .excluir import *

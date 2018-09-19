@@ -1,9 +1,12 @@
+import uuid
 from django.db import models
 
 
 ###################### MATERIAL
 
 class Material(models.Model):
+
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     material = models.CharField('Nome do Material', max_length=100, null=False, blank=False) # descrição do material
     tipo_mprima = models.CharField('Tipo de Material', max_length=50, null=False, blank=False) # tecido, linha, botão, ziper e etc.
     classificacao = models.CharField('Classificação do Material', max_length=50, null=False, blank=False) # algodão, nylon, acrilico e etc.

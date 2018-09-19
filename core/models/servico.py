@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 
@@ -7,6 +8,8 @@ TIPOSERVICO_CHOICES = (('Fabricação', 'Fabricação'), ('Reparo', 'Reparo'),)
 ###################### SERVIÇO
 
 class Servico(models.Model):
+
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     tipo_servico = models.CharField('Tipo de Serviço', choices=TIPOSERVICO_CHOICES, max_length=10, null=False, blank=False)
     servico = models.CharField('Serviço', choices=SERVICO_CHOICES, max_length=7, null=False, blank=False)
     tipo_produto = models.ForeignKey(to='Produto', on_delete=models.CASCADE, null=False, blank=False)

@@ -79,12 +79,12 @@
                         <th scope="row">{{ usuario.nome }}</th>
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.cpf }}</td>
-                        <td>{{ usuario.status_user }}</td>
+                        <td>{% if usuario.is_active == '1' %}Sim{% else %}Não{% endif %}</td>
                         <td>{{ usuario.perfil }}</td>
 
                         {% if usuario %}
-                        <td><a href="{% url 'update_usuario' usuario.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_usuario' usuario.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a></td>
+                        <td><a href="{% url 'update_usuario' usuario.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_usuario' usuario.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>
