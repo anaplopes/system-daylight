@@ -7,18 +7,21 @@ from core.forms import *
 from core.models import *
 
 
+
 @login_required(login_url='/entrar')
 def create_usuario(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        profile_form = ProfileForm(request.POST, instance = request.user)
         if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
+            user = user_form.save()
+            profile = profile_form.save()
             return redirect('list_usuario')
+        else:
+            messages.error(request, 'Seu dados contém erros de preenchimento.')
     else:
         user_form = UserForm()
-        profile_form = ProfileForm()
+        profile_form = ProfileForm(instance = request.user)
     return render(request, 'gerencial/cadastrarusuario.html', {'user_form': user_form, 'profile_form': profile_form})
 
 

@@ -7,11 +7,9 @@ from core.models import Profile
 
 
 class UserForm(UserCreationForm):
-
     class Meta:
-
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'is_staff', 'is_active')
+        fields = ('username', 'email', 'password1', 'password2', 'is_staff', 'is_active',)
 
         widgets = {
             'username': forms.TextInput(attrs={'class':'form-control'}),
@@ -35,13 +33,10 @@ class UserForm(UserCreationForm):
 
 
 
-
 class ProfileForm(forms.ModelForm):
-    
     class Meta:
-
         model = Profile
-        fields = ('nome', 'cpf', 'dt_nascimento', 'telefone', 'perfil')
+        fields = ('nome', 'cpf', 'dt_nascimento', 'telefone', 'perfil',)
 
         widgets = {
             'nome': forms.TextInput(attrs={'class':'form-control'}),
@@ -50,3 +45,16 @@ class ProfileForm(forms.ModelForm):
             'telefone': forms.TextInput(attrs={'class':'form-control', 'pattern':'\d{11}', 'title':'FONE formato ddd + numero'}),
             'perfil': forms.Select(attrs={'class':'form-control'}),
             }
+
+
+    def save(self, commit=True):
+        profile = super(ProfileForm, self).save(commit=False)
+        profile.nome = self.cleaned_data['nome']
+        profile.cpf = self.cleaned_data['cpf']
+        profile.dt_nascimento = self.cleaned_data['dt_nascimento']
+        profile.telefone = self.cleaned_data['telefone']
+        profile.perfil = self.cleaned_data['perfil']
+        
+        if commit:
+            profile.save()
+        return profile

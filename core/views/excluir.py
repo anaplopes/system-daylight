@@ -7,7 +7,7 @@ from core.models import *
 
 @login_required(login_url='/entrar')
 def delete_usuario(request, uuid):
-    delete_usuario = User.objects.get(uuid=uuid)
+    delete_usuario = Profile.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_usuario.delete()
         return redirect('list_usuario')

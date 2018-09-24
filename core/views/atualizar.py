@@ -7,8 +7,8 @@ from core.models import *
 
 @login_required(login_url='/entrar')
 def update_usuario(request, uuid):
-    update_usuario = User.objects.get(uuid=uuid)
-    form = UsuarioForm(request.POST or None, instance=update_usuario)
+    update_usuario = Profile.objects.get(uuid=uuid)
+    form = ProfileForm(request.POST or None, instance=update_usuario)
     if form.is_valid():
         form.save()
         return redirect('list_usuario')

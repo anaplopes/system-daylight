@@ -11,13 +11,13 @@ def list_usuario(request):
     template = "gerencial/gerenciarusuario.html"
     if request.method == 'POST':
         search = request.POST.get('nome_usuario')
-        lista_usuario = User.objects.filter(nome__contains=search)
+        lista_usuario = Profile.objects.filter(nome__contains=search)
         if search == "":
             search = request.POST.get('email_usuario')
             lista_usuario = User.objects.filter(email__contains=search)
             if search == "":
                 search = request.POST.get('cpf_usuario')
-                lista_usuario = User.objects.filter(cpf=search)
+                lista_usuario = Profile.objects.filter(cpf=search)
                 if search == "":
                     return render(request, template)
         return render(request, template, {'lista_usuario':lista_usuario})

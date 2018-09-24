@@ -21,7 +21,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" autofocus>
+                        <form method="POST" action="{% url 'create_usuario' %}" autofocus>
                             {% csrf_token %}
 
                             {% if messages %}
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
@@ -79,16 +79,16 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="form-row">
-                                
+                            
                                 <div class="col-8">
                                     <div class="form-group">
                                         <label class="small">Nome</label>
                                         {{ profile_form.nome }}
                                     </div>
                                 </div>
-                                
+                            
                             </div>
                             
                             <div class="form-row">
@@ -123,10 +123,9 @@
                                 </div>
                             </div>
 
-
                             <div class="pull-right">
                                 <a href="/gerencial/gerenciarusuario"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'create_usuario' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
+                                <button type="submit" class="btn btn-success btn-md">Salvar</button>
                             </div>
                         </form>
                     </div>
