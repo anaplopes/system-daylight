@@ -83,8 +83,8 @@
                         <td>{{ cliente.numero_fiscal }}</td>
 
                         {% if cliente %}
-                        <td><a href="{% url 'update_cliente' cliente.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_cliente' cliente.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        <td><a href="{% url 'update_cliente' cliente.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_cliente' cliente.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
                     </tr>

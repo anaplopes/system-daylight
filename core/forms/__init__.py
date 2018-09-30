@@ -5,4 +5,4 @@ from .medidaform import UnidadeMedidaForm
 from .prestadorform import PrestadorForm
 from .produtoform import ProdutoForm
 from .servicoform import ServicoForm
-from .usuarioform import UserForm, ProfileForm
+from .usuarioform import CustomUserCreationForm, CustomUserChangeForm

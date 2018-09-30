@@ -95,8 +95,8 @@
                         <td>{{ material.nome_fabricante }}</td>
 
                          {% if material %}
-                        <td><a href="{% url 'update_material' material.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_material' material.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        <td><a href="{% url 'update_material' material.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_material' material.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
                     </tr>

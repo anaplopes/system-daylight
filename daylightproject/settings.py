@@ -56,7 +56,7 @@ ROOT_URLCONF = 'daylightproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,5 +141,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #AUTH_USER_MODEL = "core.User"
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
 LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+AUTH_USER_MODEL = 'core.CustomUser'

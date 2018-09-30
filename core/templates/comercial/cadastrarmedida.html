@@ -22,8 +22,16 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" autofocus>
+                        <form method="POST">
                             {% csrf_token %}
+
+                            {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
 
                             <div class="form-row">
                                 <div class="col-8">
@@ -78,8 +86,8 @@
                                                 <td>{{ medida.qtd_unidade }}</td>
 
                                                 {% if medida %}
-                                                <td><a href="{% url 'update_medida' medida.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                                                    <a href="{% url 'delete_medida' medida.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                                                <td><a href="{% url 'update_medida' medida.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                                                    <a href="{% url 'delete_medida' medida.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                                                 </td>
                                                 {% endif %}
                                             </tr>

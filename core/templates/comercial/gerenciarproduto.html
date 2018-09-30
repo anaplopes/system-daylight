@@ -87,8 +87,8 @@
 
                          {% if produto %}
                         <td><a data-toggle="modal" data-target="#especificacaoProdutoModal"><button class="btn btn-secundary btn-xs"><i class="fa far fa-eye"></i></button></a>
-                            <a href="{% url 'update_produto' produto.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_produto' produto.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                            <a href="{% url 'update_produto' produto.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_produto' produto.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
                     </tr>

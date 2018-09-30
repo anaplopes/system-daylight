@@ -4,20 +4,21 @@ from django.shortcuts import render, redirect
 from core.forms import *
 from core.models import *
 
-
+'''
 @login_required(login_url='/entrar')
-def update_usuario(request, uuid):
-    update_usuario = Profile.objects.get(uuid=uuid)
+def update_usuario(request, user_id):
+    getuser = User.objects.get(pk=user_id)
+    update_usuario = CustomUser.objects.get(user_id=getuser)
     form = ProfileForm(request.POST or None, instance=update_usuario)
     if form.is_valid():
         form.save()
         return redirect('list_usuario')
-    return render(request, 'gerencial/cadastrarusuario.html', { 'form' : form, 'update_usuario':update_usuario })
-
+    return render(request, 'gerencial/cadastrarprofile.html', { 'form' : form, 'update_usuario':update_usuario })
+'''
 
 @login_required(login_url='/entrar')
-def update_cliente(request, id):
-    update_cliente = Cliente.objects.get(id=id)
+def update_cliente(request, uuid):
+    update_cliente = Cliente.objects.get(uuid=uuid)
     form = ClienteForm(request.POST or None, instance=update_cliente)
     if form.is_valid():
         form.save()
@@ -26,8 +27,8 @@ def update_cliente(request, id):
 
 
 @login_required(login_url='/entrar')
-def update_fornecedor(request, id):
-    update_fornecedor = Fornecedor.objects.get(id=id)
+def update_fornecedor(request, uuid):
+    update_fornecedor = Fornecedor.objects.get(uuid=uuid)
     form = FornecedorForm(request.POST or None, instance=update_fornecedor)
     if form.is_valid():
         form.save()
@@ -36,8 +37,8 @@ def update_fornecedor(request, id):
 
 
 @login_required(login_url='/entrar')
-def update_prestador(request, id):
-    update_prestador = PrestadorServico.objects.get(id=id)
+def update_prestador(request, uuid):
+    update_prestador = PrestadorServico.objects.get(uuid=uuid)
     form = PrestadorForm(request.POST or None, instance=update_prestador)
     if form.is_valid():
         form.save()
@@ -46,8 +47,8 @@ def update_prestador(request, id):
 
 
 @login_required(login_url='/entrar')
-def update_material(request, id):
-    update_material = Material.objects.get(id=id)
+def update_material(request, uuid):
+    update_material = Material.objects.get(uuid=uuid)
     form = MaterialForm(request.POST or None, instance=update_material)
     if form.is_valid():
         form.save()
@@ -56,8 +57,8 @@ def update_material(request, id):
 
 
 @login_required(login_url='/entrar')
-def update_medida(request, id):
-    update_medida = UnidadeMedida.objects.get(id=id)
+def update_medida(request, uuid):
+    update_medida = UnidadeMedida.objects.get(uuid=uuid)
     form = UnidadeMedidaForm(request.POST or None, instance=update_medida)
     if form.is_valid():
         form.save()
@@ -66,8 +67,8 @@ def update_medida(request, id):
 
 
 @login_required(login_url='/entrar')
-def update_produto(request, id):
-    update_produto = Produto.objects.get(id=id)
+def update_produto(request, uuid):
+    update_produto = Produto.objects.get(uuid=uuid)
     form = ProdutoForm(request.POST or None, instance=update_produto)
     if form.is_valid():
         form.save()
@@ -76,8 +77,8 @@ def update_produto(request, id):
 
 
 @login_required(login_url='/entrar')
-def update_servico(request, id):
-    update_servico = Servico.objects.get(id=id)
+def update_servico(request, uuid):
+    update_servico = Servico.objects.get(uuid=uuid)
     form = ServicoForm(request.POST or None, instance=update_servico)
     if form.is_valid():
         form.save()

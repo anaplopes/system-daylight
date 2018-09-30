@@ -84,8 +84,8 @@
                         <td>{{ servico.valor_peca }}</td>
 
                          {% if servico %}
-                        <td><a href="{% url 'update_servico' servico.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_servico' servico.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        <td><a href="{% url 'update_servico' servico.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_servico' servico.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
                     </tr>

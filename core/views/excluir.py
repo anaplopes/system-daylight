@@ -15,8 +15,8 @@ def delete_usuario(request, uuid):
 
 
 @login_required(login_url='/entrar')
-def delete_cliente(request, id):
-    delete_cliente = Cliente.objects.get(id=id)
+def delete_cliente(request, uuid):
+    delete_cliente = Cliente.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_cliente.delete()
         return redirect('list_cliente')
@@ -24,8 +24,8 @@ def delete_cliente(request, id):
 
 
 @login_required(login_url='/entrar')
-def delete_fornecedor(request, id):
-    delete_fornecedor = Fornecedor.objects.get(id=id)
+def delete_fornecedor(request, uuid):
+    delete_fornecedor = Fornecedor.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_fornecedor.delete()
         return redirect('list_fornecedor')
@@ -33,8 +33,8 @@ def delete_fornecedor(request, id):
 
 
 @login_required(login_url='/entrar')
-def delete_prestador(request, id):
-    delete_prestador = PrestadorServico.objects.get(id=id)
+def delete_prestador(request, uuid):
+    delete_prestador = PrestadorServico.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_prestador.delete()
         return redirect('list_prestador')
@@ -42,8 +42,8 @@ def delete_prestador(request, id):
 
 
 @login_required(login_url='/entrar')
-def delete_material(request, id):
-    delete_material = Material.objects.get(id=id)
+def delete_material(request, uuid):
+    delete_material = Material.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_material.delete()
         return redirect('list_material')
@@ -51,8 +51,8 @@ def delete_material(request, id):
 
 
 @login_required(login_url='/entrar')
-def delete_medida(request, id):
-    delete_medida = UnidadeMedida.objects.get(id=id)
+def delete_medida(request, uuid):
+    delete_medida = UnidadeMedida.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_medida.delete()
         return redirect('create_medida')
@@ -60,8 +60,8 @@ def delete_medida(request, id):
 
 
 @login_required(login_url='/entrar')
-def delete_produto(request, id):
-    delete_produto = Produto.objects.get(id=id)
+def delete_produto(request, uuid):
+    delete_produto = Produto.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_produto.delete()
         return redirect('list_produto')
@@ -69,8 +69,8 @@ def delete_produto(request, id):
 
 
 @login_required(login_url='/entrar')
-def delete_servico(request, id):
-    delete_servico = Servico.objects.get(id=id)
+def delete_servico(request, uuid):
+    delete_servico = Servico.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_servico.delete()
         return redirect('list_servico')

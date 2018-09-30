@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -7,22 +6,18 @@ from core.forms import *
 from core.models import *
 
 
-
 @login_required(login_url='/entrar')
 def create_usuario(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST)
-        profile_form = ProfileForm(request.POST, instance = request.user)
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            profile = profile_form.save()
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Usuario cadastrado com sucesso.')
             return redirect('list_usuario')
         else:
-            messages.error(request, 'Seu dados contém erros de preenchimento.')
-    else:
-        user_form = UserForm()
-        profile_form = ProfileForm(instance = request.user)
-    return render(request, 'gerencial/cadastrarusuario.html', {'user_form': user_form, 'profile_form': profile_form})
+            messages.error(request, form.errors)
+            return render(request, 'gerencial/cadastrarusuario.html', { 'form': form })
+    return render(request, 'gerencial/cadastrarusuario.html', { 'form': CustomUserCreationForm() })
 
 
 @login_required(login_url='/entrar')
@@ -32,11 +27,11 @@ def create_cliente(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Cliente cadastrado com sucesso.')
-        return redirect('list_cliente')
-    else:
-        form = ClienteForm()
-        messages.error(request, form.errors)
-    return render(request, 'comercial/cadastrarcliente.html', { 'form' : form })
+            return redirect('list_cliente')
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'comercial/cadastrarcliente.html', { 'form' : form })
+    return render(request, 'comercial/cadastrarcliente.html', { 'form' : ClienteForm() })
 
 
 @login_required(login_url='/entrar')
@@ -46,11 +41,11 @@ def create_fornecedor(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Fornecedor cadastrado com sucesso.')
-        return redirect('list_fornecedor')
-    else:
-        form = FornecedorForm()
-        messages.error(request, form.errors)
-    return render(request, 'comercial/cadastrarfornecedor.html', { 'form' : form })
+            return redirect('list_fornecedor')
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'comercial/cadastrarfornecedor.html', { 'form' : form })
+    return render(request, 'comercial/cadastrarfornecedor.html', { 'form' : FornecedorForm() })
 
 
 @login_required(login_url='/entrar')
@@ -60,11 +55,11 @@ def create_prestador(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Prestador cadastrado com sucesso.')
-        return redirect('list_prestador')
-    else:
-        form = PrestadorForm()
-        messages.error(request, form.errors)
-    return render(request, 'producao/cadastrarprestador.html', { 'form' : form })
+            return redirect('list_prestador')
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'producao/cadastrarprestador.html', { 'form' : form })
+    return render(request, 'producao/cadastrarprestador.html', { 'form' : PrestadorForm() })
 
 
 @login_required(login_url='/entrar')
@@ -79,10 +74,10 @@ def create_material(request):
                 return redirect('create_medida')
             else:
                 return redirect('list_material')
-    else:
-        form = MaterialForm()
-        messages.error(request, form.errors)
-    return render(request, 'comercial/cadastrarmaterial.html', { 'form' : form})
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'comercial/cadastrarmaterial.html', { 'form' : form })
+    return render(request, 'comercial/cadastrarmaterial.html', { 'form' : MaterialForm() })
 
 
 @login_required(login_url='/entrar')
@@ -93,10 +88,10 @@ def create_medida(request):
             form.save()
             messages.success(request, 'Medida cadastrado com sucesso.')
             return redirect('list_medida')
-    else:
-        form = UnidadeMedidaForm()
-        messages.error(request, form.errors)
-    return render(request, 'comercial/cadastrarmedida.html', { 'form' : form })
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'comercial/cadastrarmedida.html', { 'form' : form })
+    return render(request, 'comercial/cadastrarmedida.html', { 'form' : UnidadeMedidaForm() })
 
 
 @login_required(login_url='/entrar')
@@ -106,11 +101,11 @@ def create_produto(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Produto cadastrado com sucesso.')
-        return redirect('list_produto')
-    else:
-        form = ProdutoForm()
-        messages.error(request, form.errors)
-    return render(request, 'comercial/cadastrarproduto.html', { 'form' : form })
+            return redirect('list_produto')
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'comercial/cadastrarproduto.html', { 'form' : form })
+    return render(request, 'comercial/cadastrarproduto.html', { 'form' : ProdutoForm() })
 
 
 @login_required(login_url='/entrar')
@@ -120,8 +115,8 @@ def create_servico(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Serviço cadastrado com sucesso.')
-        return redirect('list_servico')
-    else:
-        form = ServicoForm()
-        messages.error(request, form.errors)
-    return render(request, 'producao/cadastrarservico.html', { 'form' : form })
+            return redirect('list_servico')
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'producao/cadastrarservico.html', { 'form' : form })
+    return render(request, 'producao/cadastrarservico.html', { 'form' : ServicoForm() })

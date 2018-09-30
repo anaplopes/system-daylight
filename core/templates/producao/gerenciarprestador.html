@@ -85,8 +85,8 @@
                         <td>{{ prestador.numero_fiscal }}</td>
 
                         {% if prestador %}
-                        <td><a href="{% url 'update_prestador' prestador.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_prestador' prestador.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        <td><a href="{% url 'update_prestador' prestador.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_prestador' prestador.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
                     </tr>
