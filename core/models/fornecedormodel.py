@@ -20,5 +20,6 @@ class Fornecedor(models.Model):
     uf = models.CharField('UF', max_length=2)
     telefone = models.CharField('Telefone', max_length=11)
 
+
     class Meta:
         db_table = 'Fornecedor'

@@ -33,6 +33,15 @@
                 <div class="panel-body">
                     <form method="POST" action="{% url 'login' %}" autofocus>
                         {% csrf_token %}
+
+                        {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        
                         <div class="form-group">
                             <input class="form-control" id="username" name="username" type="text" placeholder="Username">
                         </div>

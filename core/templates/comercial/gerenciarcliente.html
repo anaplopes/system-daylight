@@ -22,6 +22,14 @@
                         <form method="POST" autofocus>
                             {% csrf_token %}
 
+                            {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
@@ -74,21 +82,24 @@
                     </tr>
                 </thead>
                 {% for cliente in lista_cliente %}
-                <tbody>
-                    <tr>
-                        <th scope="row">{{ cliente.clientename }}</th>
-                        <td>{{ cliente.email }}</td>
-                        <td>{{ cliente.telefone }}</td>
-                        <td>{{ cliente.class_fiscal }}</td>
-                        <td>{{ cliente.numero_fiscal }}</td>
+                    {% if cliente.del_logica %}
+                    {% else %}
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{ cliente.clientename }}</th>
+                                <td>{{ cliente.email }}</td>
+                                <td>{{ cliente.telefone }}</td>
+                                <td>{{ cliente.class_fiscal }}</td>
+                                <td>{{ cliente.numero_fiscal }}</td>
 
-                        {% if cliente %}
-                        <td><a href="{% url 'update_cliente' cliente.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_cliente' cliente.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                        </td>
-                        {% endif %}
-                    </tr>
-                </tbody>
+                                {% if cliente %}
+                                <td><a href="{% url 'update_cliente' cliente.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                                    <a href="{% url 'delete_cliente' cliente.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                                </td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    {% endif %}
                 {% endfor %}
             </table>
         </div>

@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from core.forms.usuarioform import UserCreationForm, UserChangeForm
+from core.models.usuariomodel import CustomUser
+
+
+@login_required(login_url='/entrar')
+def create_usuario(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Usuario cadastrado com sucesso.')
+            return redirect('list_usuario')
+        else:
+            messages.error(request, form.errors)
+            return render(request, 'gerencial/cadastrarusuario.html', { 'form': form })
+    return render(request, 'gerencial/cadastrarusuario.html', { 'form': CustomUserCreationForm() })
+
+
+@login_required(login_url='/entrar')
+def update_usuario(request, uuid):
+    update_usuario = CustomUser.objects.get(uuid=uuid)
+    form = CustomUserChangeForm(request.POST or None, instance=update_usuario)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Produto atualizado com sucesso.')
+        return redirect('list_usuario')
+    else:
+        messages.error(request, form.errors)
+    return render(request, 'gerencial/atualizarusuario.html', { 'form' : form, 'update_usuario':update_usuario })
+
+
+@login_required(login_url='/entrar')
+def delete_usuario(request, uuid):
+    delete_usuario = Profile.objects.get(uuid=uuid)
+    if request.method == 'POST':
+        delete_usuario.delete()
+        messages.success(request, 'Produto excluído com sucesso.')
+        return redirect('list_usuario')
+    return render(request, "exclusaoConf.html", {'delete_usuario': delete_usuario})
+
+
+@login_required(login_url='/entrar')
+def list_usuario(request):
+    template = "gerencial/gerenciarusuario.html"
+    if request.method == 'POST':
+        search = request.POST.get('nome_usuario')
+        lista_usuario = CustomUser.objects.filter(nome__contains=search)
+        if search == "":
+            search = request.POST.get('email_usuario')
+            lista_usuario = CustomUser.objects.filter(email__contains=search)
+            if search == "":
+                search = request.POST.get('cpf_usuario')
+                lista_usuario = CustomUser.objects.filter(cpf=search)
+                if search == "":
+                    return render(request, template)
+        return render(request, template, {'lista_usuario':lista_usuario})
+    else:
+        return render(request, template)

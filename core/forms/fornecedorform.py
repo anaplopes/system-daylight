@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
 from django import forms
-from core.models.fornecedor import Fornecedor
+from core.models.fornecedormodel import Fornecedor
 
 
 class FornecedorForm(forms.ModelForm):

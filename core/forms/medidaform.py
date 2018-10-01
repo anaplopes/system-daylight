@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
 from django import forms
-from core.models.medida import UnidadeMedida
+from core.models.medidamodel import UnidadeMedida
 
 
 class UnidadeMedidaForm(forms.ModelForm):

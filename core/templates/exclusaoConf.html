@@ -21,7 +21,10 @@
                         <form method="POST" autofocus>
                             {% csrf_token %}
 
-                            <h2>Confirma a exclusão?</h2>
+                            <h3>Confirma a exclusão?</h3>
+                            <br />
+                            <p><i><b>Atenção!</b></i><br />
+                                Após a confirmação, essa exclusão não poderá ser desfeita e não poderá haver registro futuros com esses dados.</p>
 
                             <div class="pull-right">
                                 <a href="/">

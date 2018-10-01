@@ -22,6 +22,14 @@
                         <form method="POST" autofocus>
                             {% csrf_token %}
 
+                            {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
@@ -68,7 +76,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">CPF</th>
-                        <th scope="col">Status usuário</th>
+                        <th scope="col">Usuário ativo</th>
                         <th scope="col">Perfil</th>
                         <th scope="col"></th>
                     </tr>
@@ -79,7 +87,7 @@
                         <th scope="row">{{ usuario.nome }}</th>
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.cpf }}</td>
-                        <td>{% if usuario.is_active == '1' %}Sim{% else %}Não{% endif %}</td>
+                        <td>{% if usuario.is_active %}Sim{% else %}Não{% endif %}</td>
                         <td>{{ usuario.perfil }}</td>
 
                         {% if usuario %}

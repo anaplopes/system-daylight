@@ -15,5 +15,6 @@ class Servico(models.Model):
     tipo_produto = models.ForeignKey(to='Produto', on_delete=models.CASCADE, null=False, blank=False)
     valor_peca = models.DecimalField('Valor do Peça', max_digits=10, decimal_places=2, null=False, blank=False)
 
+
     class Meta:
         db_table = 'Servico'
