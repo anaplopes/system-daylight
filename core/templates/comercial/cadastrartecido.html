@@ -2,6 +2,7 @@
 {% load static %}
 {% block main %}
 
+
 <!-- CABEÇALHO PAGINA -->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -10,11 +11,10 @@
         </a>
     </li>
     <li class="breadcrumb-item">
-        <a href="/comercial/gerenciarproduto">Gerenciar Produto</a>
+        <a href="/comercial/gerenciartecido">Gerenciar Tecido</a>
     </li>
-    <li class="breadcrumb-item active">Cadastrar Produto</li>
+    <li class="breadcrumb-item active">Cadastrar Tecido</li>
 </ol>
-
 
 <div class="row">
     <div class="col-sm-12">
@@ -36,31 +36,15 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Tipo de Produto</label>
-                                        {{ form.tipo_produto }}
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Classificação</label>
-                                        {{ form.classificacao }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Modelo</label>
-                                        {{ form.modelo }}
+                                        <label class="small">Tipo de Tecido</label>
+                                        {{ form.tipo_tecido }}
                                     </div>
                                 </div>
                             
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Tamanho</label>
-                                        {{ form.tamanho }}
+                                        <label class="small">Fabricante</label>
+                                        {{ form.nome_fabricante }}
                                     </div>
                                 </div>
                             </div>
@@ -68,15 +52,15 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label class="small">Descrição do Produto</label>
-                                        {{ form.produto }}
+                                        <label class="small">Descrição do Tecido</label>
+                                        {{ form.tecido }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
-                                <a href="/comercial/gerenciarproduto"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'create_produto' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
+                                <a href="/comercial/gerenciarmaterial"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
+                                <a href="{% url 'create_tecido' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

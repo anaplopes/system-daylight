@@ -33,14 +33,14 @@
                             <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="tipo_produto" class="small">Tipo de Produto</label>
+                                        <label class="small">Tipo de Produto</label>
                                         <input class="form-control small" type="text" size="50" id="tipo_produto" name="tipo_produto">
                                     </div>
                                 </div>
                             
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="classificacao" class="small">Classificação</label>
+                                        <label class="small">Classificação</label>
                                         <input class="form-control small" type="text" size="50" id="classificacao_produto" name="classificacao_produto">
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                             <div class="form-row">
                                 <div class="col-8">
                                     <div class="form-group">
-                                        <label for="produto" class="small">Descrição do Produto</label>
+                                        <label class="small">Descrição do Produto</label>
                                         <input class="form-control small" type="text" size="100" id="desc_produto" name="desc_produto">
                                     </div>
                                 </div>
@@ -79,7 +79,6 @@
                         <th scope="col">Descrição do Produto</th>
                         <th scope="col">Modelo</th>
                         <th scope="col">Tamanho</th>
-                        <th scope="col">Cor</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -89,9 +88,14 @@
                         <th scope="row">{{ produto.tipo_produto }}</th>
                         <td>{{ produto.classificacao }}</td>
                         <td>{{ produto.produto }}</td>
-                        <td>{{ produto.modelo }}</td>
+                        <td>{% if produto.modelo == 'M' %}
+                            {{ 'Masculino' }}
+                            {% elif produto.modelo == 'F' %}
+                            {{ 'Feminino' }}</td>
+                            {% else %}
+                            {{ 'Unissex' }}
+                            {% endif %}
                         <td>{{ produto.tamanho }}</td>
-                        <td>{{ produto.cor }}</td>
 
                          {% if produto %}
                         <td><a data-toggle="modal" data-target="#especificacaoProdutoModal"><button class="btn btn-secundary btn-xs"><i class="fa far fa-eye"></i></button></a>

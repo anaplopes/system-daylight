@@ -23,3 +23,6 @@ class Cliente(models.Model):
 
     class Meta:
         db_table = 'Cliente'
+
+    def __str__(self):
+        return '{} ( {} )'.format(self.clientename, self.numero_fiscal)

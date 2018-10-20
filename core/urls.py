@@ -34,20 +34,22 @@ urlpatterns = [
     path('comercial/gerenciarmaterial/', views.list_material, name='list_material'),
     path('comercial/gerenciarmaterial/<uuid>/', views.delete_material, name='delete_material'),
     path('comercial/cadastrarmaterial/<uuid>/', views.update_material, name='update_material'),
-    
-    path('comercial/cadastrarmedida/', views.create_medida, name='create_medida'),
-    path('comercial/cadastrarmedida/', views.list_medida, name='list_medida'),
-    path('comercial/cadastrarmedida/<uuid>/', views.delete_medida, name='delete_medida'),
-    path('comercial/cadastrarmedida/<uuid>/', views.update_medida, name='update_medida'),
-    
+
+    path('comercial/cadastrartecido/', views.create_tecido, name='create_tecido'),
+    path('comercial/gerenciartecido/', views.list_tecido, name='list_tecido'),
+    path('comercial/gerenciartecido/<uuid>/', views.delete_tecido, name='delete_tecido'),
+    path('comercial/cadastrartecido/<uuid>/', views.update_tecido, name='update_tecido'),
+        
     path('comercial/cadastrarproduto/', views.create_produto, name='create_produto'),
     path('comercial/gerenciarproduto/', views.list_produto, name='list_produto'),
     path('comercial/gerenciarproduto/<uuid>/', views.delete_produto, name='delete_produto'),
     path('comercial/cadastrarproduto/<uuid>/', views.update_produto, name='update_produto'),
     
+    path('comercial/registrarpedido/', views.register_pedido, name='register_pedido'),
+    path('comercial/gerenciarpedido/', views.list_pedido, name='list_pedido'),
+
     path('producao/cadastrarservico/', views.create_servico, name='create_servico'),
     path('producao/gerenciarservico/', views.list_servico, name='list_servico'),
     path('producao/gerenciarservico/<uuid>/', views.delete_servico, name='delete_servico'),
     path('producao/cadastrarservico/<uuid>/', views.update_servico, name='update_servico'),
-
 ]

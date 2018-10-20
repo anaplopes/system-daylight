@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <h6 class="card-header">Item Pedido</h6>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST">
+                            {% csrf_token %}
+
+                            {{ form_item }}
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}

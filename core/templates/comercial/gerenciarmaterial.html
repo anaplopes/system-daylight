@@ -31,26 +31,11 @@
                             {% endif %}
 
                             <div class="form-row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="small">Código do Material</label>
-                                        <input class="form-control small" type="text" size="50" id="cod_material" name="cod_material">
-                                    </div>
-                                </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Tipo de Material</label>
                                         <input class="form-control small" type="text" size="50" id="tipo_material" name="tipo_material">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-8">
-                                    <div class="form-group">
-                                        <label class="small">Fabricante</label>
-                                        <input class="form-control small" type="text" size="50" id="fabricante" name="fabricante">
                                     </div>
                                 </div>
                             </div>
@@ -86,21 +71,17 @@
                 <thead class="card-header">
                     <tr class="card-header">
                         <th scope="col">Tipo de Material</th>
-                        <th scope="col">Classificação</th>
+                        <th scope="col">Subtipo de Material</th>
                         <th scope="col">Descrição do Material</th>
-                        <th scope="col">Cor</th>
-                        <th scope="col">Fabricante</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 {% for material in lista_material %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ material.tipo_mprima }}</th>
-                        <td>{{ material.classificacao }}</td>
+                        <th scope="row">{{ material.tipo_material }}</th>
+                        <td>{{ material.Subtipo_material }}</td>
                         <td>{{ material.material }}</td>
-                        <td>{{ material.cor }}</td>
-                        <td>{{ material.nome_fabricante }}</td>
 
                          {% if material %}
                         <td><a href="{% url 'update_material' material.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>

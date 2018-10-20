@@ -11,9 +11,6 @@ class MaterialForm(forms.ModelForm):
 
         widgets = {
             'material': forms.TextInput(attrs={'class':'form-control'}),
-            'tipo_mprima': forms.Select(attrs={'class':'form-control'}),
-            'classificacao': forms.Select(attrs={'class':'form-control'}),
-            'cor': forms.Select(attrs={'class':'form-control'}),
-            'cod_mprima': forms.TextInput(attrs={'class':'form-control'}),
-            'nome_fabricante': forms.TextInput(attrs={'class':'form-control'}),
+            'tipo_material': forms.Select(attrs={'class':'form-control'}),
+            'Subtipo_material': forms.Select(attrs={'class':'form-control'}),
             }

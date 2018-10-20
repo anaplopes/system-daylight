@@ -18,7 +18,7 @@ class CustomUserCreationForm(UserCreationForm):
             'is_active': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'nome': forms.TextInput(attrs={'class':'form-control'}),
             'cpf': forms.TextInput(attrs={'class':'form-control', 'pattern':'\d{11}', 'title':'Somente numeros'}),
-            'dt_nascimento': forms.DateInput(attrs={'class':'form-control', 'type':'date', 'pattern':'\d{2}/\d{2}/\d{4}', 'title':'Data formato 00/00/0000'}),
+            'dt_nascimento': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
             'telefone': forms.TextInput(attrs={'class':'form-control', 'pattern':'\d{11}', 'title':'FONE formato ddd + numero'}),
             'perfil': forms.Select(attrs={'class':'form-control'}),
             'password1': forms.PasswordInput(attrs={'class':'form-control'}),

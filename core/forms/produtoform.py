@@ -15,7 +15,4 @@ class ProdutoForm(forms.ModelForm):
             'modelo': forms.Select(attrs={'class':'form-control'}),
             'classificacao': forms.Select(attrs={'class':'form-control'}),
             'tamanho': forms.Select(attrs={'class':'form-control'}),
-            'cor': forms.Select(attrs={'class':'form-control'}),
-            'valor_venda': forms.NumberInput(attrs={'class':'form-control'}),
-            'especificacao': forms.Textarea(attrs={'class':'form-control'}),
             }

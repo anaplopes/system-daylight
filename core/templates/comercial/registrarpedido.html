@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="/comercial/gerenciarcliente">Gerenciar Pedido</a>
+    </li>
+    <li class="breadcrumb-item active">Registrar Pedido</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" id='form_pedido'>
+                            {% csrf_token %}
+
+                            {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
+
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label class="small">Numero do Pedido</label>
+                                        {{ form.numero_pedido }}
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Data de Compra</label>
+                                        {{ form.data_compra}}
+                                    </div>
+                                </div>
+                            
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Data de Entrega</label>
+                                        {{ form.data_entrega}}
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Status do Pedido</label>
+                                        {{ form.status }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="small">Cliente</label>
+                                        {{ form.cliente }}
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="small">Nome do Solicitante</label>
+                                        {{ form.solicitante }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="small">Endereço Entrega</label>
+                                        {{ form.endereco_entrega }}
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label class="small">Forma de Pagamento</label>
+                                        {{ form.forma_pagamento }}
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label class="small">Valor Total</label>
+                                        {{ form.valor_total }}
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="pull-right">
+                                <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
+                                <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-md" value="Adicionar"></a>
+                            </div>
+                        </form>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <h6 class="card-header">Item Pedido</h6>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <form method="POST" class="form-inline">
+                                                    {% csrf_token %}
+                        
+                                                    {{ form_item.as_table }}
+                        
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}
