@@ -69,16 +69,16 @@
 <br />
 <div class="row">
     <div class="col-sm-12">
-        <div class="card">
-            <table class="table table-hover text-center">
+        <div class="card table-responsive">
+            <table role="grid" class="table table-hover text-center">
                 <thead class="card-header">
-                    <tr class="card-header">
-                        <th scope="col">Cliente</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Classificação Fiscal</th>
-                        <th scope="col">CNPJ/CPF</th>
-                        <th scope="col"></th>
+                    <tr scope="col" class="card-header text-center">
+                        <th>Cliente</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Classificação Fiscal</th>
+                        <th>CNPJ/CPF</th>
+                        <th></th>
                     </tr>
                 </thead>
                 {% for cliente in lista_cliente %}

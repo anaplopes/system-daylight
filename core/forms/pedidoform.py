@@ -16,7 +16,10 @@ class PedidoForm(forms.ModelForm):
             'data_entrega': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
             'valor_total': forms.NumberInput(attrs={'class':'form-control', 'id':'total_pedido'}),
             'forma_pagamento': forms.Select(attrs={'class':'form-control'}),
+            'prazo_pagamento': forms.Select(attrs={'class':'form-control'}),
             'endereco_entrega': forms.TextInput(attrs={'class':'form-control'}),
             'solicitante': forms.TextInput(attrs={'class':'form-control'}),
             'status': forms.Select(attrs={'class':'form-control'}),
+            'personalizacao': forms.Select(attrs={'class':'form-control'}),
+            'observacao': forms.Textarea(attrs={'class':'form-control', 'rows':'3'}),
             }
