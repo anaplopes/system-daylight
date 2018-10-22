@@ -9,8 +9,10 @@ class ItemPedidoForm(forms.ModelForm):
     class Meta:
         model = ItemPedido
         fields = '__all__'
+        exclude = ('numero_pedido',)
 
         widgets = {
+            'produto': forms.Select(attrs={'class':'form-control'}),
             'produto': forms.Select(attrs={'class':'form-control'}),
             'cor': forms.Select(attrs={'class':'form-control'}),
             'tecido': forms.Select(attrs={'class':'form-control'}),

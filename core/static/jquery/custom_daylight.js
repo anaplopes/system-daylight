@@ -5,7 +5,7 @@ $('#bn_addLine').on('click', function() {
         url: "{% url 'register_pedido' %}",
         type: 'POST',
         data: {
-            'addline': addline
+            addline: addline
         },
         success: function (data) {
         }

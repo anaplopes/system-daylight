@@ -9,25 +9,21 @@ from core.forms.itempedidoform import ItemPedidoForm
 from django.forms import inlineformset_factory
 
 
-
 @login_required(login_url='/entrar')
-def register_pedido(request, uuid=None):
+def register_pedido(request):
     template = 'comercial/registrarpedido.html'
-
-    if uuid:
-        pedido = Pedido.objects.get(uuid=uuid)
-    else:
-        pedido = Pedido()
-    
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=2)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=1)
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+        form_item = ItemPedidoFormSet(request.POST, request.FILES)
 
-        if form_pedido.is_valid()and form_item.is_valid():
-            form_pedido.save()
-            form_item.save()
+        if form_pedido.is_valid() and form_item.is_valid():
+            pedido = form_pedido.save()
+            for f in form_item:
+                itens = f.save(commit=False)
+                itens.numero_pedido = pedido
+                itens.save()
             messages.success(request, 'Pedido cadastrado com sucesso.')
             return redirect('list_pedido')
         else:

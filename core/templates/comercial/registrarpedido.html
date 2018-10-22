@@ -24,8 +24,6 @@
                         <form method="POST" id='form_pedido' class="">
                             {% csrf_token %}
 
-                            {{ form_pedido.management_form }}
-
                             {% if messages %}
                             <ul>
                                 {% for message in messages %}
@@ -133,7 +131,6 @@
 
                             <div class="table-responsive">
                                 <table role="grid" class="table table-hover table-sm table-secundary">
-                                    {{ form_item.management_form }}
                                     <thead scope="col" class="card-header small text-center">
                                         <tr>
                                             <th>Produto</th>
@@ -145,7 +142,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for f in form_item %}
+                                        {{ form_item.management_form }}
+                                        {% for f in form_item.forms %}
                                         <tr>
                                             <td>{{ f.produto }}</td>
                                             <td>{{ f.cor }}</td>
