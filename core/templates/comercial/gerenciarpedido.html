@@ -34,14 +34,14 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Numero do Pedido</label>
-                                        <input class="form-control small" type="text" size="50" id="num_pedido" name="num_pedido">
+                                        <input class="form-control small" type="number" size="50" id="numpedido" name="numpedido">
                                     </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Data de Entrega</label>
-                                        <input class="form-control small" type="date" id="dt_entrega" name="dt_entrega">
+                                        <input class="form-control small" type="date" id="dtentrega" name="dtentrega">
                                     </div>
                                 </div>
                             </div>
@@ -76,8 +76,8 @@
                     <tr class="card-header">
                         <th scope="col">Pedido</th>
                         <th scope="col">Cliente</th>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Data Entrega</th>
+                        <th scope="col">Data de Compra</th>
+                        <th scope="col">Data de Entrega</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
@@ -85,9 +85,11 @@
                 {% for pedido in lista_pedido %}
                 <tbody>
                     <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
+                        <th scope="row">{{ pedido.numeropedido }}</th>
+                        <td>{{ pedido.cliente }}</td>
+                        <td>{{ pedido.data_compra|date:'d/m/Y' }}</td>
+                        <td>{{ pedido.data_entrega|date:'d/m/Y' }}</td>
+                        <td>{{ pedido.status }}</td>
 
                         {% if pedido %}
                         <td><a href=""><button class="btn btn-warning btn-xs"><i

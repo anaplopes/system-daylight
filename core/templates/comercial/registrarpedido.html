@@ -36,13 +36,6 @@
                             <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Numero do Pedido</label>
-                                        {{ form_pedido.numero_pedido }}
-                                    </div>
-                                </div>
-                                
-                                <div class="col-3">
-                                    <div class="form-group">
                                         <label class="small">Data de Compra</label>
                                         {{ form_pedido.data_compra}}
                                     </div>
@@ -163,9 +156,9 @@
                             <div class="pull-right">
                                 <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
                                 <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
-                            </div>
+                            </div>                            
                         </form>
-                        <button class="btn btn-primary btn-sm" id="bn_addLine"><i class="fa fa-plus"></i></button>
+                        <button class="btn btn-primary btn-sm" id="addLine" onclick="addline(1)"><i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>

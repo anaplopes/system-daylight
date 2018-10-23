@@ -8,9 +8,9 @@ class PedidoForm(forms.ModelForm):
     class Meta:
         model = Pedido
         fields = '__all__'
+        exclude = ('numero_pedido',)
 
         widgets = {
-            'numero_pedido': forms.NumberInput(attrs={'class':'form-control', 'id':'numero_pedido'}),
             'cliente': forms.Select(attrs={'class':'form-control'}),
             'data_compra': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
             'data_entrega': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
