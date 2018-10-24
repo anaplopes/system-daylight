@@ -11,3 +11,4 @@ from .servicoview import create_servico, update_servico, delete_servico, list_se
 from .compraview import register_compra, list_compra
 from .pedidoview import register_pedido, update_pedido, list_pedido
 
+
