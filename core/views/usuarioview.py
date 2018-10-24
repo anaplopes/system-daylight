@@ -2,7 +2,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from core.forms.usuarioform import UserCreationForm, UserChangeForm
+from core.forms.usuarioform import CustomUserCreationForm, CustomUserChangeForm
 from core.models.usuariomodel import CustomUser
 
 
@@ -47,16 +47,19 @@ def delete_usuario(request, uuid):
 def list_usuario(request):
     template = "gerencial/gerenciarusuario.html"
     if request.method == 'POST':
-        search = request.POST.get('nome_usuario')
-        lista_usuario = CustomUser.objects.filter(nome__contains=search)
-        if search == "":
-            search = request.POST.get('email_usuario')
-            lista_usuario = CustomUser.objects.filter(email__contains=search)
-            if search == "":
-                search = request.POST.get('cpf_usuario')
-                lista_usuario = CustomUser.objects.filter(cpf=search)
-                if search == "":
-                    return render(request, template)
-        return render(request, template, {'lista_usuario':lista_usuario})
+
+        nome_usuario = request.POST.get('nome_usuario')
+        email_usuario = request.POST.get('email_usuario')
+        cpf_usuario = request.POST.get('cpf_usuario')
+
+        if cpf_usuario != "":
+            lista_usuario = CustomUser.objects.filter(cpf=cpf_usuario)
+        elif email_usuario != "":
+            lista_usuario = CustomUser.objects.filter(email=email_usuario)
+        elif nome_usuario != "":
+            lista_usuario = CustomUser.objects.filter(nome__contains=nome_usuario)
+        else:
+            return render(request, template)
+        return render(request, template, {'lista_usuario': lista_usuario})
     else:
         return render(request, template)

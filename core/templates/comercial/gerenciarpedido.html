@@ -92,11 +92,7 @@
                         <td>{{ pedido.status }}</td>
 
                         {% if pedido %}
-                        <td><a href=""><button class="btn btn-warning btn-xs"><i
-                                        class="fa fa-edit"></i></button></a>
-                            <a href=""><button class="btn btn-danger btn-xs"><i
-                                        class="fa fa-trash"></i></button></a>
-                        </td>
+                        <td><a href="{% url 'update_pedido' pedido.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>

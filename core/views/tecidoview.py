@@ -49,16 +49,19 @@ def delete_tecido(request, uuid):
 def list_tecido(request):
     template = "comercial/gerenciartecido.html"
     if request.method == 'POST':
-        search = request.POST.get('tipo_tecido')
-        lista_tecido = Tecido.objects.filter(tipo_tecido__contains=search)
-        if search == "":
-            search = request.POST.get('fabricante')
-            lista_tecido = Tecido.objects.filter(nome_fabricante__contains=search)
-            if search == "":
-                search = request.POST.get('desc_tecido')
-                lista_tecido = Tecido.objects.filter(tecido__contains=search)
-                if search == "":
-                    return render(request, template)
-        return render(request, template, { 'lista_tecido':lista_tecido })
+
+        tipo_tecido = request.POST.get('tipo_tecido')
+        fabricante = request.POST.get('fabricante')
+        desc_tecido = request.POST.get('desc_tecido')
+
+        if tipo_tecido != "":
+            lista_tecido = Tecido.objects.filter(tipo_tecido__contains=tipo_tecido)
+        elif fabricante != "":
+            lista_tecido = Tecido.objects.filter(nome_fabricante__contains=fabricante)
+        elif desc_tecido != "":
+            lista_tecido = Tecido.objects.filter(tecido__contains=desc_tecido)
+        else:
+            return render(request, template)
+        return render(request, template, { 'lista_tecido': lista_tecido })
     else:
         return render(request, template)

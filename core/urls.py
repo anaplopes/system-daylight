@@ -47,6 +47,7 @@ urlpatterns = [
     
     path('comercial/registrarpedido/', views.register_pedido, name='register_pedido'),
     path('comercial/gerenciarpedido/', views.list_pedido, name='list_pedido'),
+    path('comercial/registrarpedido/<uuid>/', views.update_pedido, name='update_pedido'),
 
     path('producao/cadastrarservico/', views.create_servico, name='create_servico'),
     path('producao/gerenciarservico/', views.list_servico, name='list_servico'),

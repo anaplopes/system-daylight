@@ -52,12 +52,12 @@ def list_cliente(request):
         email_cliente = request.POST.get('email_cliente')
         numero_fiscal = request.POST.get('cpf/cnpj_cliente')
 
-        if nome_cliente != "":
-            lista_cliente = Cliente.objects.filter(clientename__contains=nome_cliente)
-        elif email_cliente != "":
-            lista_cliente = Cliente.objects.filter(email__contains=email_cliente)
-        elif numero_fiscal != "":
+        if numero_fiscal != "":
             lista_cliente = Cliente.objects.filter(numero_fiscal=numero_fiscal)
+        elif email_cliente != "":
+            lista_cliente = Cliente.objects.filter(email=email_cliente)
+        elif nome_cliente != "":
+            lista_cliente = Cliente.objects.filter(clientename__contains=nome_cliente)
         else:
             return render(request, template)
         return render(request, template, {'lista_cliente': lista_cliente})

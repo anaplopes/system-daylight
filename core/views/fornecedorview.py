@@ -52,12 +52,12 @@ def list_fornecedor(request):
         email_fornecedor = search = request.POST.get('email_fornecedor')
         numero_fiscal = request.POST.get('cpf/cnpj_fornecedor')
 
-        if nome_fornecedor != "":
-            lista_fornecedor = Fornecedor.objects.filter(fornecedorname__contains=nome_fornecedor)
-        elif email_fornecedor != "":
-            lista_fornecedor = Fornecedor.objects.filter(email__contains=email_fornecedor)
-        elif numero_fiscal != "":
+        if numero_fiscal != "":
             lista_fornecedor = Fornecedor.objects.filter(numero_fiscal=numero_fiscal)
+        elif email_fornecedor != "":
+            lista_fornecedor = Fornecedor.objects.filter(email=email_fornecedor)
+        elif nome_fornecedor != "":
+            lista_fornecedor = Fornecedor.objects.filter(fornecedorname__contains=nome_fornecedor)
         else:
             return render(request, template)
         return render(request, template, {'lista_fornecedor': lista_fornecedor})

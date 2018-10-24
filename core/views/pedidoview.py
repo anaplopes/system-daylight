@@ -40,6 +40,21 @@ def register_pedido(request):
     return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_item': ItemPedidoFormSet()})
 
 
+
+@login_required(login_url='/entrar')
+def update_pedido(request, uuid):
+    update_pedido = Pedido.objects.get(uuid=uuid)
+    form = PedidoForm(request.POST or None, instance=update_pedido)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Produto atualizado com sucesso.')
+        return redirect('list_pedido')
+    else:
+        messages.error(request, form.errors)
+    return render(request, 'comercial/registrarpedido.html', { 'form' : form, 'update_pedido':update_pedido })
+
+
+@login_required(login_url='/entrar')
 def list_pedido(request):
     template = 'comercial/gerenciarpedido.html'
     if request.method == 'POST':
@@ -50,10 +65,10 @@ def list_pedido(request):
 
         if numpedido != "":
             lista_pedido = Pedido.objects.filter(numeropedido=numpedido)
-        elif dtentrega != "":
-            lista_pedido = Pedido.objects.filter(data_entrega__contains=dtentrega)
         elif name_cliente != "":
             lista_pedido = Pedido.objects.filter(cliente__in=Cliente.objects.filter(clientename__iexact=name_cliente))
+        elif dtentrega != "":
+            lista_pedido = Pedido.objects.filter(data_entrega__contains=dtentrega)
         else:
             return render(request, template)
         return render(request, template, {'lista_pedido': lista_pedido})

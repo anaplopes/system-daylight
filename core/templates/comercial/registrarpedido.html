@@ -136,9 +136,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        {{ form_item.management_form }}
                                         {% for f in form_item.forms %}
-                                        
                                         <tr>
                                             <td>{{ f.produto }}</td>
                                             <td>{{ f.cor }}</td>
@@ -146,12 +145,12 @@
                                             <td>{{ f.quantidade }}</td>
                                             <td>{{ f.valor_unitario }}</td>
                                             <td>{{ f.valor_total }}</td>
-                                            <td class="text-center">{% if f.instance.uuid %}{{ f.DELETE }}{% endif %}</td>
+                                            <td>{% if f.instance.uuid %}{{ f.DELETE }}{% endif %}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                {{ form_item.management_form }}
+                                
                             </div>
 
                             <br />
@@ -160,7 +159,7 @@
                             <div class="pull-right">
                                 <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
                                 <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
-                            </div>                            
+                            </div>
                         </form>
                     </div>
                 </div>
