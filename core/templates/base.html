@@ -177,6 +177,7 @@
   <script src="{% static 'js/calendario.js' %}"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="{% static 'jquery/formset.js' %}"></script>
   <script src="{% static 'jquery/custom_daylight.js' %}"></script>
   <script src="{% static 'js/sb-admin.min.js' %}"></script>
   <script src="{% static 'js/message.js' %}"></script>
@@ -199,6 +200,13 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    $(function () {
+      $('#pedidoFormsets tbody tr').formset();
+        prefix: '{{ form_item.prefix }}';
+    });
+  </script>
   
 </body>
 

@@ -47,16 +47,19 @@ def delete_fornecedor(request, uuid):
 def list_fornecedor(request):
     template = "comercial/gerenciarfornecedor.html"
     if request.method == 'POST':
-        search = request.POST.get('nome_fornecedor')
-        lista_fornecedor = Fornecedor.objects.filter(fornecedorname__contains=search)
-        if search == "":
-            search = request.POST.get('email_fornecedor')
-            lista_fornecedor = Fornecedor.objects.filter(email__contains=search)
-            if search == "":
-                search = request.POST.get('cpf/cnpj_fornecedor')
-                lista_fornecedor = Fornecedor.objects.filter(numero_fiscal=search)
-                if search == "":
-                    return render(request, template)
-        return render(request, template, {'lista_fornecedor':lista_fornecedor})
+    
+        nome_fornecedor = request.POST.get('nome_fornecedor')
+        email_fornecedor = search = request.POST.get('email_fornecedor')
+        numero_fiscal = request.POST.get('cpf/cnpj_fornecedor')
+
+        if nome_fornecedor != "":
+            lista_fornecedor = Fornecedor.objects.filter(fornecedorname__contains=nome_fornecedor)
+        elif email_fornecedor != "":
+            lista_fornecedor = Fornecedor.objects.filter(email__contains=email_fornecedor)
+        elif numero_fiscal != "":
+            lista_fornecedor = Fornecedor.objects.filter(numero_fiscal=numero_fiscal)
+        else:
+            return render(request, template)
+        return render(request, template, {'lista_fornecedor': lista_fornecedor})
     else:
         return render(request, template)

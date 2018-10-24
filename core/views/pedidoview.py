@@ -17,15 +17,15 @@ def register_pedido(request):
    
     instance_pedido = Pedido()
     form_pedido = PedidoForm(instance=instance_pedido)
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=10)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=1)
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_item = ItemPedidoFormSet(request.POST, request.FILES)
+        form_item = ItemPedidoFormSet(request.POST, request.FILES, prefix=fs_item)
         
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido, prefix=fs_item)
 
             if form_item.is_valid():
                 pedido.save()
@@ -46,14 +46,14 @@ def list_pedido(request):
 
         numpedido = request.POST.get('numpedido')
         dtentrega = request.POST.get('dtentrega')
-        cliente = request.POST.get('cliente')
+        name_cliente = request.POST.get('cliente')
 
         if numpedido != "":
             lista_pedido = Pedido.objects.filter(numeropedido=numpedido)
-        elif dtentrega is not None:
+        elif dtentrega != "":
             lista_pedido = Pedido.objects.filter(data_entrega__contains=dtentrega)
-        elif cliente is not None:
-            list_pedido = Pedido.objects.filter(cliente__in=Cliente.objects.filter(clientename=cliente))
+        elif name_cliente != "":
+            lista_pedido = Pedido.objects.filter(cliente__in=Cliente.objects.filter(clientename__iexact=name_cliente))
         else:
             return render(request, template)
         return render(request, template, {'lista_pedido': lista_pedido})
