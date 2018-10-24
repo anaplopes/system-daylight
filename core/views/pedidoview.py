@@ -17,15 +17,15 @@ def register_pedido(request):
    
     instance_pedido = Pedido()
     form_pedido = PedidoForm(instance=instance_pedido)
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=10)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=1)
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_item = ItemPedidoFormSet(request.POST, request.FILES)
+        form_item = ItemPedidoFormSet(request.POST, request.FILES, prefix=fs_item)
         
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido, prefix=fs_item)
 
             if form_item.is_valid():
                 pedido.save()
@@ -40,20 +40,35 @@ def register_pedido(request):
     return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_item': ItemPedidoFormSet()})
 
 
+
+@login_required(login_url='/entrar')
+def update_pedido(request, uuid):
+    update_pedido = Pedido.objects.get(uuid=uuid)
+    form = PedidoForm(request.POST or None, instance=update_pedido)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Produto atualizado com sucesso.')
+        return redirect('list_pedido')
+    else:
+        messages.error(request, form.errors)
+    return render(request, 'comercial/registrarpedido.html', { 'form' : form, 'update_pedido':update_pedido })
+
+
+@login_required(login_url='/entrar')
 def list_pedido(request):
     template = 'comercial/gerenciarpedido.html'
     if request.method == 'POST':
 
         numpedido = request.POST.get('numpedido')
         dtentrega = request.POST.get('dtentrega')
-        cliente = request.POST.get('cliente')
+        name_cliente = request.POST.get('cliente')
 
         if numpedido != "":
             lista_pedido = Pedido.objects.filter(numeropedido=numpedido)
-        elif dtentrega is not None:
+        elif name_cliente != "":
+            lista_pedido = Pedido.objects.filter(cliente__in=Cliente.objects.filter(clientename__iexact=name_cliente))
+        elif dtentrega != "":
             lista_pedido = Pedido.objects.filter(data_entrega__contains=dtentrega)
-        elif cliente is not None:
-            list_pedido = Pedido.objects.filter(cliente__in=Cliente.objects.filter(clientename=cliente))
         else:
             return render(request, template)
         return render(request, template, {'lista_pedido': lista_pedido})

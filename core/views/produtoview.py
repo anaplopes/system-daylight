@@ -47,16 +47,19 @@ def delete_produto(request, uuid):
 def list_produto(request):
     template = "comercial/gerenciarproduto.html"
     if request.method == 'POST':
-        search = request.POST.get('tipo_produto')
-        lista_produto = Produto.objects.filter(tipo_produto__contains=search)
-        if search == "":
-            search = request.POST.get('classificacao_produto')
-            lista_produto = Produto.objects.filter(classificacao__contains=search)
-            if search == "":
-                search = request.POST.get('desc_produto')
-                lista_produto = Produto.objects.filter(produto__contains=search)
-                if search == "":
-                    return render(request, template)
-        return render(request, template, {'lista_produto':lista_produto})
+
+        tipo_produto = request.POST.get('tipo_produto')
+        class_produto = request.POST.get('classificacao_produto')
+        desc_produto = request.POST.get('desc_produto')
+
+        if tipo_produto != "":
+            lista_produto = Produto.objects.filter(tipo_produto__contains=tipo_produto)
+        elif class_produto != "":
+            lista_produto = Produto.objects.filter(classificacao__contains=class_produto)
+        elif desc_produto != "":
+            lista_produto = Produto.objects.filter(produto__contains=desc_produto)
+        else:
+            return render(request, template)
+        return render(request, template, {'lista_produto': lista_produto})
     else:
         return render(request, template)

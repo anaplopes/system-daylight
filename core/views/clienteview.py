@@ -47,19 +47,19 @@ def delete_cliente(request, uuid):
 def list_cliente(request):
     template = "comercial/gerenciarcliente.html"
     if request.method == 'POST':
-        
+
         nome_cliente = request.POST.get('nome_cliente')
         email_cliente = request.POST.get('email_cliente')
         numero_fiscal = request.POST.get('cpf/cnpj_cliente')
 
-        if nome_cliente is not None:
-            lista_cliente = Cliente.objects.filter(clientename__contains=nome_cliente)
-        elif email_cliente is not None:
-            lista_cliente = Cliente.objects.filter(email__contains=email_cliente)
-        elif numero_fiscal is not None:
+        if numero_fiscal != "":
             lista_cliente = Cliente.objects.filter(numero_fiscal=numero_fiscal)
+        elif email_cliente != "":
+            lista_cliente = Cliente.objects.filter(email=email_cliente)
+        elif nome_cliente != "":
+            lista_cliente = Cliente.objects.filter(clientename__contains=nome_cliente)
         else:
             return render(request, template)
-        return render(request, template, {'lista_cliente':lista_cliente})
+        return render(request, template, {'lista_cliente': lista_cliente})
     else:
         return render(request, template)

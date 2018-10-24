@@ -49,13 +49,16 @@ def delete_material(request, uuid):
 def list_material(request):
     template = "comercial/gerenciarmaterial.html"
     if request.method == 'POST':
-        search = request.POST.get('tipo_material')
-        lista_material = Material.objects.filter(tipo_material__contains=search)
-        if search == "":
-            search = request.POST.get('desc_material')
-            lista_material = Material.objects.filter(material__contains=search)
-            if search == "":
-                return render(request, template)
-        return render(request, template, {'lista_material':lista_material})
+        
+        material = request.POST.get('tipo_material')
+        desc_material = request.POST.get('desc_material')
+
+        if material != "":
+            lista_material = Material.objects.filter(tipo_material__contains=material)
+        elif desc_material != "":
+            lista_material = Material.objects.filter(material__contains=desc_material)
+        else:
+            return render(request, template)
+        return render(request, template, {'lista_material': lista_material})
     else:
         return render(request, template)

@@ -8,3 +8,4 @@ from .servicoform import ServicoForm
 from .usuarioform import CustomUserCreationForm, CustomUserChangeForm
 from .pedidoform import PedidoForm
 from .itempedidoform import ItemPedidoForm
+from .itemcompraform import ItemCompraForm

@@ -8,4 +8,6 @@ from .materialview import create_material, update_material, delete_material, lis
 from .tecidoview import create_tecido, update_tecido, delete_tecido, list_tecido
 from .produtoview import create_produto, update_produto, delete_produto, list_produto
 from .servicoview import create_servico, update_servico, delete_servico, list_servico
-from .pedidoview import register_pedido, list_pedido
+from .compraview import register_compra, list_compra
+from .pedidoview import register_pedido, update_pedido, list_pedido
+

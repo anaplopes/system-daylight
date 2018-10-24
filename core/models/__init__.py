@@ -7,4 +7,6 @@ from .produtomodel import Produto
 from .servicomodel import Servico
 from .usuariomodel import CustomUser
 from .pedidomodel import Pedido
+from .compramodel import Compra
 from .itempedidomodel import ItemPedido
+from .itemcompramodel import ItemCompra

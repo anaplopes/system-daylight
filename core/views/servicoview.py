@@ -45,13 +45,16 @@ def delete_servico(request, uuid):
 def list_servico(request):
     template = "producao/gerenciarservico.html"
     if request.method == 'POST':
-        search = request.POST.get('tipo_servico')
-        lista_servico = Servico.objects.filter(tipo_servico=search)
-        if search == "--Selecione--":
-            search = request.POST.get('servico')
-            lista_servico = Servico.objects.filter(servico=search)
-            if search == "--Selecione--":
-                return render(request, template)
-        return render(request, template, {'lista_servico':lista_servico})
+
+        tipo_servico = request.POST.get('tipo_servico')
+        servico = request.POST.get('servico')
+
+        if tipo_servico != "--Selecione--":
+            lista_servico = Servico.objects.filter(tipo_servico=tipo_servico)
+        elif servico != "--Selecione--":
+            lista_servico = Servico.objects.filter(servico=servico)
+        else:
+            return render(request, template)
+        return render(request, template, {'lista_servico': lista_servico})
     else:
         return render(request, template)

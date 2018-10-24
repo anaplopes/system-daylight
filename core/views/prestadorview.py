@@ -47,16 +47,19 @@ def delete_prestador(request, uuid):
 def list_prestador(request):
     template = "producao/gerenciarprestador.html"
     if request.method == 'POST':
-        search = request.POST.get('nome_prestador')
-        lista_prestador = PrestadorServico.objects.filter(prestadorname__contains=search)
-        if search == "":
-            search = request.POST.get('email_prestador')
-            lista_prestador = PrestadorServico.objects.filter(email__contains=search)
-            if search == "":
-                search = request.POST.get('cpf/cnpj_prestador')
-                lista_prestador = PrestadorServico.objects.filter(numero_fiscal=search)
-                if search == "":
-                    return render(request, template)
-        return render(request, template, {'lista_prestador':lista_prestador})
+
+        nome_prestador = request.POST.get('nome_prestador')
+        email_prestador = request.POST.get('email_prestador')
+        numero_fiscal = request.POST.get('cpf/cnpj_prestador')
+
+        if numero_fiscal != "":
+            lista_prestador = PrestadorServico.objects.filter(numero_fiscal=numero_fiscal)
+        elif email_prestador != "":
+            lista_prestador = PrestadorServico.objects.filter(email=email_prestador)
+        elif nome_prestador != "":
+            lista_prestador = PrestadorServico.objects.filter(prestadorname__contains=nome_prestador)
+        else:
+            return render(request, template)
+        return render(request, template, {'lista_prestador': lista_prestador})
     else:
         return render(request, template)
