@@ -13,6 +13,7 @@ class Compra(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     numero_pedido = models.IntegerField('Numero do Pedido', unique=True, null=False, blank=False)
     fornecedor = models.ForeignKey(to='Fornecedor', on_delete=models.CASCADE, null=False, blank=False)
+   #retirar data_compra
     data_compra = models.DateField('Data de Compra', max_length=10, null=False)
     data_entrega = models.DateField('Data de Entrega', max_length=10, null=False)
     valor_total = models.DecimalField('Valor Total', max_digits=10, decimal_places=2, null=False, max_length=5000, blank=False)
@@ -34,7 +35,7 @@ class Compra(models.Model):
             if last_compra is not None:
                 self.numero_pedido = 1
             else:
-                self.numero_pedido = last_pedido + 1
+                self.numero_pedido = last_compra + 1
         super(Compra, self).save(*args, **kwargs)
 
 
