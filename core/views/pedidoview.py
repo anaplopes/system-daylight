@@ -44,14 +44,20 @@ def register_pedido(request):
 @login_required(login_url='/entrar')
 def update_pedido(request, uuid):
     update_pedido = Pedido.objects.get(uuid=uuid)
-    form = PedidoForm(request.POST or None, instance=update_pedido)
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'Produto atualizado com sucesso.')
+    form_pedido = PedidoForm(request.POST or None, instance=update_pedido)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm)
+    form_item = ItemPedidoFormSet(request.POST or None, instance=update_pedido)
+
+    if form_pedido.is_valid() and form_item.is_valid():
+        pedido.save()
+        form_item.save()
+
+        messages.success(request, 'Pedido atualizado com sucesso.')
         return redirect('list_pedido')
     else:
-        messages.error(request, form.errors)
-    return render(request, 'comercial/registrarpedido.html', { 'form' : form, 'update_pedido':update_pedido })
+        messages.error(request, form_pedido.errors)
+        messages.error(request, form_item.errors)
+    return render(request, 'comercial/registrarpedido.html', { 'form_pedido' : form_pedido, 'form_item': form_item, 'update_pedido':update_pedido })
 
 
 @login_required(login_url='/entrar')
@@ -60,13 +66,16 @@ def list_pedido(request):
     if request.method == 'POST':
 
         numpedido = request.POST.get('numpedido')
+        dtcompra = request.POST.get('dtcompra')
         dtentrega = request.POST.get('dtentrega')
         name_cliente = request.POST.get('cliente')
 
         if numpedido != "":
-            lista_pedido = Pedido.objects.filter(numeropedido=numpedido)
+            lista_pedido = Pedido.objects.filter(numero_pedido=numpedido)
         elif name_cliente != "":
             lista_pedido = Pedido.objects.filter(cliente__in=Cliente.objects.filter(clientename__iexact=name_cliente))
+        elif dtcompra != "":
+            lista_pedido = Pedido.objects.filter(data_compra__contains=dtcompra)
         elif dtentrega != "":
             lista_pedido = Pedido.objects.filter(data_entrega__contains=dtentrega)
         else:

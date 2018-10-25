@@ -11,7 +11,7 @@ ESTAMPA_CHOICES = (('Sim', 'Sim'), ('Não', 'Não'),)
 class Pedido(models.Model):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    numeropedido = models.IntegerField('Numero do Pedido', unique=True, null=True, blank=True)
+    numero_pedido = models.IntegerField('Numero do Pedido', unique=True, null=True, blank=True)
     cliente = models.ForeignKey(to='Cliente', on_delete=models.CASCADE, null=False, blank=False)
     data_compra = models.DateField('Data de Compra', max_length=10, null=False)
     data_entrega = models.DateField('Data de Entrega', max_length=10, null=False)
@@ -30,9 +30,9 @@ class Pedido(models.Model):
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            last_pedido = type(self).objects.all().aggregate(largest=models.Max('numeropedido'))['largest']
+            last_pedido = type(self).objects.all().aggregate(largest=models.Max('numero_pedido'))['largest']
             if last_pedido is None:
-                self.numeropedido = 1
+                self.numero_pedido = 1
             else:
-                self.numeropedido = last_pedido + 1
+                self.numero_pedido = last_pedido + 1
         super(Pedido, self).save(*args, **kwargs)
