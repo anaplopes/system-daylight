@@ -31,14 +31,21 @@
                             {% endif %}
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-2">
                                     <div class="form-group">
                                         <label class="small">Numero do Pedido</label>
                                         <input class="form-control small" type="number" size="50" id="numpedido" name="numpedido">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Data da Compra</label>
+                                        <input class="form-control small" type="date" id="dtcompra" name="dtcompra">
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Data de Entrega</label>
                                         <input class="form-control small" type="date" id="dtentrega" name="dtentrega">
@@ -85,7 +92,7 @@
                 {% for pedido in lista_pedido %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ pedido.numeropedido }}</th>
+                        <th scope="row">{{ pedido.numero_pedido }}</th>
                         <td>{{ pedido.cliente }}</td>
                         <td>{{ pedido.data_compra|date:'d/m/Y' }}</td>
                         <td>{{ pedido.data_entrega|date:'d/m/Y' }}</td>
