@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="breadcrumb-item">
-        <a href="/comercial/gerenciarcliente">Gerenciar Compra</a>
+        <a href="/comercial/gerenciarcompra">Gerenciar Compra</a>
     </li>
     <li class="breadcrumb-item active">Registrar Compra</li>
 </ol>
@@ -21,10 +21,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" id='form_compra' class="">
+                        <form method="POST" id="compraFormsets" class="">
                             {% csrf_token %}
-
-                            {{ form_compra.management_form }}
 
                             {% if messages %}
                             <ul>
@@ -36,13 +34,6 @@
 
 
                             <div class="form-row">
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">Numero do Pedido</label>
-                                        {{ form_compra.numero_pedido }}
-                                    </div>
-                                </div>
-                                
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Data de Compra</label>
@@ -65,15 +56,7 @@
                                         {{ form_compra.fornecedor }}
                                     </div>
                                 </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">Nome do Solicitante</label>
-                                        {{ form_compra.solicitante }}
-                                    </div>
-                                </div>
                             </div>
-
                             <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
@@ -120,13 +103,11 @@
                                         {{ form_compra.observacao }}
                                     </div>
                                 </div>
-                            </div>
 
                             <br />
 
                             <div class="table-responsive">
-                                <table role="grid" class="table table-hover table-sm table-secundary">
-                                    {{ form_item.management_form }}
+                                <table role="grid" class="table table-hover table-sm table-secundary" id="myFormsetTable">
                                     <thead scope="col" class="card-header small text-center">
                                         <tr>
                                             <th>Material</th>
@@ -134,20 +115,24 @@
                                             <th>Quantidade</th>
                                             <th>Valor Unitário</th>
                                             <th>Valor Total</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for f in form_item %}
+                                        {{ form_item.management_form }}
+                                        {% for f in form_item.forms %}
                                         <tr>
                                             <td>{{ f.material }}</td>
                                             <td>{{ f.cor }}</td>
                                             <td>{{ f.quantidade }}</td>
                                             <td>{{ f.valor_unitario }}</td>
                                             <td>{{ f.valor_total }}</td>
+                                            <td>{% if f.instance.uuid %}{{ f.DELETE }}{% endif %}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
+                                
                             </div>
 
                             <br />
@@ -158,7 +143,6 @@
                                 <a href="{% url 'register_compra' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
-                        <button class="btn btn-primary btn-sm" id="bn_addLine"><i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>
