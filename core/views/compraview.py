@@ -22,17 +22,17 @@ def register_compra(request):
 
     if request.method == 'POST':
         form_compra = CompraForm(request.POST)
-        form_item = ItemCompraFormSet(request.POST, request.FILES)   
+        form_item = ItemCompraFormSet(request.POST, request.FILES)
         
         if form_compra.is_valid():
             compra = form_compra.save(commit=False)
-            form_item = ItemCompraFormSet(request.POST, request.FILES, instance=compra)           
+            form_item = ItemCompraFormSet(request.POST, request.FILES, instance=compra)
 
             if form_item.is_valid():
                 compra.save()
                 form_item.save()
 
-                messages.success(request, 'Pedido de compra cadastrado com sucesso.')
+                messages.success(request, 'Compra cadastrada com sucesso.')
                 return redirect('list_compra')
         else:
             messages.error(request, form_compra.errors)

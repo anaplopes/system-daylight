@@ -21,11 +21,11 @@ def register_pedido(request):
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_item = ItemPedidoFormSet(request.POST, request.FILES, prefix=fs_item)
+        form_item = ItemPedidoFormSet(request.POST, request.FILES)
         
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido, prefix=fs_item)
+            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
 
             if form_item.is_valid():
                 pedido.save()
