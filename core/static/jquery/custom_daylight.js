@@ -40,10 +40,13 @@ $('#cep').keydown(function () {
 
 
 // Mascara Data
-$('#data').keydown(function () {
-    $("#data").mask("99/99/9999");
+$('#datacompra').keydown(function () {
+    $("#datacompra").mask("99/99/9999");
 });
 
+$('#dataentrega').keydown(function () {
+    $("#dataentrega").mask("99/99/9999");
+});
 
 
 // Mascara CPF Usuario
