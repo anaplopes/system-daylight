@@ -31,17 +31,17 @@
                             {% endif %}
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-2">
                                     <div class="form-group">
-                                        <label class="small">Numero do Pedido</label>
-                                        <input class="form-control small" type="number" size="50" id="numero_pedido" name="numpedido">
+                                        <label class="small">Ordem de Compra</label>
+                                        <input class="form-control small" type="number" size="50" id="ordemcompra" name="ordemcompra">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Data de Compra</label>
-                                        <input class="form-control small" type="date" id="data_compra" name="data_compra">
+                                        <label class="small">Data da Compra</label>
+                                        <input class="form-control small" type="date" id="dtordemcompra" name="dtordemcompra">
                                     </div>
                                 </div>
                             </div>
@@ -74,10 +74,9 @@
             <table class="table table-hover text-center">
                 <thead class="card-header">
                     <tr class="card-header">
-                        <th scope="col">Pedido</th>
+                        <th scope="col">Ordem de Compra</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Data de Compra</th>
-                        <th scope="col">Data de Entrega</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
@@ -85,14 +84,14 @@
                 {% for compra in lista_compra %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ pedido.numero_pedido }}</th>
+                        <th scope="row">{{ compra.numero_compra }}</th>
                         <td>{{ compra.fornecedor }}</td>
                         <td>{{ compra.data_compra|date:'d/m/Y' }}</td>
-                        <td>{{ compra.data_entrega|date:'d/m/Y' }}</td>
                         <td>{{ compra.status }}</td>
 
                         {% if compra %}
-                        <td><a href="{% url 'update_compra' compra.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a></td>
+                        <td><a href="{% url 'update_compra' compra.uuid %}"><button class="btn btn-warning btn-xs"><i
+                                        class="fa fa-edit"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>

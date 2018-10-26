@@ -13,9 +13,8 @@ COR_CHOICES = (('Branco', 'Branco'), ('Preto', 'Preto'), ('Azul', 'Azul'), ('Ver
 class ItemCompra(models.Model):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    numero_pedido = models.ForeignKey(to='Compra', on_delete=models.CASCADE, null=False, blank=False)
+    numero_compra = models.ForeignKey(to='Compra', on_delete=models.CASCADE, null=False, blank=False)
     material = models.ForeignKey(to='Material', on_delete=models.CASCADE, null=False, blank=False)
-    #produto = models.CharField('Produto',max_length=30, null=False, blank=False)
     cor = models.CharField('Cor', choices=COR_CHOICES, max_length=30, null=False, blank=False)
     #tecido = models.ForeignKey(to='Tecido', on_delete=models.CASCADE, null=False, blank=False)
     quantidade = models.IntegerField('Quantidade', null=False, blank=False)

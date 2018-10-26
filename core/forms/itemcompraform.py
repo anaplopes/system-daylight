@@ -9,6 +9,7 @@ class ItemCompraForm(forms.ModelForm):
     class Meta:
         model = ItemCompra
         fields = '__all__'
+        exclude = ('numero_compra',)
 
         widgets = {
             'material': forms.Select(attrs={'class':'form-control'}),

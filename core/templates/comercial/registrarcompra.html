@@ -56,6 +56,13 @@
                                         {{ form_compra.fornecedor }}
                                     </div>
                                 </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Nome do Responsável</label>
+                                        {{ form_compra.responsavel }}
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-3">
@@ -83,26 +90,18 @@
                             <div class="form-row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="small">Endereço Entrega</label>
-                                        {{ form_compra.endereco_entrega }}
-                                    </div>
-                                </div>
-                            
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">Status do Pedido</label>
-                                        {{ form_compra.status }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-7">
-                                    <div class="form-group">
                                         <label class="small">Observação</label>
                                         {{ form_compra.observacao }}
                                     </div>
                                 </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Status da Compra</label>
+                                        {{ form_compra.status }}
+                                    </div>
+                                </div>
+                            </div>
 
                             <br />
 
@@ -119,7 +118,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{ form_item.management_form }}
                                         {% for f in form_item.forms %}
                                         <tr>
                                             <td>{{ f.material }}</td>
@@ -132,7 +130,7 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                
+                                {{ form_item.management_form }}
                             </div>
 
                             <br />

@@ -13,6 +13,7 @@ COR_CHOICES = (('Branco', 'Branco'), ('Preto', 'Preto'), ('Azul', 'Azul'), ('Ver
 class ItemPedido(models.Model):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    numero_pedido = models.ForeignKey(to='Pedido', on_delete=models.CASCADE, null=False, blank=False)
     produto = models.ForeignKey(to='Produto', on_delete=models.CASCADE, null=False, blank=False)
     cor = models.CharField('Cor', choices=COR_CHOICES, max_length=30, null=False, blank=False)
     tecido = models.ForeignKey(to='Tecido', on_delete=models.CASCADE, null=False, blank=False)

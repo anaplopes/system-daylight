@@ -56,8 +56,9 @@ def update_pedido(request, uuid):
         
             if form_item.is_valid():
                 pedido.save()
-                for form in form_item:
-                    form.save()
+                instances = form_item.save(commit=False)
+                for instance in instances:
+                    instance.save()
 
                 messages.success(request, 'Pedido atualizado com sucesso.')
                 return redirect('list_pedido')
