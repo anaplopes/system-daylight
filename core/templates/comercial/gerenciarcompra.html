@@ -34,14 +34,14 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Numero do Pedido</label>
-                                        <input class="form-control small" type="text" size="50" id="num_pedido" name="num_pedido">
+                                        <input class="form-control small" type="number" size="50" id="numero_pedido" name="numpedido">
                                     </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="small">Data de Entrega</label>
-                                        <input class="form-control small" type="date" id="dt_entrega" name="dt_entrega">
+                                        <label class="small">Data de Compra</label>
+                                        <input class="form-control small" type="date" id="data_compra" name="data_compra">
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                 <div class="col-8">
                                     <div class="form-group">
                                         <label class="small">Fornecedor</label>
-                                        <input class="form-control small" type="text" size="100" id="cliente" name="cliente">
+                                        <input class="form-control small" type="text" size="100" id="fornecedor" name="fornecedor">
                                     </div>
                                 </div>
                             </div>
@@ -76,25 +76,23 @@
                     <tr class="card-header">
                         <th scope="col">Pedido</th>
                         <th scope="col">Fornecedor</th>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Data Entrega</th>
+                        <th scope="col">Data de Compra</th>
+                        <th scope="col">Data de Entrega</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                {% for pedido in lista_compra %}
+                {% for compra in lista_compra %}
                 <tbody>
                     <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
+                        <th scope="row">{{ pedido.numero_pedido }}</th>
+                        <td>{{ compra.fornecedor }}</td>
+                        <td>{{ compra.data_compra|date:'d/m/Y' }}</td>
+                        <td>{{ compra.data_entrega|date:'d/m/Y' }}</td>
+                        <td>{{ compra.status }}</td>
 
-                        {% if pedido %}
-                        <td><a href=""><button class="btn btn-warning btn-xs"><i
-                                        class="fa fa-edit"></i></button></a>
-                            <a href=""><button class="btn btn-danger btn-xs"><i
-                                        class="fa fa-trash"></i></button></a>
-                        </td>
+                        {% if compra %}
+                        <td><a href="{% url 'update_compra' compra.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>
