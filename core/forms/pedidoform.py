@@ -14,8 +14,8 @@ class PedidoForm(forms.ModelForm):
 
         widgets = {
             'cliente': forms.Select(attrs={'class':'form-control'}),
-            'data_compra': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
-            'data_entrega': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
+            'data_compra': forms.DateInput(attrs={'class':'form-control', 'id':'data'}),
+            'data_entrega': forms.DateInput(attrs={'class':'form-control', 'id':'data'}),
             'valor_total': forms.NumberInput(attrs={'class':'form-control', 'id':'total_pedido'}),
             'forma_pagamento': forms.Select(attrs={'class':'form-control'}),
             'prazo_pagamento': forms.Select(attrs={'class':'form-control'}),

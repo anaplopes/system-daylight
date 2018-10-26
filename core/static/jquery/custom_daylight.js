@@ -1,5 +1,5 @@
 
-
+/*
 $("#qtd_pedido").change(function () {
     let qtd = $('#qtd_pedido').val();
     let vlr_unitario = $('#vlr_unit_pedido').val();
@@ -11,3 +11,56 @@ $("#vlr_unit_pedido").change(function () {
     let vlr_unitario = $('#vlr_unit_pedido').val();
     let t_item = $('#total_item').val(vlr_unitario * qtd);
 });
+*/
+
+
+// Função formset (add line e delete line)
+$(function () {
+    $('#pedidoFormsets tbody tr').formset();
+    prefix: '{{ form_item.prefix }}';
+});
+
+$(function () {
+    $('#compraFormsets tbody tr').formset();
+    prefix: '{{ form_item.prefix }}';
+});
+
+
+
+// Mascara Telefone
+$('#telefone').keydown(function () {
+    $("#telefone").mask("(99)99999-9999");
+});
+
+
+// Mascara CEP
+$('#cep').keydown(function () {
+    $("#cep").mask("99999-999");
+});
+
+
+// Mascara Data
+$('#data').keydown(function () {
+    $("#data").mask("99/99/9999");
+});
+
+
+
+// Mascara CPF Usuario
+$('#cpf_user').keydown(function () {
+    $("#cpf_user").mask("999.999.999-99");
+});
+
+
+// Mascara CPF/CNPJ
+$("#cpfcnpj").keydown(function () {
+    let classif = $("#class_fiscal").val();
+
+    if (classif === 'PF') {
+        $("#cpfcnpj").mask("999.999.999-99");
+    } else if (classif === 'PJ') {
+        $("#cpfcnpj").mask("99.999.999/9999-99");
+    }
+});
+
+
