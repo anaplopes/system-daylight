@@ -2,6 +2,8 @@
 from django.forms import ModelForm
 from django import forms
 from core.models.pedidomodel import Pedido
+from core.models.itempedidomodel import ItemPedido
+from core.forms.itempedidoform import ItemPedidoForm
 
 
 class PedidoForm(forms.ModelForm):

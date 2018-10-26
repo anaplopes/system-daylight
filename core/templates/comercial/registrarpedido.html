@@ -136,7 +136,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{ form_item.management_form }}
                                         {% for f in form_item.forms %}
                                         <tr>
                                             <td>{{ f.produto }}</td>
@@ -150,7 +149,7 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                
+                                {{ form_item.management_form }}
                             </div>
 
                             <br />
