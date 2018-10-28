@@ -21,23 +21,23 @@ def register_compra(request):
 
     if request.method == 'POST':
         form_compra = CompraForm(request.POST)
-        form_item = ItemCompraFormSet(request.POST, request.FILES)
+        form_itemcompra = ItemCompraFormSet(request.POST, request.FILES)
         
         if form_compra.is_valid():
             compra = form_compra.save(commit=False)
-            form_item = ItemCompraFormSet(request.POST, request.FILES, instance=compra)
+            form_itemcompra = ItemCompraFormSet(request.POST, request.FILES, instance=compra)
 
-            if form_item.is_valid():
+            if form_itemcompra.is_valid():
                 compra.save()
-                form_item.save()
+                form_itemcompra.save()
 
                 messages.success(request, 'Compra cadastrada com sucesso.')
                 return redirect('list_compra')
         else:
             messages.error(request, form_compra.errors)
-            messages.error(request, form_item.errors)
-            return render(request, template, { 'form_compra' : form_compra, 'form_item': form_item })
-    return render(request, template, { 'form_compra': CompraForm(instance=instance_compra), 'form_item': ItemCompraFormSet()})
+            messages.error(request, form_itemcompra.errors)
+            return render(request, template, { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra })
+    return render(request, template, { 'form_compra': CompraForm(instance=instance_compra), 'form_itemcompra': ItemCompraFormSet()})
 
 
 
@@ -46,18 +46,18 @@ def update_compra(request, uuid):
     ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, extra=1)
     update_compra = Compra.objects.get(uuid=uuid)
     form_compra = CompraForm(instance=update_compra)
-    form_item = ItemCompraFormSet(instance=update_compra)
+    form_itemcompra = ItemCompraFormSet(instance=update_compra)
 
     if request.method == 'POST':
         form_compra = CompraForm(request.POST, instance=update_compra)
 
         if form_compra.is_valid():
             compra = form_compra.save(commit=False)
-            form_item = ItemCompraFormSet(request.POST, request.FILES, instance=compra)
+            form_itemcompra = ItemCompraFormSet(request.POST, request.FILES, instance=compra)
         
-            if form_item.is_valid():
+            if form_itemcompra.is_valid():
                 compra.save()
-                instances = form_item.save(commit=False)
+                instances = form_itemcompra.save(commit=False)
                 for instance in instances:
                     instance.save()
 
@@ -65,8 +65,8 @@ def update_compra(request, uuid):
                 return redirect('list_compra')
         else:
             messages.error(request, form_compra.errors)
-            messages.error(request, form_item.errors)
-    return render(request, 'comercial/registrarcompra.html', { 'form_compra' : form_compra, 'form_item': form_item, 'update_compra': update_compra })
+            messages.error(request, form_itemcompra.errors)
+    return render(request, 'comercial/registrarcompra.html', { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra, 'update_compra': update_compra })
 
 
 
@@ -78,6 +78,7 @@ def list_compra(request):
         ordemcompra = request.POST.get('ordemcompra')
         dtordemcompra = request.POST.get('dtordemcompra')
         name_fornecedor = request.POST.get('fornecedor')
+        status_compra = request.POST.get('status_compra')
 
         if ordemcompra != "":
             lista_compra = Compra.objects.filter(numero_compra=ordemcompra)
@@ -85,6 +86,8 @@ def list_compra(request):
             lista_compra = Compra.objects.filter(fornecedor__in=Fornecedor.objects.filter(fornecedorname__iexact=name_fornecedor))
         elif dtordemcompra != "":
             lista_compra = Compra.objects.filter(data_compra__contains=dtordemcompra)
+        elif status_compra != "--Selecione--":
+            lista_compra = Compra.objects.filter(status=status_compra)
         else:
             return render(request, template)
         return render(request, template, {'lista_compra': lista_compra})

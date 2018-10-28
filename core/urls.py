@@ -53,8 +53,7 @@ urlpatterns = [
     path('comercial/gerenciarcompra/', views.list_compra, name='list_compra'),
     path('comercial/registrarcompra/<uuid>/', views.update_compra, name='update_compra'),
 
-    path('producao/cadastrarservico/', views.create_servico, name='create_servico'),
+    path('producao/registrarservico/', views.register_servico, name='register_servico'),
     path('producao/gerenciarservico/', views.list_servico, name='list_servico'),
-    path('producao/gerenciarservico/<uuid>/', views.delete_servico, name='delete_servico'),
-    path('producao/cadastrarservico/<uuid>/', views.update_servico, name='update_servico'),
+    path('producao/registrarservico/<uuid>/', views.update_servico, name='update_servico'),
 ]

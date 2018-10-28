@@ -23,3 +23,7 @@ class PrestadorServico(models.Model):
 
     class Meta:
         db_table = 'Prestador'
+
+    def __str__(self):
+        return '{} ( {} )'.format(self.prestadorname, self.numero_fiscal)
+

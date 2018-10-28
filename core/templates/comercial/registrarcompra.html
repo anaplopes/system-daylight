@@ -40,13 +40,6 @@
                                         {{ form_compra.data_compra}}
                                     </div>
                                 </div>
-                            
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">Data de Entrega</label>
-                                        {{ form_compra.data_entrega}}
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="form-row">
@@ -106,7 +99,7 @@
                             <br />
 
                             <div class="table-responsive">
-                                <table role="grid" class="table table-hover table-sm table-secundary" id="myFormsetTable">
+                                <table role="grid" class="table table-hover table-sm table-secundary" id="compraFormsetTable">
                                     <thead scope="col" class="card-header small text-center">
                                         <tr>
                                             <th>Material</th>
@@ -118,19 +111,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for f in form_item.forms %}
+                                        {% for form in form_itemcompra.forms %}
                                         <tr>
-                                            <td>{{ f.material }}</td>
-                                            <td>{{ f.cor }}</td>
-                                            <td>{{ f.quantidade }}</td>
-                                            <td>{{ f.valor_unitario }}</td>
-                                            <td>{{ f.valor_total }}</td>
-                                            <td>{% if f.instance.uuid %}{{ f.DELETE }}{% endif %}</td>
+                                            <td>{{ form.material }}</td>
+                                            <td>{{ form.cor }}</td>
+                                            <td>{{ form.quantidade }}</td>
+                                            <td>{{ form.valor_unitario }}</td>
+                                            <td>{{ form.valor_total }}</td>
+                                            <td>{% if form.instance.uuid %}{{ form.DELETE }}{% endif %}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                {{ form_item.management_form }}
+                                {{ form_itemcompra.management_form }}
                             </div>
 
                             <br />

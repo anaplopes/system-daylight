@@ -16,13 +16,18 @@ $("#vlr_unit_pedido").change(function () {
 
 // Função formset (add line e delete line)
 $(function () {
-    $('#pedidoFormsets tbody tr').formset();
-    prefix: '{{ form_item.prefix }}';
+    $('#pedidoFormsetTable tbody tr').formset();
+    prefix: '{{ form_itempedido.prefix }}';
 });
 
 $(function () {
-    $('#compraFormsets tbody tr').formset();
-    prefix: '{{ form_item.prefix }}';
+    $('#compraFormsetTable tbody tr').formset();
+    prefix: '{{ form_itemcompra.prefix }}';
+});
+
+$(function () {
+    $('#servicoFormsetTable tbody tr').formset();
+    prefix: '{{ form_itemservico.prefix }}';
 });
 
 
@@ -46,6 +51,10 @@ $('#datacompra').keydown(function () {
 
 $('#dataentrega').keydown(function () {
     $("#dataentrega").mask("99/99/9999");
+});
+
+$('#dataservico').keydown(function () {
+    $("#dataservico").mask("99/99/9999");
 });
 
 

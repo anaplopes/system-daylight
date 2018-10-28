@@ -31,26 +31,38 @@
                             {% endif %}
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-2">
                                     <div class="form-group">
-                                        <label class="small">Tipo de Serviço</label>
-                                        <select class="form-control small custom-select" id="tipo_servico" name="tipo_servico">
-                                            <option selected>--Selecione--</option>
-                                            <option value="Fabricação">Fabricação</option>
-                                            <option value="Reparo">Reparo</option>
-                                        </select>
+                                        <label class="small">Numero do Serviço</label>
+                                        <input class="form-control small" type="number" size="50" id="numservico" name="numservico">
+                                    </div>
+                                </div>
+                            
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Data do Serviço</label>
+                                        <input class="form-control small" type="date" id="dtservico" name="dtservico">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Serviço</label>
-                                        <select class="form-control small custom-select" id="servico" name="servico">
+                                        <label class="small">Status</label>
+                                        <select class="form-control small custom-select" id="status_servico" name="status_servico">
                                             <option selected>--Selecione--</option>
-                                            <option value="Costura">Costura</option>
-                                            <option value="Estampa">Estampa</option>
-                                            <option value="Bordado">Bordado</option>
+                                            <option value="Em andamento">Em andamento</option>
+                                            <option value="Finalizado">Finalizado</option>
+                                            <option value="Cancelado">Cancelado</option>
                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label class="small">Prestador</label>
+                                        <input class="form-control small" type="text" size="100" id="prestador" name="prestador">
                                     </div>
                                 </div>
                             </div>
@@ -76,25 +88,27 @@
             <table class="table table-hover text-center">
                 <thead class="card-header">
                     <tr class="card-header">
-                        <th scope="col">Tipo de Serviço</th>
+                        <th scope="col">Ordem de Serviço</th>
+                        <th scope="col">Prestador</th>
+                        <th scope="col">Data do Serviço</th>
+                        <th scope="col">Data de Entrega</th>
                         <th scope="col">Serviço</th>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Valor por Peça</th>
+                        <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 {% for servico in lista_servico %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ servico.tipo_servico}}</th>
+                        <th scope="row">{{ servico.numero_servico }}</th>
+                        <td>{{ servico.prestador }}</td>
+                        <td>{{ servico.data_servico|date:'d/m/Y' }}</td>
+                        <td>{{ servico.data_entrega|date:'d/m/Y' }}</td>
                         <td>{{ servico.servico }}</td>
-                        <td>{{ servico.tipo_produto }}</td>
-                        <td>{{ servico.valor_peca }}</td>
+                        <td>{{ servico.status }}</td>
 
                          {% if servico %}
-                        <td><a href="{% url 'update_servico' servico.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_servico' servico.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                        </td>
+                        <td><a href="{% url 'update_servico' servico.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>
@@ -102,7 +116,7 @@
             </table>
         </div>
         <div class="card-body">
-            <a href="/producao/cadastrarservico"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
+            <a href="/producao/registrarservico"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
         </div>
     </div>
 </div>

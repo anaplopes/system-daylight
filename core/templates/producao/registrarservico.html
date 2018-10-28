@@ -10,9 +10,9 @@
         </a>
     </li>
     <li class="breadcrumb-item">
-        <a href="/comercial/gerenciarcliente">Gerenciar Pedido</a>
+        <a href="/comercial/gerenciarservico">Gerenciar Serviço</a>
     </li>
-    <li class="breadcrumb-item active">Registrar Pedido</li>
+    <li class="breadcrumb-item active">Registrar Serviço</li>
 </ol>
 
 <div class="row">
@@ -21,7 +21,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" id="pedidoFormsets" class="">
+                        <form method="POST" id="servicoFormsets" class="">
                             {% csrf_token %}
 
                             {% if messages %}
@@ -36,15 +36,15 @@
                             <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Data de Compra</label>
-                                        {{ form_pedido.data_compra}}
+                                        <label class="small">Data do Serviço</label>
+                                        {{ form_servico.data_servico}}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Data de Entrega</label>
-                                        {{ form_pedido.data_entrega}}
+                                        {{ form_servico.data_entrega}}
                                     </div>
                                 </div>
                             </div>
@@ -52,15 +52,8 @@
                             <div class="form-row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="small">Cliente</label>
-                                        {{ form_pedido.cliente }}
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">Nome do Solicitante</label>
-                                        {{ form_pedido.solicitante }}
+                                        <label class="small">Prestador</label>
+                                        {{ form_servico.prestador }}
                                     </div>
                                 </div>
                             </div>
@@ -68,22 +61,31 @@
                             <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Forma de Pagamento</label>
-                                        {{ form_pedido.forma_pagamento }}
+                                        <label class="small">Tipo de Serviço</label>
+                                        {{ form_servico.tipo_servico }}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Prazo de Pagamento</label>
-                                        {{ form_pedido.prazo_pagamento }}
+                                        <label class="small">Serviço</label>
+                                        {{ form_servico.servico }}
                                     </div>
                                 </div>
-                            
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Valor Total</label>
-                                        {{ form_pedido.valor_total }}
+                                        {{ form_servico.valor_total }}
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Status do Serviço</label>
+                                        {{ form_servico.status }}
                                     </div>
                                 </div>
                             </div>
@@ -91,31 +93,8 @@
                             <div class="form-row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="small">Endereço Entrega</label>
-                                        {{ form_pedido.endereco_entrega }}
-                                    </div>
-                                </div>
-                            
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">Status do Pedido</label>
-                                        {{ form_pedido.status }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-7">
-                                    <div class="form-group">
                                         <label class="small">Observação</label>
-                                        {{ form_pedido.observacao }}
-                                    </div>
-                                </div>
-
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label class="small">Personalização</label>
-                                        {{ form_pedido.personalizacao }}
+                                        {{ form_servico.observacao }}
                                     </div>
                                 </div>
                             </div>
@@ -123,12 +102,12 @@
                             <br />
 
                             <div class="table-responsive">
-                                <table role="grid" class="table table-hover table-sm table-secundary" id="pedidoFormsetTable">
+                                <table role="grid" class="table table-hover table-sm table-secundary" id="servicoFormsetTable">
                                     <thead scope="col" class="card-header small text-center">
                                         <tr>
+                                            <th>Nº Pedido</th>
                                             <th>Produto</th>
                                             <th>Cor</th>
-                                            <th>Tecido</th>
                                             <th>Quantidade</th>
                                             <th>Valor Unitário</th>
                                             <th>Valor Total</th>
@@ -136,11 +115,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for form in form_itempedido.forms %}
+                                        {% for form in form_itemservico.forms %}
                                         <tr>
+                                            <td>{{ form.numero_pedido }}</td>
                                             <td>{{ form.produto }}</td>
                                             <td>{{ form.cor }}</td>
-                                            <td>{{ form.tecido }}</td>
                                             <td>{{ form.quantidade }}</td>
                                             <td>{{ form.valor_unitario }}</td>
                                             <td>{{ form.valor_total }}</td>
@@ -149,15 +128,15 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                {{ form_itempedido.management_form }}
+                                {{ form_itemservico.management_form }}
                             </div>
 
                             <br />
                             <br />
-                            
+
                             <div class="pull-right">
-                                <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
+                                <a href="/producao/gerenciarservico"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
+                                <a href="{% url 'register_servico' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

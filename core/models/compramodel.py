@@ -13,7 +13,7 @@ class Compra(models.Model):
     numero_compra = models.IntegerField('Numero da Compra', unique=True, null=True, blank=True)
     fornecedor = models.ForeignKey(to='Fornecedor', on_delete=models.CASCADE, null=False, blank=False)
     data_compra = models.DateField('Data de Compra', max_length=10, null=False)
-    data_entrega = models.DateField('Data de Entrega', max_length=10, null=True)
+    #data_entrega = models.DateField('Data de Entrega', max_length=10, null=True)
     valor_total = models.DecimalField('Valor Total', max_digits=10, decimal_places=2, null=False, max_length=5000, blank=False)
     forma_pagamento = models.CharField('Forma de Pagamento', default='', choices=FORM_PGTO_CHOICES, max_length=15, null=True, blank=True)
     prazo_pagamento = models.CharField('Prazo de Pagamento', default='', choices=PRAZO_PGTO_CHOICES, max_length=20, null=True, blank=True)

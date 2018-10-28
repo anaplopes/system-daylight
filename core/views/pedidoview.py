@@ -20,23 +20,23 @@ def register_pedido(request):
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_item = ItemPedidoFormSet(request.POST, request.FILES)
+        form_itempedido = ItemPedidoFormSet(request.POST, request.FILES)
         
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
 
-            if form_item.is_valid():
+            if form_itempedido.is_valid():
                 pedido.save()
-                form_item.save()
+                form_itempedido.save()
 
                 messages.success(request, 'Pedido cadastrado com sucesso.')
                 return redirect('list_pedido')
         else:
             messages.error(request, form_pedido.errors)
-            messages.error(request, form_item.errors)
-            return render(request, template, { 'form_pedido' : form_pedido, 'form_item': form_item })
-    return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_item': ItemPedidoFormSet()})
+            messages.error(request, form_itempedido.errors)
+            return render(request, template, { 'form_pedido' : form_pedido, 'form_itempedido': form_itempedido })
+    return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_itempedido': ItemPedidoFormSet()})
 
 
 
@@ -45,18 +45,18 @@ def update_pedido(request, uuid):
     ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=1)
     update_pedido = Pedido.objects.get(uuid=uuid)
     form_pedido = PedidoForm(instance=update_pedido)
-    form_item = ItemPedidoFormSet(instance=update_pedido)
+    form_itempedido = ItemPedidoFormSet(instance=update_pedido)
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST, instance=update_pedido)
 
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
         
-            if form_item.is_valid():
+            if form_itempedido.is_valid():
                 pedido.save()
-                instances = form_item.save(commit=False)
+                instances = form_itempedido.save(commit=False)
                 for instance in instances:
                     instance.save()
 
@@ -64,8 +64,8 @@ def update_pedido(request, uuid):
                 return redirect('list_pedido')
         else:
             messages.error(request, form_pedido.errors)
-            messages.error(request, form_item.errors)
-    return render(request, 'comercial/registrarpedido.html', { 'form_pedido' : form_pedido, 'form_item': form_item, 'update_pedido':update_pedido })
+            messages.error(request, form_itempedido.errors)
+    return render(request, 'comercial/registrarpedido.html', { 'form_pedido' : form_pedido, 'form_itempedido': form_itempedido, 'update_pedido':update_pedido })
 
 
 @login_required(login_url='/entrar')
@@ -77,6 +77,7 @@ def list_pedido(request):
         dtcompra = request.POST.get('dtcompra')
         dtentrega = request.POST.get('dtentrega')
         name_cliente = request.POST.get('cliente')
+        status_pedido = request.POST.get('status_pedido')
 
         if numpedido != "":
             lista_pedido = Pedido.objects.filter(numero_pedido=numpedido)
@@ -86,6 +87,8 @@ def list_pedido(request):
             lista_pedido = Pedido.objects.filter(data_compra__contains=dtcompra)
         elif dtentrega != "":
             lista_pedido = Pedido.objects.filter(data_entrega__contains=dtentrega)
+        elif status_pedido != "--Selecione--":
+            lista_pedido = Pedido.objects.filter(status=status_pedido)
         else:
             return render(request, template)
         return render(request, template, {'lista_pedido': lista_pedido})
