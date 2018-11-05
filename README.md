@@ -4,14 +4,14 @@ Desenvolvido para oficina de projeto empresarial - Faculdade Impacta
 
 RA	Nome Completo	E-mail
 + 1700365
-Ana Paula Lopes	
+Ana Paula Lopes
 anapalopes0103@gmail.com
 
-+ 1701394	
++ 1701394
 Caio Henrique de Melo Moreira
 cahenri20@hotmail.com
 
-+ 1700384	
++ 1700384
 Isabella Izumi Anze
 isabellaanze@gmail.com
 

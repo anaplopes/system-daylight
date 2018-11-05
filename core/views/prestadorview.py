@@ -12,10 +12,14 @@ def create_prestador(request):
         form = PrestadorForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Prestador cadastrado com sucesso.')
+            messages.success(request, 'Prestador cadastrado com sucesso.', 'Sucesso')
             return redirect('list_prestador')
         else:
-            messages.error(request, form.errors)
+            tipo_erro = ''
+            for erro in form.errors.values():
+                tipo_erro += '\n'
+                tipo_erro += erro[0]
+            messages.error(request, tipo_erro, 'Erro')
             return render(request, 'producao/cadastrarprestador.html', { 'form' : form })
     return render(request, 'producao/cadastrarprestador.html', { 'form' : PrestadorForm() })
 
@@ -26,10 +30,14 @@ def update_prestador(request, uuid):
     form = PrestadorForm(request.POST or None, instance=update_prestador)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Prestador atualizado com sucesso.')
+        messages.success(request, 'Prestador atualizado com sucesso.', 'Sucesso')
         return redirect('list_prestador')
     else:
-        messages.error(request, form.errors)
+        tipo_erro = ''
+        for erro in form.errors.values():
+            tipo_erro += '\n'
+            tipo_erro += erro[0]
+        messages.error(request, tipo_erro, 'Erro')
     return render(request, 'producao/cadastrarprestador.html', { 'form' : form, 'update_prestador':update_prestador })
 
 
@@ -38,7 +46,7 @@ def delete_prestador(request, uuid):
     delete_prestador = PrestadorServico.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_prestador.delete()
-        messages.success(request, 'Prestador excluído com sucesso.')
+        messages.success(request, 'Prestador excluído com sucesso.', 'Sucesso')
         return redirect('list_prestador')
     return render(request, "exclusaoConf.html", {'delete_prestador': delete_prestador})
 

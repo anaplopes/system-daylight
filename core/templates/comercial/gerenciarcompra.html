@@ -22,14 +22,6 @@
                         <form method="POST" autofocus>
                             {% csrf_token %}
 
-                            {% if messages %}
-                            <ul>
-                                {% for message in messages %}
-                                <li>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-
                             <div class="form-row">
                                 <div class="col-2">
                                     <div class="form-group">

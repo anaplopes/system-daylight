@@ -13,10 +13,14 @@ def create_tecido(request):
         form = TecidoForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Tecido cadastrado com sucesso.')
+            messages.success(request, 'Tecido cadastrado com sucesso.', 'Sucesso')
             return redirect('list_tecido')
         else:
-            messages.error(request, form.errors)
+            tipo_erro = ''
+            for erro in form.errors.values():
+                tipo_erro += '\n'
+                tipo_erro += erro[0]
+            messages.error(request, tipo_erro, 'Erro')
             return render(request, template, { 'form' : form })
     return render(request, template, { 'form' : TecidoForm() })
 
@@ -28,10 +32,14 @@ def update_tecido(request, uuid):
     form = TecidoForm(request.POST or None, instance=update_tecido)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Tecido atualizado com sucesso.')
+        messages.success(request, 'Tecido atualizado com sucesso.', 'Sucesso')
         return redirect('list_tecido')
     else:
-        messages.error(request, form.errors)
+        tipo_erro = ''
+        for erro in form.errors.values():
+            tipo_erro += '\n'
+            tipo_erro += erro[0]
+        messages.error(request, tipo_erro, 'Erro')
     return render(request, template, { 'form' : form, 'update_tecido':update_tecido })
 
 
@@ -40,7 +48,7 @@ def delete_tecido(request, uuid):
     delete_tecido = Tecido.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_tecido.delete()
-        messages.success(request, 'Tecido excluído com sucesso.')
+        messages.success(request, 'Tecido excluído com sucesso.', 'Sucesso')
         return redirect('list_tecido')
     return render(request, "exclusaoConf.html", { 'delete_tecido': delete_tecido })
 

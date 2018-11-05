@@ -24,15 +24,6 @@
                         <form method="POST" id="pedidoFormsets" class="">
                             {% csrf_token %}
 
-                            {% if messages %}
-                            <ul>
-                                {% for message in messages %}
-                                <li>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-
-
                             <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
@@ -40,7 +31,7 @@
                                         {{ form_pedido.data_compra}}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Data de Entrega</label>
@@ -72,14 +63,14 @@
                                         {{ form_pedido.forma_pagamento }}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Prazo de Pagamento</label>
                                         {{ form_pedido.prazo_pagamento }}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Valor Total</label>
@@ -95,7 +86,7 @@
                                         {{ form_pedido.endereco_entrega }}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Status do Pedido</label>
@@ -136,8 +127,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+
                                         {% for f in form_item.forms %}
+                                        {{ f.uuid }}
                                         <tr>
                                             <td>{{ f.produto }}</td>
                                             <td>{{ f.cor }}</td>
@@ -155,7 +147,7 @@
 
                             <br />
                             <br />
-                            
+
                             <div class="pull-right">
                                 <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
                                 <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>

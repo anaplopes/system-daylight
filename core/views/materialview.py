@@ -13,10 +13,14 @@ def create_material(request):
         form = MaterialForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Material cadastrado com sucesso.')
+            messages.success(request, 'Material cadastrado com sucesso.', 'Sucesso')
             return redirect('list_material')
         else:
-            messages.error(request, form.errors)
+            tipo_erro = ''
+            for erro in form.errors.values():
+                tipo_erro += '\n'
+                tipo_erro += erro[0]
+            messages.error(request, tipo_erro, 'Erro')
             return render(request, template, { 'form' : form })
     return render(request, template, { 'form' : MaterialForm() })
 
@@ -28,10 +32,14 @@ def update_material(request, uuid):
     form = MaterialForm(request.POST or None, instance=update_material)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Material atualizado com sucesso.')
+        messages.success(request, 'Material atualizado com sucesso.', 'Sucesso')
         return redirect('list_material')
     else:
-        messages.error(request, form.errors)
+        tipo_erro = ''
+        for erro in form.errors.values():
+            tipo_erro += '\n'
+            tipo_erro += erro[0]
+        messages.error(request, tipo_erro, 'Erro')
     return render(request, template, { 'form' : form, 'update_material':update_material })
 
 
@@ -40,7 +48,7 @@ def delete_material(request, uuid):
     delete_material = Material.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_material.delete()
-        messages.success(request, 'Material excluído com sucesso.')
+        messages.success(request, 'Material excluído com sucesso.', 'Sucesso')
         return redirect('list_material')
     return render(request, "exclusaoConf.html", {'delete_material': delete_material})
 
@@ -49,7 +57,7 @@ def delete_material(request, uuid):
 def list_material(request):
     template = "comercial/gerenciarmaterial.html"
     if request.method == 'POST':
-        
+
         material = request.POST.get('tipo_material')
         desc_material = request.POST.get('desc_material')
 

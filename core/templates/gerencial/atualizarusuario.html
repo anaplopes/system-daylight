@@ -24,14 +24,6 @@
                         <form method="POST">
                             {% csrf_token %}
 
-                            {% if messages %}
-                            <ul>
-                                {% for message in messages %}
-                                <li>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-
                             <div class="form-row justify-content-md-center">
                                 <div class="col-4">
                                     <div class="form-group">
@@ -39,7 +31,7 @@
                                         {{ form.is_staff }}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Usuário Ativo?</label><br />

@@ -1,0 +1,63 @@
+<!-- Large modal -->
+<div class="modal fade modal_abrir_ocorrencia" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg large_modal">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="cleanForm()"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">Abrir Ocorrência</h4>
+            </div>
+
+            <form class="form-horizontal form-label-left" method="POST" id="form_abrir_ocorrencia" action="{% url 'abrir_ocorrencia' %}">
+            {% csrf_token %}
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h4>Overview de Mensagem</h4>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content fixed_height_390 overflow_scroll">
+                                        <ul class="list-unstyled msg_list lista_questoes" id="mensagem_toggle"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="x_panel">
+
+                                    <div class="x_title">
+
+                                        <div class="pull-right">
+                                            <select type="button" class="btn btn-secundary btn-sm custom-select" id="tipo_ocorrencia" name="tipo_ocorrencia">
+                                                <option selected>Tipo de ocorrência</option>
+                                                <option value="erro">Erro</option>
+                                                <option value="falta_conteúdo">Falta Conteúdo</option>
+                                            </select>
+                                        </div>
+
+                                        <h4>Comentário</h4>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="x_content fixed_height_390">
+                                        <textarea class="form-control fixed_height_360 align-middle" rows="18" id="comment" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="btn_enviar" type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

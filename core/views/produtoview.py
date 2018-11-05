@@ -12,10 +12,14 @@ def create_produto(request):
         form = ProdutoForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Produto cadastrado com sucesso.')
+            messages.success(request, 'Produto cadastrado com sucesso.', 'Sucesso')
             return redirect('list_produto')
         else:
-            messages.error(request, form.errors)
+            tipo_erro = ''
+            for erro in form.errors.values():
+                tipo_erro += '\n'
+                tipo_erro += erro[0]
+            messages.error(request, tipo_erro, 'Erro')
             return render(request, 'comercial/cadastrarproduto.html', { 'form' : form })
     return render(request, 'comercial/cadastrarproduto.html', { 'form' : ProdutoForm() })
 
@@ -26,10 +30,14 @@ def update_produto(request, uuid):
     form = ProdutoForm(request.POST or None, instance=update_produto)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Produto atualizado com sucesso.')
+        messages.success(request, 'Produto atualizado com sucesso.', 'Sucesso')
         return redirect('list_produto')
     else:
-        messages.error(request, form.errors)
+        tipo_erro = ''
+        for erro in form.errors.values():
+            tipo_erro += '\n'
+            tipo_erro += erro[0]
+        messages.error(request, tipo_erro, 'Erro')
     return render(request, 'comercial/cadastrarproduto.html', { 'form' : form, 'update_produto':update_produto })
 
 
@@ -38,7 +46,7 @@ def delete_produto(request, uuid):
     delete_produto = Produto.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_produto.delete()
-        messages.success(request, 'Produto excluído com sucesso.')
+        messages.success(request, 'Produto excluído com sucesso.', 'Sucesso')
         return redirect('list_produto')
     return render(request, "exclusaoConf.html", {'delete_produto': delete_produto})
 

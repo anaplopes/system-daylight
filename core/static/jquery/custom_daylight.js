@@ -1,18 +1,9 @@
 
-/*
-$("#qtd_pedido").change(function () {
+$("#pedidoFormsetTable").ready(function () {
     let qtd = $('#qtd_pedido').val();
     let vlr_unitario = $('#vlr_unit_pedido').val();
-    let t_item = $('#total_item').val(vlr_unitario*qtd);
+    let t_item = $('#total_item').val();
 });
-
-$("#vlr_unit_pedido").change(function () {
-    let qtd = $('#qtd_pedido').val();
-    let vlr_unitario = $('#vlr_unit_pedido').val();
-    let t_item = $('#total_item').val(vlr_unitario * qtd);
-});
-*/
-
 
 
 // Função formset (add line e delete line)
@@ -144,19 +135,5 @@ $(document).ready(function () {
             //cep sem valor, limpa formulário.
             limpa_formulário_cep();
         }
-    });
-});
-
-
-
-$(document).ready(function () {
-    $.pnotify({
-        title: '{{ message.tags|upper }}',
-        text: '{{ message }}',
-        type: '{{ message.tags }}',
-        hide: false,
-        styling: 'bootstrap',
-        closer_hover: false,
-        sticker_hover: false
     });
 });

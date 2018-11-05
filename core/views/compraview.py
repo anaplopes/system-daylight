@@ -14,7 +14,7 @@ from django.forms import inlineformset_factory
 @login_required(login_url='/entrar')
 def register_compra(request):
     template = 'comercial/registrarcompra.html'
-   
+
     instance_compra = Compra()
     form_compra = CompraForm(instance=instance_compra)
     ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, extra=1)
@@ -22,7 +22,7 @@ def register_compra(request):
     if request.method == 'POST':
         form_compra = CompraForm(request.POST)
         form_itemcompra = ItemCompraFormSet(request.POST, request.FILES)
-        
+
         if form_compra.is_valid():
             compra = form_compra.save(commit=False)
             form_itemcompra = ItemCompraFormSet(request.POST, request.FILES, instance=compra)
@@ -31,11 +31,21 @@ def register_compra(request):
                 compra.save()
                 form_itemcompra.save()
 
-                messages.success(request, 'Compra registrada com sucesso.')
+                messages.success(request, 'Compra registrada com sucesso.', 'Sucesso')
                 return redirect('list_compra')
         else:
-            messages.error(request, form_compra.errors)
-            messages.error(request, form_itemcompra.errors)
+            tipo_erro1 = ''
+            for erro in form_compra.errors.values():
+                tipo_erro1 += '\n'
+                tipo_erro1 += erro[0]
+            messages.error(request, tipo_erro1, 'Erro dados de compra.')
+
+            tipo_erro2 = ''
+            for erro in form_itemcompra.errors.values():
+                tipo_erro2 += '\n'
+                tipo_erro2 += erro[0]
+            messages.error(request, tipo_erro2, 'Erro itens de compra.')
+
             return render(request, template, { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra })
     return render(request, template, { 'form_compra': CompraForm(instance=instance_compra), 'form_itemcompra': ItemCompraFormSet()})
 
@@ -54,18 +64,28 @@ def update_compra(request, uuid):
         if form_compra.is_valid():
             compra = form_compra.save(commit=False)
             form_itemcompra = ItemCompraFormSet(request.POST, request.FILES, instance=compra)
-        
+
             if form_itemcompra.is_valid():
                 compra.save()
                 instances = form_itemcompra.save(commit=False)
                 for instance in instances:
                     instance.save()
 
-                messages.success(request, 'Compra atualizado com sucesso.')
+                messages.success(request, 'Compra atualizado com sucesso.', 'Sucesso')
                 return redirect('list_compra')
         else:
-            messages.error(request, form_compra.errors)
-            messages.error(request, form_itemcompra.errors)
+            tipo_erro1 = ''
+            for erro in form_compra.errors.values():
+                tipo_erro1 += '\n'
+                tipo_erro1 += erro[0]
+            messages.error(request, tipo_erro1, 'Erro dados de compra.')
+
+            tipo_erro2 = ''
+            for erro in form_itemcompra.errors.values():
+                tipo_erro2 += '\n'
+                tipo_erro2 += erro[0]
+            messages.error(request, tipo_erro2, 'Erro itens de compra.')
+
     return render(request, 'comercial/registrarcompra.html', { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra, 'update_compra': update_compra })
 
 
@@ -92,4 +112,4 @@ def list_compra(request):
             return render(request, template)
         return render(request, template, {'lista_compra': lista_compra})
     else:
-        return render(request, template) 
+        return render(request, template)

@@ -12,10 +12,14 @@ def create_cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, messages.SUCCESS, 'Cliente cadastrado com sucesso.')
+            messages.success(request, 'Cliente cadastrado com sucesso.', 'Sucesso')
             return redirect('list_cliente')
         else:
-            messages.error(request, form.errors)
+            tipo_erro = ''
+            for erro in form.errors.values():
+                tipo_erro += '\n'
+                tipo_erro += erro[0]
+            messages.error(request, tipo_erro, 'Erro')
             return render(request, 'comercial/cadastrarcliente.html', { 'form' : form })
     return render(request, 'comercial/cadastrarcliente.html', { 'form' : ClienteForm() })
 
@@ -26,10 +30,14 @@ def update_cliente(request, uuid):
     form = ClienteForm(request.POST or None, instance=update_cliente)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Cliente atualizado com sucesso.')
+        messages.success(request, 'Cliente atualizado com sucesso.', 'Sucesso')
         return redirect('list_cliente')
     else:
-        messages.error(request, form.errors)
+        tipo_erro = ''
+        for erro in form.errors.values():
+            tipo_erro += '\n'
+            tipo_erro += erro[0]
+        messages.error(request, tipo_erro, 'Erro')
         return render(request, 'comercial/cadastrarcliente.html', { 'form' : form, 'update_cliente':update_cliente })
 
 
@@ -38,7 +46,7 @@ def delete_cliente(request, uuid):
     delete_cliente = Cliente.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_cliente.delete()
-        messages.success(request, 'Cliente excluído com sucesso.')
+        messages.success(request, 'Cliente excluído com sucesso.', 'Sucesso')
         return redirect('list_cliente')
     return render(request, "exclusaoConf.html", {'delete_cliente': delete_cliente})
 
