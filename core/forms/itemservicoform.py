@@ -9,7 +9,6 @@ class ItemServicoForm(forms.ModelForm):
     class Meta:
         model = ItemServico
         fields = '__all__'
-        exclude = ('numero_servico',)
 
         widgets = {
             'numero_pedido': forms.TextInput(attrs={'class':'form-control'}),

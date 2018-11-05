@@ -13,30 +13,28 @@ from django.forms import inlineformset_factory
 @login_required(login_url='/entrar')
 def register_pedido(request):
     template = 'comercial/registrarpedido.html'
-   
+    
     instance_pedido = Pedido()
     form_pedido = PedidoForm(instance=instance_pedido)
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, extra=1)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm)
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_itempedido = ItemPedidoFormSet(request.POST, request.FILES)
-        
+        form_item = ItemPedidoFormSet(request.POST, request.FILES)
+    
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
-
-            if form_itempedido.is_valid():
+            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            if form_item.is_valid():
                 pedido.save()
-                form_itempedido.save()
-
+                form_item.save()
                 messages.success(request, 'Pedido cadastrado com sucesso.')
                 return redirect('list_pedido')
         else:
             messages.error(request, form_pedido.errors)
-            messages.error(request, form_itempedido.errors)
-            return render(request, template, { 'form_pedido' : form_pedido, 'form_itempedido': form_itempedido })
-    return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_itempedido': ItemPedidoFormSet()})
+            messages.error(request, form_item.errors)
+            return render(request, template, { 'form_pedido' : form_pedido, 'form_item': form_item })
+    return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_item': ItemPedidoFormSet()})
 
 
 
@@ -48,11 +46,11 @@ def update_pedido(request, uuid):
     form_itempedido = ItemPedidoFormSet(instance=update_pedido)
 
     if request.method == 'POST':
-        form_pedido = PedidoForm(request.POST, instance=update_pedido)
+        form_pedido = PedidoForm(request.POST or None, instance=update_pedido)
 
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            form_itempedido = ItemPedidoFormSet(request.POST or None, request.FILES, instance=pedido)
         
             if form_itempedido.is_valid():
                 pedido.save()
@@ -65,7 +63,7 @@ def update_pedido(request, uuid):
         else:
             messages.error(request, form_pedido.errors)
             messages.error(request, form_itempedido.errors)
-    return render(request, 'comercial/registrarpedido.html', { 'form_pedido' : form_pedido, 'form_itempedido': form_itempedido, 'update_pedido':update_pedido })
+    return render(request, 'comercial/registrarpedido.html')
 
 
 @login_required(login_url='/entrar')

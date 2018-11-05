@@ -31,7 +31,7 @@ def register_compra(request):
                 compra.save()
                 form_itemcompra.save()
 
-                messages.success(request, 'Compra cadastrada com sucesso.')
+                messages.success(request, 'Compra registrada com sucesso.')
                 return redirect('list_compra')
         else:
             messages.error(request, form_compra.errors)

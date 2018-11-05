@@ -7,12 +7,11 @@ class ServicoForm(forms.ModelForm):
     class Meta:
         model = Servico
         fields = '__all__'
-        exclude = ('numero_servico',)
 
         widgets = {
             'prestador': forms.Select(attrs={'class':'form-control'}),
-            'data_servico': forms.DateInput(attrs={'class':'form-control', 'id':'dataservico'}),
-            'data_entrega': forms.DateInput(attrs={'class':'form-control', 'id':'dataentrega'}),
+            'data_servico': forms.DateInput(attrs={'class':'form-control data'}),
+            'data_entrega': forms.DateInput(attrs={'class':'form-control data'}),
             'tipo_servico': forms.Select(attrs={'class':'form-control'}),
             'servico': forms.Select(attrs={'class':'form-control'}),
             'status': forms.Select(attrs={'class':'form-control'}),

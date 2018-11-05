@@ -12,7 +12,7 @@ def create_cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Cliente cadastrado com sucesso.')
+            messages.success(request, messages.SUCCESS, 'Cliente cadastrado com sucesso.')
             return redirect('list_cliente')
         else:
             messages.error(request, form.errors)

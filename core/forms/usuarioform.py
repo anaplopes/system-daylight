@@ -12,14 +12,14 @@ class CustomUserCreationForm(UserCreationForm):
         'dt_nascimento', 'telefone', 'perfil', 'password1', 'password2']
 
         widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control'}),
-            'email': forms.EmailInput(attrs={'class':'form-control'}),
+            'username': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
+            'email': forms.EmailInput(attrs={'class':'form-control textlowercase'}),
             'is_staff': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'is_active': forms.CheckboxInput(attrs={'class':'form-check-input'}),
-            'nome': forms.TextInput(attrs={'class':'form-control'}),
-            'cpf': forms.TextInput(attrs={'class':'form-control', 'id':'cpf_user'}),
-            'dt_nascimento': forms.DateInput(attrs={'class':'form-control', 'id':'data'}),
-            'telefone': forms.TextInput(attrs={'class':'form-control', 'id':'telefone'}),
+            'nome': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
+            'cpf': forms.TextInput(attrs={'class':'form-control cpf_user'}),
+            'dt_nascimento': forms.DateInput(attrs={'class':'form-control data'}),
+            'telefone': forms.TextInput(attrs={'class':'form-control telefone'}),
             'perfil': forms.Select(attrs={'class':'form-control'}),
             'password1': forms.PasswordInput(attrs={'class':'form-control'}),
             'password2': forms.PasswordInput(attrs={'class':'form-control'}),

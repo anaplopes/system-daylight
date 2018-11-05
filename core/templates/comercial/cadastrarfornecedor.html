@@ -75,7 +75,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label class="small">CEP</label>
+                                        {{ form.cep }}
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label class="small">Endereço</label>
                                         {{ form.endereco }}
@@ -91,30 +98,21 @@
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Cidade</label>
                                         {{ form.cidade }}
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-row">
                                 <div class="col-1">
                                     <div class="form-group">
                                         <label class="small">UF</label>
                                         {{ form.uf }}
                                     </div>
                                 </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label class="small">CEP</label>
-                                        {{ form.cep }}
-                                    </div>
-                                </div>
                             </div>
-                            
+
                             <div class="pull-right">
                                 <a href="/comercial/gerenciarfornecedor"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
                                 <a href="{% url 'create_fornecedor' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>

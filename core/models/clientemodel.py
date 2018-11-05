@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 
 
-FISCAL_CHOICES = (('PF', 'Pessoal Física'), ('PJ', 'Pessoa Jurídica'),)
+FISCAL_CHOICES = (('PF', 'Pessoa Física'), ('PJ', 'Pessoa Jurídica'),)
 
 ###################### CLIENTE
 

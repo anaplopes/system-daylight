@@ -56,4 +56,6 @@ urlpatterns = [
     path('producao/registrarservico/', views.register_servico, name='register_servico'),
     path('producao/gerenciarservico/', views.list_servico, name='list_servico'),
     path('producao/registrarservico/<uuid>/', views.update_servico, name='update_servico'),
+
+    path('expedicao', views.expedicao, name='expedicao'),
 ]

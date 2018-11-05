@@ -136,20 +136,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for form in form_itempedido.forms %}
+                                        
+                                        {% for f in form_item.forms %}
                                         <tr>
-                                            <td>{{ form.produto }}</td>
-                                            <td>{{ form.cor }}</td>
-                                            <td>{{ form.tecido }}</td>
-                                            <td>{{ form.quantidade }}</td>
-                                            <td>{{ form.valor_unitario }}</td>
-                                            <td>{{ form.valor_total }}</td>
-                                            <td>{% if form.instance.uuid %}{{ form.DELETE }}{% endif %}</td>
+                                            <td>{{ f.produto }}</td>
+                                            <td>{{ f.cor }}</td>
+                                            <td>{{ f.tecido }}</td>
+                                            <td>{{ f.quantidade }}</td>
+                                            <td>{{ f.valor_unitario }}</td>
+                                            <td>{{ f.valor_total }}</td>
+                                            <td>{% if f.instance.uuid %}{{ f.DELETE }}{% endif %}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                {{ form_itempedido.management_form }}
+                                {{ form_item.management_form }}
                             </div>
 
                             <br />
