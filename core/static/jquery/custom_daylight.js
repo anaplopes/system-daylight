@@ -2,17 +2,17 @@
 
 // Função formset (add line e delete line)
 $('#pedidoFormsetTable tbody tr').formset({
-    prefix: '{{ form_itempedido.prefix }}',
+    prefixo: '{{ form_itempedido.prefix }}',
     formCssClass: 'dynamic-form_itempedido'
 });
 
 $('#compraFormsetTable tbody tr').formset({
-    prefix: '{{ form_itemcompra.prefix }}',
+    prefixo: '{{ form_itemcompra.prefix }}',
     formCssClass: 'dynamic-form_itemcompra'
 });
 
 $('#servicoFormsetTable tbody tr').formset({
-    prefix: '{{ form_itemservico.prefix }}',
+    prefixo: '{{ form_itemservico.prefix }}',
     formCssClass: 'dynamic-form_itemservico'
 });
 

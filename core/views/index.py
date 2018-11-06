@@ -22,11 +22,14 @@ def index(request):
     servicos = Servico.objects.filter(status='Em andamento')
     qtd_servicos = len(servicos)
 
-    apiadvisor = "http://apiadvisor.climatempo.com.br/api/v1/weather/locale/{id}/current?token={token}".format(id="3477", token="b7318a88ccb10c96eae3a3339bced184")
-    temperatura = requests.api.get(apiadvisor).json()['data']['temperature']
-    clima = requests.api.get(apiadvisor).json()['data']['condition']
-    icone_previsao = requests.api.get(apiadvisor).json()['data']['icon']
-    cidade = requests.api.get(apiadvisor).json()['name']
+    try:
+        apiadvisor = "http://apiadvisor.climatempo.com.br/api/v1/weather/locale/{id}/current?token={token}".format(id="3477", token="b7318a88ccb10c96eae3a3339bced184")
+        temperatura = requests.api.get(apiadvisor).json()['data']['temperature']
+        clima = requests.api.get(apiadvisor).json()['data']['condition']
+        icone_previsao = requests.api.get(apiadvisor).json()['data']['icon']
+        cidade = requests.api.get(apiadvisor).json()['name']
+    except:
+        pass
 
     return render(request, "index.html", { 'qtd_pedidos': qtd_pedidos,
                                             'qtd_compras': qtd_compras,

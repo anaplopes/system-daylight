@@ -20,7 +20,7 @@ class Pedido(models.Model):
     prazo_pagamento = models.CharField('Prazo de Pagamento', default='', choices=PRAZO_PGTO_CHOICES, max_length=20, null=True, blank=True)
     endereco_entrega = models.CharField('Endereço Entrega', max_length=100, null=True, blank=True)
     solicitante = models.CharField('Nome do Solicitante', max_length=50, null=True, blank=True)
-    status = models.CharField('Status do Pedido', default='Em andamento', choices=STATUS_CHOICES, max_length=20, null=False, blank=False)
+    status = models.CharField('Status do Pedido', default='Orçamento', choices=STATUS_CHOICES, max_length=20, null=False, blank=False)
     personalizacao = models.CharField('Estampa', choices=ESTAMPA_CHOICES, max_length=3, null=False, blank=False)
     observacao = models.TextField('Observação', max_length=1000, null=True, blank=True)
 

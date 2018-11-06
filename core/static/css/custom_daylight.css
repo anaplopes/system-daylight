@@ -1,3 +1,16 @@
+.vertical-center { /*alinhamento vertical*/
+  min-height: 100%;
+  min-height: 60vh;
+
+  display: flex;
+  align-items: center;
+}
+
+.horizontal-center {
+    margin: 0 auto;
+    width: 80%;
+
+}
 
 /* cor da seta do menu */
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
