@@ -20,14 +20,14 @@ def register_pedido(request):
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_item = ItemPedidoFormSet(request.POST, request.FILES)
+        form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, prefix='form_itempedido')
 
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_item = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
-            if form_item.is_valid():
+            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            if form_itempedido.is_valid():
                 pedido.save()
-                form_item.save()
+                form_itempedido.save()
                 messages.success(request, 'Pedido cadastrado com sucesso.', 'Sucesso')
                 return redirect('list_pedido')
         else:
@@ -38,13 +38,13 @@ def register_pedido(request):
             messages.error(request, tipo_erro1, 'Erro dados de pedido.')
 
             tipo_erro2 = ''
-            for erro in form_item.errors.values():
+            for erro in form_itempedido.errors.values():
                 tipo_erro2 += '\n'
                 tipo_erro2 += erro[0]
             messages.error(request, tipo_erro2, 'Erro itens de pedido.')
 
-            return render(request, template, { 'form_pedido' : form_pedido, 'form_item': form_item })
-    return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_item': ItemPedidoFormSet()})
+            return render(request, template, { 'form_pedido' : form_pedido, 'form_itempedido': form_itempedido })
+    return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_itempedido': ItemPedidoFormSet()})
 
 
 

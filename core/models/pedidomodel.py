@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 
-STATUS_CHOICES = (('Em andamento', 'Em andamento'), ('Finalizado', 'Finalizado'), ('Cancelado', 'Cancelado'),)
+STATUS_CHOICES = (('Orçamento', 'Orçamento'), ('Em andamento', 'Em andamento'), ('Finalizado', 'Finalizado'), ('Cancelado', 'Cancelado'),)
 FORM_PGTO_CHOICES = (('Débito', 'Débito'), ('Crédito', 'Crédito'), ('Boleto', 'Boleto'), ('Transferência', 'Transferência'),)
 PRAZO_PGTO_CHOICES = (('À vista', 'À vista'), ('1x', '1x'), ('2x', '2x'), ('3x', '3x'),)
 ESTAMPA_CHOICES = (('Sim', 'Sim'), ('Não', 'Não'),)

@@ -5,9 +5,12 @@ function imprime_alertas(){
             type: $(this).attr('data-type'),
             styling: 'bootstrap3',
             title: $(this).attr('data-title'),
-            buttons: {closer: true, sticker: false},
+            buttons: {closer: false, sticker: false},
             text: $(this).text(),
-            delay: 1000,
+            nonblock: {
+                nonblock: true
+            },
+            delay: 3000,
         });
         $(this).remove();
     });

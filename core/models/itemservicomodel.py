@@ -13,7 +13,6 @@ COR_CHOICES = (('Branco', 'Branco'), ('Preto', 'Preto'), ('Azul', 'Azul'), ('Ver
 class ItemServico(models.Model):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    numero_pedido = models.IntegerField('Numero do Pedido', unique=True, null=True, blank=True)
     numero_servico = models.ForeignKey(to='Servico', on_delete=models.CASCADE, null=False, blank=False)
     produto = models.ForeignKey(to='Produto', on_delete=models.CASCADE, null=False, blank=False)
     cor = models.CharField('Cor', choices=COR_CHOICES, max_length=30, null=False, blank=False)

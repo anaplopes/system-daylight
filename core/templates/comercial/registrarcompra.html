@@ -31,6 +31,13 @@
                                         {{ form_compra.data_compra}}
                                     </div>
                                 </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="small">Numero do Pedido</label>
+                                        {{ form_compra.numero_pedido }}
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-row">
@@ -90,6 +97,28 @@
                             <br />
 
                             <div class="table-responsive">
+                                <table role="grid" class="table table-hover table-sm table-secundary" id="">
+                                    <thead scope="col" class="card-header small text-center">
+                                        <tr>
+                                            <th>Tecido</th>
+                                            <th>Cor</th>
+                                            <th>Quantidade</th>
+                                            <th>Valor do Tecido</th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ form_compra.tecido }}</td>
+                                            <td>{{ form_compra.cor_tecido }}</td>
+                                            <td>{{ form_compra.qtd_tecido }}</td>
+                                            <td>{{ form_compra.valor_tecido }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="table-responsive">
                                 <table role="grid" class="table table-hover table-sm table-secundary" id="compraFormsetTable">
                                     <thead scope="col" class="card-header small text-center">
                                         <tr>
@@ -101,6 +130,7 @@
                                             <th></th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         {% for form in form_itemcompra.forms %}
                                         <tr>

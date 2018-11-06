@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 
 
+
 @login_required(login_url='/entrar')
 def expedicao(request):
     return render(request, "expedicao.html")

@@ -17,7 +17,7 @@ def register_compra(request):
 
     instance_compra = Compra()
     form_compra = CompraForm(instance=instance_compra)
-    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, extra=1)
+    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm)
 
     if request.method == 'POST':
         form_compra = CompraForm(request.POST)
@@ -53,7 +53,7 @@ def register_compra(request):
 
 @login_required(login_url='/entrar')
 def update_compra(request, uuid):
-    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, extra=1)
+    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm)
     update_compra = Compra.objects.get(uuid=uuid)
     form_compra = CompraForm(instance=update_compra)
     form_itemcompra = ItemCompraFormSet(instance=update_compra)

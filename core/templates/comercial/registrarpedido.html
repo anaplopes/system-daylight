@@ -114,7 +114,7 @@
                             <br />
 
                             <div class="table-responsive">
-                                <table role="grid" class="table table-hover table-sm table-secundary" id="pedidoFormsetTable">
+                                <table role="grid" class="table table-hover table-sm table-secundary" id="pedidoFormsetTable" data-formset-prefix="{{ form_itempedido.prefix }}">
                                     <thead scope="col" class="card-header small text-center">
                                         <tr>
                                             <th>Produto</th>
@@ -126,9 +126,9 @@
                                             <th></th>
                                         </tr>
                                     </thead>
+                                    
                                     <tbody>
-
-                                        {% for f in form_item.forms %}
+                                        {% for f in form_itempedido.forms %}
                                         {{ f.uuid }}
                                         <tr>
                                             <td>{{ f.produto }}</td>
@@ -142,7 +142,7 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                {{ form_item.management_form }}
+                                {{ form_itempedido.management_form }}
                             </div>
 
                             <br />

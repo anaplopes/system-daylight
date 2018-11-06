@@ -20,6 +20,7 @@ class Servico(models.Model):
     status = models.CharField('Status do Pedido', default='Em andamento', choices=STATUS_CHOICES, max_length=20, null=False, blank=False)
     valor_total = models.DecimalField('Valor Total', max_digits=10, decimal_places=2, null=False, max_length=5000, blank=False)
     observacao = models.TextField('Observação', max_length=1000, null=True, blank=True)
+    numero_pedido = models.ForeignKey(to='Pedido', on_delete=models.CASCADE, null=False, blank=False)
     
 
     class Meta:

@@ -11,7 +11,6 @@ class ItemServicoForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'numero_pedido': forms.TextInput(attrs={'class':'form-control'}),
             'produto': forms.Select(attrs={'class':'form-control'}),
             'cor': forms.Select(attrs={'class':'form-control'}),
             'quantidade': forms.NumberInput(attrs={'class':'form-control', 'id':'qtd_pedido'}),

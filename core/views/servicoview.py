@@ -16,7 +16,7 @@ def register_servico(request):
 
     instance_servico = Servico()
     form_servico = ServicoForm(instance=instance_servico)
-    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm, extra=1)
+    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm)
 
     if request.method == 'POST':
         form_servico = ServicoForm(request.POST)
@@ -52,7 +52,7 @@ def register_servico(request):
 
 @login_required(login_url='/entrar')
 def update_servico(request, uuid):
-    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm, extra=1)
+    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm)
     update_servico = Servico.objects.get(uuid=uuid)
     form_servico = ServicoForm(instance=update_servico)
     form_itemservico = ItemServicoFormSet(instance=update_servico)
@@ -92,7 +92,6 @@ def list_servico(request):
     template = 'producao/gerenciarservico.html'
     if request.method == 'POST':
 
-        #n_pedido = request.POST.get('n_pedido')
         numservico = request.POST.get('numservico')
         dtservico = request.POST.get('dtservico')
         status_servico = request.POST.get('status_servico')

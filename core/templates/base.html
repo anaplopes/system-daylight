@@ -17,6 +17,8 @@
 
   <!-- Pnotify -->
   <link href="{% static 'pnotify/dist/pnotify.css' %}" rel="stylesheet">
+  <link href="{% static 'pnotify/dist/pnotify.buttons.css' %}" rel="stylesheet">
+  <link href="{% static 'pnotify/dist/pnotify.nonblock.css' %}" rel="stylesheet">
 
   <!-- Custom Daylight CSS-->
   <link href="{% static 'css/custom_daylight.css' %}" rel="stylesheet">
@@ -156,15 +158,18 @@
   <!-- Custom scripts for all pages-->
   <script src="{% static 'jquery/formset.js' %}"></script>
   <script src="{% static 'jquery/jquery.mask.min.js' %}"></script>
-  <script src="{% static 'jquery/custom_daylight.js' %}"></script>
   <script src="{% static 'js/sb-admin.min.js' %}"></script>
 
   <!-- pnotify -->
   <script src="{% static 'pnotify/dist/pnotify.js' %}"></script>
   <script src="{% static 'pnotify/dist/pnotify.buttons.js' %}"></script>
+  <script src="{% static 'pnotify/dist/pnotify.nonblock.js' %}"></script>
 
   <!-- alertas_isme -->
   <script src="{% static 'jquery/alertas.js' %}"></script>
+
+  <!-- custom daylight -->
+  <script src="{% static 'jquery/custom_daylight.js' %}"></script>
 
   {% include "modal_logout.html" %}
 </body>

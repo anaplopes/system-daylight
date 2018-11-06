@@ -1,23 +1,22 @@
 
-$("#pedidoFormsetTable").ready(function () {
-    let qtd = $('#qtd_pedido').val();
-    let vlr_unitario = $('#vlr_unit_pedido').val();
-    let t_item = $('#total_item').val();
-});
-
 
 // Função formset (add line e delete line)
-$('#pedidoFormsets tbody tr').formset({
-    prefixo: '{{ form_item.prefix }}'
+$('#pedidoFormsetTable tbody tr').formset({
+    prefix: '{{ form_itempedido.prefix }}',
+    formCssClass: 'dynamic-form_itempedido'
 });
 
-$('#compraFormsets tbody tr').formset({
-    prefixo: '{{ form_item.prefix }}'
+$('#compraFormsetTable tbody tr').formset({
+    prefix: '{{ form_itemcompra.prefix }}',
+    formCssClass: 'dynamic-form_itemcompra'
 });
 
-$('#serviceFormsets tbody tr').formset({
-    prefixo: '{{ form_item.prefix }}'
+$('#servicoFormsetTable tbody tr').formset({
+    prefix: '{{ form_itemservico.prefix }}',
+    formCssClass: 'dynamic-form_itemservico'
 });
+
+
 
 
 // Texto
