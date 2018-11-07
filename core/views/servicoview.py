@@ -33,17 +33,8 @@ def register_servico(request):
                 messages.success(request, 'Serviço cadastrado com sucesso.', 'Sucesso')
                 return redirect('list_servico')
         else:
-            tipo_erro1 = ''
-            for erro in form_servico.errors.values():
-                tipo_erro1 += '\n'
-                tipo_erro1 += erro[0]
-            messages.error(request, tipo_erro1, 'Erro dados de serviço.')
-
-            tipo_erro2 = ''
-            for erro in form_itemservico.errors.values():
-                tipo_erro2 += '\n'
-                tipo_erro2 += erro[0]
-            messages.error(request, tipo_erro2, 'Erro itens de serviço.')
+            messages.error(request, form_servico.errors, 'Erro dados de serviço.')
+            messages.error(request, form_itemservico.errors, 'Erro itens de serviço.')
 
             return render(request, template, { 'form_servico' : form_servico, 'form_itemservico': form_itemservico })
     return render(request, template, { 'form_servico': ServicoForm(instance=instance_servico), 'form_itemservico': ItemServicoFormSet()})
@@ -60,7 +51,7 @@ def update_servico(request, uuid):
     if request.method == 'POST':
         form_servico = ServicoForm(request.POST, instance=update_servico)
 
-        if form_pedido.is_valid():
+        if form_servico.is_valid():
             servico = form_servico.save(commit=False)
             form_itemservico = ItemServicoFormSet(request.POST, request.FILES, instance=servico)
 

@@ -24,5 +24,6 @@ class Fornecedor(models.Model):
     class Meta:
         db_table = 'Fornecedor'
 
+
     def __str__(self):
-        return '{}'.format(self.fornecedorname)
+        return '{} ( {} )'.format(self.fornecedorname, self.numero_fiscal)

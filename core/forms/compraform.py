@@ -18,7 +18,7 @@ class CompraForm(forms.ModelForm):
             'responsavel': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
             'status': forms.Select(attrs={'class':'form-control'}),
             'observacao': forms.Textarea(attrs={'class':'form-control', 'rows':'3'}),
-            'numero_pedido': forms.TextInput(attrs={'class':'form-control'}),
+            'numero_pedido': forms.Select(attrs={'class':'form-control'}),
             'tecido': forms.Select(attrs={'class':'form-control'}),
             'qtd_tecido': forms.NumberInput(attrs={'class':'form-control'}),
             'valor_tecido': forms.NumberInput(attrs={'class':'form-control'}),

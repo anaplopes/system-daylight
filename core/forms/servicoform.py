@@ -17,5 +17,5 @@ class ServicoForm(forms.ModelForm):
             'status': forms.Select(attrs={'class':'form-control'}),
             'valor_total': forms.NumberInput(attrs={'class':'form-control', 'id':'total_pedido'}),
             'observacao': forms.Textarea(attrs={'class':'form-control', 'rows':'3'}),
-            'numero_pedido': forms.TextInput(attrs={'class':'form-control'}),
+            'numero_pedido': forms.Select(attrs={'class':'form-control'}),
             }

@@ -9,7 +9,34 @@
             <i class="fa fa-home fa-lg"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Expedição</li>
+    <li class="breadcrumb-item active">Expedição</li>
 </ol>
 
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <table class="table table-hover text-center">
+                <tr class="card-header">
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Data de Compra</th>
+                    <th scope="col">Data de Entrega</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                {% for p in x %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ p.numero_pedido }}</th>
+                        <td>{{ p.cliente }}</td>
+                        <td>{{ p.data_compra|date:'d/m/Y' }}</td>
+                        <td>{{ p.data_entrega|date:'d/m/Y' }}</td>
+                        <td>{{ p.status }}</td>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

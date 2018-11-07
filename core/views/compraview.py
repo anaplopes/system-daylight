@@ -40,12 +40,6 @@ def register_compra(request):
                 tipo_erro1 += erro[0]
             messages.error(request, tipo_erro1, 'Erro dados de compra.')
 
-            tipo_erro2 = ''
-            for erro in form_itemcompra.errors.values():
-                tipo_erro2 += '\n'
-                tipo_erro2 += erro[0]
-            messages.error(request, tipo_erro2, 'Erro itens de compra.')
-
             return render(request, template, { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra })
     return render(request, template, { 'form_compra': CompraForm(instance=instance_compra), 'form_itemcompra': ItemCompraFormSet()})
 

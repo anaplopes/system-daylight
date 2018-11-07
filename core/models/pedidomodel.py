@@ -28,6 +28,10 @@ class Pedido(models.Model):
         db_table = 'Pedido'
 
 
+    def __str__(self):
+        return '{}'.format(self.numero_pedido)
+
+
     def save(self, *args, **kwargs):
         if self._state.adding:
             last_pedido = type(self).objects.all().aggregate(largest=models.Max('numero_pedido'))['largest']
