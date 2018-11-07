@@ -81,6 +81,7 @@
                 <thead class="card-header">
                     <tr class="card-header">
                         <th scope="col">OS</th>
+                        <th scope="col">Pedido</th>
                         <th scope="col">Prestador</th>
                         <th scope="col">Dt Serviço</th>
                         <th scope="col">Dt Entrega</th>
@@ -93,6 +94,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">{{ servico.numero_servico }}</th>
+                        <th scope="row">{{ servico.numero_pedido }}</th>
                         <td>{{ servico.prestador }}</td>
                         <td>{{ servico.data_servico|date:'d/m/Y' }}</td>
                         <td>{{ servico.data_entrega|date:'d/m/Y' }}</td>

@@ -136,3 +136,55 @@ $(document).ready(function () {
         }
     });
 });
+
+
+
+function checkAll() {
+    let checkAll_novidade = $('input[name=checkAll]:checked');
+    if (checkAll_novidade.length){
+        $('input[name=check]').each(function() {
+            this.checked=true;
+        });
+    }
+    else{
+        $('input[name=check]').each(function() {
+            this.checked=false;
+        });
+    }
+}
+
+
+$('#btn_pedidoentregue').click(function() {debugger;
+    let pedido_check = $('input[name=check]:checked');
+
+    if (!pedido_check.length){
+        addAlertMessage('Você deve selecionar pelo menos um pedido para finalizar.',
+            'error', 'Nenhuma pedido selecionado');
+        return false;
+    }
+
+    let lista_pedido = [];
+    pedido_check.each(function() {
+        lista_pedido.push($(this).val());
+    });
+
+    let csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    $.ajax({
+        type: 'POST',
+        url: "/expedicao",
+        data:{
+            'lista': lista_pedido,
+        },
+        dataType: 'json',
+        beforeSend: function(xmlHTTPRequest){
+            xmlHTTPRequest.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        success : function(data){
+        },
+        error : function (error) {
+        }
+    });
+});
+
+
+
