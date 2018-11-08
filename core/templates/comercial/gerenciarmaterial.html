@@ -79,7 +79,7 @@
                         <td>{{ material.material }}</td>
 
                          {% if material %}
-                        <td><a href="{% url 'update_material' material.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button></a>
+                        <td><a href="{% url 'update_material' material.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button></a>
                             <a href="{% url 'delete_material' material.uuid %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}

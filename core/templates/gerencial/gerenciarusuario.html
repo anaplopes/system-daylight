@@ -88,7 +88,7 @@
                         <td>{{ usuario.perfil }}</td>
 
                         {% if usuario %}
-                        <td><a href="{% url 'update_usuario' usuario.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button></a>
+                        <td><a href="{% url 'update_usuario' usuario.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button></a>
                             <a href="{% url 'delete_usuario' usuario.uuid %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></a></td>
                         {% endif %}
                     </tr>

@@ -104,7 +104,7 @@
                         <td>{{ pedido.status }}</td>
 
                         {% if pedido %}
-                        <td><a href="{% url 'update_pedido' pedido.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a></td>
+                        <td><a href="{% url 'update_pedido' pedido.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button></a></td>
                         {% endif %}
                     </tr>
                 </tbody>
