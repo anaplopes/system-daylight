@@ -10,7 +10,7 @@ class MaterialForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'material': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
-            'tipo_material': forms.Select(attrs={'class':'form-control'}),
-            'Subtipo_material': forms.Select(attrs={'class':'form-control'}),
+            'material': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
+            'tipo_material': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'Subtipo_material': forms.Select(attrs={'class':'form-control form-control-sm'}),
             }

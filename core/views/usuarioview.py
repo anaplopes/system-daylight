@@ -12,7 +12,7 @@ def create_usuario(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Usuario cadastrado com sucesso.', 'Sucesso')
+            messages.success(request, 'Usuário cadastrado com sucesso.', 'Sucesso')
             return redirect('list_usuario')
         else:
             tipo_erro = ''
@@ -30,7 +30,7 @@ def update_usuario(request, uuid):
     form = CustomUserChangeForm(request.POST or None, instance=update_usuario)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Produto atualizado com sucesso.', 'Sucesso')
+        messages.success(request, 'Usuário atualizado com sucesso.', 'Sucesso')
         return redirect('list_usuario')
     else:
         tipo_erro = ''
@@ -46,7 +46,7 @@ def delete_usuario(request, uuid):
     delete_usuario = Profile.objects.get(uuid=uuid)
     if request.method == 'POST':
         delete_usuario.delete()
-        messages.success(request, 'Produto excluído com sucesso.', 'Sucesso')
+        messages.success(request, 'Usuário excluído com sucesso.', 'Sucesso')
         return redirect('list_usuario')
     return render(request, "exclusaoConf.html", {'delete_usuario': delete_usuario})
 

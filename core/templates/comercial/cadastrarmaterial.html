@@ -26,6 +26,15 @@
                             {% csrf_token %}
 
                             <div class="form-row">
+                                <div class="col-12">
+                                    <div class="pull-right">
+                                        <a href="/comercial/gerenciarmaterial"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
+                                        <a href="{% url 'create_material' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Tipo de Material</label>
@@ -48,11 +57,6 @@
                                         {{ form.material }}
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="pull-right">
-                                <a href="/comercial/gerenciarmaterial"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'create_material' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

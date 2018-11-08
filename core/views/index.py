@@ -11,19 +11,19 @@ import requests
 
 @login_required(login_url='/entrar')
 def index(request):
+
+    temperatura = None
+    clima = None
+    icone_previsao = None
+    cidade = None
+
+
     data_agora = datetime.datetime.now()
 
-    pedidos = Pedido.objects.filter(status='Em andamento')
-    qtd_pedidos = len(pedidos)
-
-    compras = Compra.objects.filter(status='Em andamento')
-    qtd_compras = len(compras)
-
-    servicos = Servico.objects.filter(status='Em andamento')
-    qtd_servicos = len(servicos)
-
-    expedicao = Servico.objects.filter(status='Finalizado')
-    qtd_expedicao = len(expedicao)
+    qtd_pedidos = Pedido.objects.filter(status='Em andamento').count()
+    qtd_compras = Compra.objects.filter(status='Em andamento').count()
+    qtd_servicos = Servico.objects.filter(status='Em andamento').count()
+    qtd_expedicao = Servico.objects.filter(status='Finalizado').count()
 
     try:
         apiadvisor = "http://apiadvisor.climatempo.com.br/api/v1/weather/locale/{id}/current?token={token}".format(id="3477", token="b7318a88ccb10c96eae3a3339bced184")

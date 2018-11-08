@@ -24,6 +24,15 @@
                         <form method="POST">
                             {% csrf_token %}
 
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <div class="pull-right">
+                                        <a href="/gerencial/gerenciarusuario"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
+                                        <a href="{% url 'create_usuario' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-row justify-content-md-center">
                                 <div class="col-4">
                                     <div class="form-group">
@@ -57,7 +66,6 @@
                             </div>
                             
                             <div class="form-row">
-
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="small">Telefone</label>
@@ -71,12 +79,6 @@
                                         {{ form.perfil }}
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div class="pull-right">
-                                <a href="/gerencial/gerenciarusuario"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'create_usuario' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

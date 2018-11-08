@@ -14,43 +14,48 @@
 
 <div class="row">
     <div class="col-sm-12">
+        <a href="/comercial/cadastrartecido"><button class="btn btn-primary btn-sm pull-right">Novo Tecido</button></a>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
         <div class="card">
-            <h6 class="card-header">Pesquisa</h6>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" autofocus>
+                        <form method="POST">
                             {% csrf_token %}
 
                             <div class="form-row">
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Tipo de Tecido</label>
-                                        <input class="form-control small" type="text" size="50" id="tipo_tecido" name="tipo_tecido">
+                                        <input class="form-control form-control-sm" type="text" size="50" id="tipo_tecido" name="tipo_tecido">
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Fabricante</label>
-                                        <input class="form-control small" type="text" size="50" id="fabricante" name="fabricante">
+                                        <input class="form-control form-control-sm" type="text" size="50" id="fabricante" name="fabricante">
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label class="small">Descrição do Tecido</label>
-                                        <input class="form-control small" type="text" size="100" id="desc_tecido" name="desc_tecido">
+                                        <input class="form-control form-control-sm" type="text" size="100" id="desc_tecido" name="desc_tecido">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="pull-right">
                                 <a href="{% url 'list_tecido' %}">
-                                    <button type="submit" class="btn btn-secundary btn-md pull-right">Buscar</button>
+                                    <button type="submit" class="btn btn-secundary btn-sm pull-right">Pesquisar</button>
                                 </a>
                             </div>
                         </form>
@@ -60,15 +65,13 @@
         </div>
     </div>
 </div>
-
 <br />
-
 <div class="row">
     <div class="col-sm-12">
-        <div class="card">
-            <table class="table table-hover text-center">
+        <div class="card table-responsive small">
+            <table role="grid" class="table table-hover text-center">
                 <thead class="card-header">
-                    <tr class="card-header">
+                    <tr scope="col" class="card-header text-center">
                         <th scope="col">Tipo de Tecido</th>
                         <th scope="col">Descrição do Tecido</th>
                         <th scope="col">Fabricante</th>
@@ -83,8 +86,8 @@
                         <td>{{ tecido.nome_fabricante }}</td>
 
                          {% if tecido %}
-                        <td><a href="{% url 'update_tecido' tecido.uuid %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
-                            <a href="{% url 'delete_tecido' tecido.uuid %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        <td><a href="{% url 'update_tecido' tecido.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_tecido' tecido.uuid %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></a>
                         </td>
                         {% endif %}
                     </tr>
@@ -92,12 +95,6 @@
                 {% endfor %}
             </table>
         </div>
-        <div class="card-body">
-            <a href="/comercial/cadastrartecido">
-                <button type="submit" class="btn btn-primary btn-md pull-right">Novo</button>
-            </a>
-        </div>
     </div>
 </div>
-<br />
 {% endblock %}

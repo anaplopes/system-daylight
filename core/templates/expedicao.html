@@ -16,7 +16,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="pull-right">
-            <a href=""><button type="submit" class="btn btn-success btn-md" id="btn_pedidoentregue">Pedido Entregue</button></a>
+            <a href="{% url 'expedicao' %}"><button type="submit" class="btn btn-success btn-sm" id="btn_pedidoentregue">Pedido Entregue</button></a>
         </div>
     </div>
 </div>
@@ -25,9 +25,10 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <div class="card">
-            <table class="table table-hover text-center">
-                    <tr class="card-header">
+        <div class="card table-responsive small">
+            <table role="grid" class="table table-hover text-center">
+                <thead class="card-header">
+                    <tr scope="col" class="card-header text-center">
                         <th><input type="checkbox" class="checkAll" name="checkAll" onclick="checkAll()"/></th>
                         <th scope="col">Pedido</th>
                         <th scope="col">Cliente</th>

@@ -10,9 +10,9 @@ class ProdutoForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'tipo_produto': forms.Select(attrs={'class':'form-control'}),
-            'produto': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
-            'modelo': forms.Select(attrs={'class':'form-control'}),
-            'classificacao': forms.Select(attrs={'class':'form-control'}),
-            'tamanho': forms.Select(attrs={'class':'form-control'}),
+            'tipo_produto': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'produto': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
+            'modelo': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'classificacao': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'tamanho': forms.Select(attrs={'class':'form-control form-control-sm'}),
             }

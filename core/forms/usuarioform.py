@@ -12,15 +12,15 @@ class CustomUserCreationForm(UserCreationForm):
         'dt_nascimento', 'telefone', 'perfil', 'password1', 'password2']
 
         widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
-            'email': forms.EmailInput(attrs={'class':'form-control textlowercase'}),
+            'username': forms.TextInput(attrs={'class':'form-control form-control-sm textlowercase'}),
+            'email': forms.EmailInput(attrs={'class':'form-control form-control-sm textlowercase'}),
             'is_staff': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'is_active': forms.CheckboxInput(attrs={'class':'form-check-input'}),
-            'nome': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
-            'cpf': forms.TextInput(attrs={'class':'form-control cpf_user'}),
-            'dt_nascimento': forms.DateInput(attrs={'class':'form-control data'}),
-            'telefone': forms.TextInput(attrs={'class':'form-control telefone'}),
-            'perfil': forms.Select(attrs={'class':'form-control'}),
+            'nome': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
+            'cpf': forms.TextInput(attrs={'class':'form-control form-control-sm cpf_user'}),
+            'dt_nascimento': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
+            'telefone': forms.TextInput(attrs={'class':'form-control form-control-sm telefone'}),
+            'perfil': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'password1': forms.PasswordInput(attrs={'class':'form-control'}),
             'password2': forms.PasswordInput(attrs={'class':'form-control'}),
             }
@@ -34,10 +34,10 @@ class CustomUserChangeForm(UserChangeForm):
         exclude = ['nome', 'cpf', 'dt_nascimento']
 
         widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control'}),
-            'email': forms.EmailInput(attrs={'class':'form-control'}),
+            'username': forms.TextInput(attrs={'class':'form-control form-control-sm'}),
+            'email': forms.EmailInput(attrs={'class':'form-control form-control-sm'}),
             'is_staff': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'is_active': forms.CheckboxInput(attrs={'class':'form-check-input'}),
-            'telefone': forms.TextInput(attrs={'class':'form-control', 'id':'telefone'}),
-            'perfil': forms.Select(attrs={'class':'form-control'}),
+            'telefone': forms.TextInput(attrs={'class':'form-control form-control-sm', 'id':'telefone'}),
+            'perfil': forms.Select(attrs={'class':'form-control form-control-sm'}),
             }

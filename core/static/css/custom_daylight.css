@@ -12,6 +12,27 @@
 
 }
 
+#nome_empresa{
+  color: white;
+}
+
+.bg-papaya{
+  background: #E24E42;
+}
+.bg-mustard{
+  background: #E9B000;
+}
+.bg-blush{
+  background: #EB6E80;
+}
+.bg-aqua{
+  background: #008F95;
+}
+.bg-neutral{
+  background: #EFEFEF;
+}
+
+
 /* cor da seta do menu */
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
   color: #868e96;
@@ -38,24 +59,4 @@
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:focus,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:hover {
   color: white;
-}
-
-#nome_empresa{
-  color: white;
-}
-
-.bg-papaya{
-  background: #E24E42;
-}
-.bg-mustard{
-  background: #E9B000;
-}
-.bg-blush{
-  background: #EB6E80;
-}
-.bg-aqua{
-  background: #008F95;
-}
-.bg-neutral{
-  background: #EFEFEF;
 }

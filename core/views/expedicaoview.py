@@ -12,8 +12,7 @@ def expedicao(request):
         
     pedido_entregue = None
     pronto_entrega = {}
-        
-        
+
     # lista os pedidos disponiveis para entrega
     validacao_status = []
     

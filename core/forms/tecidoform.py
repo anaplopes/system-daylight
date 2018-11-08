@@ -10,7 +10,7 @@ class TecidoForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'tecido': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
-            'tipo_tecido': forms.Select(attrs={'class':'form-control'}),
-            'nome_fabricante': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
+            'tecido': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
+            'tipo_tecido': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'nome_fabricante': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
             }
