@@ -149,16 +149,16 @@
   </a>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
   <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'jquery/formset.js' %}"></script>
+  <script src="{% static 'jquery/jquery.mask.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'js/zabuto_calendar.js' %}"></script>
   <script src="{% static 'js/calendario.js' %}"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="{% static 'jquery/formset.js' %}"></script>
-  <script src="{% static 'jquery/jquery.mask.min.js' %}"></script>
+  <!-- Custom -->
   <script src="{% static 'js/sb-admin.min.js' %}"></script>
 
   <!-- pnotify -->
@@ -172,7 +172,14 @@
   <!-- custom daylight -->
   <script src="{% static 'jquery/custom_daylight.js' %}"></script>
 
+  <script type="text/javascript">
+    $(function () {
+      $('#pedidoFormsets tbody tr').formset({
+        prefix: '{{ formset.prefix }}'
+      });
+    })
+  </script>
+
   {% include "modal_logout.html" %}
-  {% include "modal_exclusao.html" %}
 </body>
 </html>

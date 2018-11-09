@@ -13,7 +13,7 @@ class Pedido(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     numero_pedido = models.IntegerField('Numero do Pedido', unique=True, null=True, blank=True)
     cliente = models.ForeignKey(to='Cliente', on_delete=models.CASCADE, null=False, blank=False)
-    data_compra = models.DateField('Data de Compra', max_length=10, null=False)
+    data_pedido = models.DateField('Data de Compra', max_length=10, null=False)
     data_entrega = models.DateField('Data de Entrega', max_length=10, null=False)
     valor_total = models.DecimalField('Valor Total', max_digits=10, decimal_places=2, null=False, max_length=5000, blank=False)
     forma_pagamento = models.CharField('Forma de Pagamento', default='', choices=FORM_PGTO_CHOICES, max_length=15, null=True, blank=True)

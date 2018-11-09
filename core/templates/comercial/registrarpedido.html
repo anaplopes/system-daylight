@@ -25,10 +25,19 @@
                             {% csrf_token %}
 
                             <div class="form-row">
+                                <div class="col-12">
+                                    <div class="pull-right">
+                                        <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
+                                        <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Data de Compra</label>
-                                        {{ form_pedido.data_compra}}
+                                        <label class="small">Data do Pedido</label>
+                                        {{ form_pedido.data_pedido}}
                                     </div>
                                 </div>
 
@@ -38,6 +47,7 @@
                                         {{ form_pedido.data_entrega}}
                                     </div>
                                 </div>
+                                {{ form_pedido.numero_pedido}}
                             </div>
 
                             <div class="form-row">
@@ -130,6 +140,7 @@
                                     <tbody>
                                         {% for f in form_itempedido.forms %}
                                         {{ f.uuid }}
+                                        {{ f.numero_pedido }}
                                         <tr>
                                             <td>{{ f.produto }}</td>
                                             <td>{{ f.cor }}</td>
@@ -137,20 +148,13 @@
                                             <td>{{ f.quantidade }}</td>
                                             <td>{{ f.valor_unitario }}</td>
                                             <td>{{ f.valor_total }}</td>
-                                            <td>{% if f.instance.uuid %}{{ f.DELETE }}{% endif %}</td>
+                                            <td>{{ f.DELETE }}</td>
                                         </tr>
                                         {% endfor %}
+                                        
                                     </tbody>
                                 </table>
                                 {{ form_itempedido.management_form }}
-                            </div>
-
-                            <br />
-                            <br />
-
-                            <div class="pull-right">
-                                <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

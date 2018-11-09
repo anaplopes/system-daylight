@@ -1,23 +1,5 @@
 
 
-// Função formset (add line e delete line)
-$('#pedidoFormsetTable tbody tr').formset({
-    prefixo: '{{ form_itempedido.prefix }}',
-    formCssClass: 'dynamic-form_itempedido'
-});
-
-$('#compraFormsetTable tbody tr').formset({
-    prefixo: '{{ form_itemcompra.prefix }}',
-    formCssClass: 'dynamic-form_itemcompra'
-});
-
-$('#servicoFormsetTable tbody tr').formset({
-    prefixo: '{{ form_itemservico.prefix }}',
-    formCssClass: 'dynamic-form_itemservico'
-});
-
-
-
 
 // Texto
 $(".textuppercase").keyup(function () {
@@ -154,7 +136,7 @@ function checkAll() {
 }
 
 
-$('#btn_pedidoentregue').click(function() {debugger;
+$('#btn_pedidoentregue').click(function() {
     let pedido_check = $('input[name=check]:checked');
 
     if (!pedido_check.length){
@@ -185,6 +167,3 @@ $('#btn_pedidoentregue').click(function() {debugger;
         }
     });
 });
-
-
-

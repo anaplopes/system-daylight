@@ -12,15 +12,16 @@ class PedidoForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'cliente': forms.Select(attrs={'class':'form-control'}),
-            'data_compra': forms.DateInput(attrs={'class':'form-control data'}),
-            'data_entrega': forms.DateInput(attrs={'class':'form-control data'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control', 'id':'total_pedido'}),
-            'forma_pagamento': forms.Select(attrs={'class':'form-control'}),
-            'prazo_pagamento': forms.Select(attrs={'class':'form-control'}),
-            'endereco_entrega': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
-            'solicitante': forms.TextInput(attrs={'class':'form-control textcapitalize'}),
-            'status': forms.Select(attrs={'class':'form-control'}),
-            'personalizacao': forms.Select(attrs={'class':'form-control'}),
-            'observacao': forms.Textarea(attrs={'class':'form-control', 'rows':'3'}),
+            'numero_pedido': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'type':'hidden'}),
+            'cliente': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'data_pedido': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
+            'data_entrega': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'forma_pagamento': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'prazo_pagamento': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'endereco_entrega': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
+            'solicitante': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
+            'status': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'personalizacao': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'observacao': forms.Textarea(attrs={'class':'form-control form-control-sm', 'rows':'3'}),
             }

@@ -16,20 +16,23 @@ def register_pedido(request):
 
     instance_pedido = Pedido()
     form_pedido = PedidoForm(instance=instance_pedido)
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, fk_name='numero_pedido', min_num=1, max_num=50, can_delete=True)
+    form_itempedido = ItemPedidoFormSet(instance=instance_pedido)
 
     if request.method == 'POST':
         form_pedido = PedidoForm(request.POST)
-        form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, prefix='form_itempedido')
 
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
+            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido, prefix='formset')
+            
             if form_itempedido.is_valid():
                 pedido.save()
                 form_itempedido.save()
+                
                 messages.success(request, 'Pedido cadastrado com sucesso.', 'Sucesso')
                 return redirect('list_pedido')
+
         else:
             tipo_erro1 = ''
             for erro in form_pedido.errors.values():
@@ -50,26 +53,26 @@ def register_pedido(request):
 
 @login_required(login_url='/entrar')
 def update_pedido(request, uuid):
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm)
+
     update_pedido = Pedido.objects.get(uuid=uuid)
     form_pedido = PedidoForm(instance=update_pedido)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, fk_name='numero_pedido', min_num=1, max_num=50, can_delete=True)
     form_itempedido = ItemPedidoFormSet(instance=update_pedido)
 
     if request.method == 'POST':
-        form_pedido = PedidoForm(request.POST or None, instance=update_pedido)
+        form_pedido = PedidoForm(request.POST, instance=update_pedido)
 
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_itempedido = ItemPedidoFormSet(request.POST or None, request.FILES, instance=pedido)
+            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
 
             if form_itempedido.is_valid():
                 pedido.save()
-                instances = form_itempedido.save(commit=False)
-                for instance in instances:
-                    instance.save()
+                form_itempedido.save()
 
                 messages.success(request, 'Pedido atualizado com sucesso.', 'Sucesso')
                 return redirect('list_pedido')
+
         else:
             tipo_erro1 = ''
             for erro in form_pedido.errors.values():
@@ -82,7 +85,7 @@ def update_pedido(request, uuid):
                 tipo_erro2 += '\n'
                 tipo_erro2 += erro[0]
             messages.error(request, tipo_erro2, 'Erro itens de pedido.')
-    return render(request, 'comercial/registrarpedido.html')
+    return render(request, 'comercial/registrarpedido.html', {'form_pedido': form_pedido, 'form_itempedido': form_itempedido})
 
 
 @login_required(login_url='/entrar')
