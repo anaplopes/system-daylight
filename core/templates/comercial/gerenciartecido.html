@@ -34,21 +34,21 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Tipo de Tecido</label>
-                                        <input class="form-control form-control-sm" type="text" size="50" id="tipo_tecido" name="tipo_tecido">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="50" id="tipo_tecido" name="tipo_tecido">
                                     </div>
                                 </div>
 
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Fabricante</label>
-                                        <input class="form-control form-control-sm" type="text" size="50" id="fabricante" name="fabricante">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="50" id="fabricante" name="fabricante">
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label class="small">Descrição do Tecido</label>
-                                        <input class="form-control form-control-sm" type="text" size="100" id="desc_tecido" name="desc_tecido">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="100" id="desc_tecido" name="desc_tecido">
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +86,17 @@
                         <td>{{ tecido.nome_fabricante }}</td>
 
                          {% if tecido %}
-                        <td><a href="{% url 'update_tecido' tecido.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button></a>
-                            <a href="{% url 'delete_tecido' tecido.uuid %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></a>
+                        <td>
+                            <a href="{% url 'update_tecido' tecido.uuid %}">
+                                <button class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'delete_tecido' tecido.uuid %}">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </a>
                         </td>
                         {% endif %}
                     </tr>

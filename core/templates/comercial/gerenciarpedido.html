@@ -39,8 +39,8 @@
 
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label class="small">Data da Compra</label>
-                                        <input class="form-control form-control-sm" type="date" id="dtcompra" name="dtcompra">
+                                        <label class="small">Data do Pedido</label>
+                                        <input class="form-control form-control-sm" type="date" id="dtpedido" name="dtpedido">
                                     </div>
                                 </div>
 
@@ -56,7 +56,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label class="small">Cliente</label>
-                                        <input class="form-control form-control-sm" type="text" size="100" id="cliente" name="cliente">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="100" id="cliente" name="cliente">
                                     </div>
                                 </div>
 
@@ -111,7 +111,13 @@
                         <td>{{ pedido.status }}</td>
 
                         {% if pedido %}
-                        <td><a href="{% url 'update_pedido' pedido.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button></a></td>
+                        <td>
+                            <a href="{% url 'update_pedido' pedido.uuid %}">
+                                <button class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </a>
+                        </td>
                         {% endif %}
                     </tr>
                 </tbody>

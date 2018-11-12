@@ -50,6 +50,4 @@ def expedicao(request):
             pedido_entregue.data_entrega = data_hj
             pedido_entregue.save()
         
-    return render(request, "expedicao.html", {'pronto_entrega': pronto_entrega,
-                                                  'pedido_entregue': pedido_entregue,
-                                                  'confere': confere})
+    return render(request, "expedicao.html", {'pronto_entrega': pronto_entrega, 'pedido_entregue': pedido_entregue})

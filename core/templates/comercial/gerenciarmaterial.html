@@ -34,14 +34,14 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Tipo de Material</label>
-                                        <input class="form-control form-control-sm" type="text" size="50" id="tipo_material" name="tipo_material">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="50" id="tipo_material" name="tipo_material">
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label class="small">Descrição do Material</label>
-                                        <input class="form-control form-control-sm" type="text" size="100" id="desc_material" name="desc_material">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="100" id="desc_material" name="desc_material">
                                     </div>
                                 </div>
                             </div>
@@ -79,8 +79,17 @@
                         <td>{{ material.material }}</td>
 
                          {% if material %}
-                        <td><a href="{% url 'update_material' material.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button></a>
-                            <a href="{% url 'delete_material' material.uuid %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></a>
+                        <td>
+                            <a href="{% url 'update_material' material.uuid %}">
+                                <button class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'delete_material' material.uuid %}">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </a>
                         </td>
                         {% endif %}
                     </tr>

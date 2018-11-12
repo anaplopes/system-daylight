@@ -29,6 +29,7 @@
   {% for message in messages %}
     {% if message.extra_tags == 'Erro' %}<div class="alert_message" data-title="{{ message.extra_tags }}" data-type="error" hidden>{{ message }}</div>
     {% elif message.extra_tags == 'Sucesso' %}<div class="alert_message" data-title="{{ message.extra_tags }}" data-type="success" hidden>{{ message }}</div>
+    {% elif message.extra_tags == 'Informação' %}<div class="alert_message" data-title="{{ message.extra_tags }}" data-type="warning" hidden>{{ message }}</div>
     {% endif %}
   {% endfor %}
 
@@ -106,7 +107,7 @@
     <!-- USER E LOGOUT-->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" href="#">
+          <a class="nav-link" data-toggle="modal">
             <i class="fa fa-fw fa-user"></i>
             {% if user.is_authenticated %}
                 Olá {{ user.username }}
@@ -150,13 +151,12 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="{% static 'jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
-  <script src="{% static 'jquery/formset.js' %}"></script>
-  <script src="{% static 'jquery/jquery.mask.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'js/zabuto_calendar.js' %}"></script>
   <script src="{% static 'js/calendario.js' %}"></script>
+  <script src="{% static 'jquery/formset.js' %}"></script>
+  <script src="{% static 'jquery/jquery.mask.min.js' %}"></script>
 
   <!-- Custom -->
   <script src="{% static 'js/sb-admin.min.js' %}"></script>
@@ -175,6 +175,12 @@
   <script type="text/javascript">
     $(function () {
       $('#pedidoFormsets tbody tr').formset({
+        prefix: '{{ formset.prefix }}'
+      });
+            $('#compraFormsets tbody tr').formset({
+        prefix: '{{ formset.prefix }}'
+      });
+            $('#servicoFormsets tbody tr').formset({
         prefix: '{{ formset.prefix }}'
       });
     })

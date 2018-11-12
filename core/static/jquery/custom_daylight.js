@@ -1,5 +1,14 @@
 
 
+// Disable em item compra
+$('#item_c_tecido').change(function () {
+    $('#item_c_material').attr('disabled', 'disabled')
+});
+
+$('#item_c_material').change(function () {
+    $('#item_c_tecido').attr('disabled', 'disabled')
+});
+
 
 // Texto
 $(".textuppercase").keyup(function () {
@@ -40,8 +49,8 @@ $('.data').keydown(function () {
 
 
 // Mascara CPF Usuario
-$('.cpf_user').keydown(function () {
-    $(".cpf_user").mask("999.999.999-99");
+$('.cpf').keydown(function () {
+    $(".cpf").mask("999.999.999-99");
 });
 
 
@@ -54,6 +63,33 @@ $(".cpfcnpj").keydown(function () {
     } else if (classif === 'PJ') {
         $(".cpfcnpj").mask("99.999.999/9999-99");
     }
+});
+
+
+// Mascara CPF/CNPJ Pesquisa
+$(".pesq_cpfcnpj").keydown(function () {
+    try {
+        $(".pesq_cpfcnpj").unmask();
+    } catch (e) { }
+
+    var tamanho = $(".pesq_cpfcnpj").val().length;
+
+    if (tamanho < 11) {
+        $(".pesq_cpfcnpj").mask("999.999.999-99");
+    } else if (tamanho >= 11) {
+        $(".pesq_cpfcnpj").mask("99.999.999/9999-99");
+    }
+
+    // ajustando foco
+    var elem = this;
+    setTimeout(function () {
+        // mudo a posição do seletor
+        elem.selectionStart = elem.selectionEnd = 10000;
+    }, 0);
+    // reaplico o valor para mudar o foco
+    var currentValue = $(this).val();
+    $(this).val('');
+    $(this).val(currentValue);
 });
 
 
@@ -122,8 +158,8 @@ $(document).ready(function () {
 
 
 function checkAll() {
-    let checkAll_novidade = $('input[name=checkAll]:checked');
-    if (checkAll_novidade.length){
+    let checkAll_item = $('input[name=checkAll]:checked');
+    if (checkAll_item.length){
         $('input[name=check]').each(function() {
             this.checked=true;
         });
@@ -166,4 +202,11 @@ $('#btn_pedidoentregue').click(function() {
         error : function (error) {
         }
     });
+});
+
+
+$('tr td #vlr_tt').each(function () {
+    let x = $('#vlr_unit').val();
+    let y = $('#qtd').val();
+    let z = $('#vlr_tt').val(x * y);
 });

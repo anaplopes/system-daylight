@@ -62,11 +62,21 @@ def list_usuario(request):
 
         if cpf_usuario != "":
             lista_usuario = CustomUser.objects.filter(cpf=cpf_usuario)
+            if lista_usuario.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif email_usuario != "":
             lista_usuario = CustomUser.objects.filter(email=email_usuario)
+            if lista_usuario.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif nome_usuario != "":
             lista_usuario = CustomUser.objects.filter(nome__contains=nome_usuario)
+            if lista_usuario.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, {'lista_usuario': lista_usuario})
     else:

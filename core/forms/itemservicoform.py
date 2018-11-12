@@ -11,9 +11,10 @@ class ItemServicoForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'produto': forms.Select(attrs={'class':'form-control'}),
-            'cor': forms.Select(attrs={'class':'form-control'}),
-            'quantidade': forms.NumberInput(attrs={'class':'form-control', 'id':'qtd_pedido'}),
-            'valor_unitario': forms.NumberInput(attrs={'class':'form-control', 'id':'vlr_unit_pedido'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control', 'id':'total_item'}),
+            'numero_servico': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'type':'hidden'}),
+            'produto': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'cor': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
             }

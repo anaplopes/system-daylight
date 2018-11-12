@@ -17,7 +17,7 @@ class CustomUserCreationForm(UserCreationForm):
             'is_staff': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'is_active': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'nome': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
-            'cpf': forms.TextInput(attrs={'class':'form-control form-control-sm cpf_user'}),
+            'cpf': forms.TextInput(attrs={'class':'form-control form-control-sm cpf'}),
             'dt_nascimento': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
             'telefone': forms.TextInput(attrs={'class':'form-control form-control-sm telefone'}),
             'perfil': forms.Select(attrs={'class':'form-control form-control-sm'}),

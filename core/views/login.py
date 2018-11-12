@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-import django.contrib.messages as messages
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms import *
 from core.models import *

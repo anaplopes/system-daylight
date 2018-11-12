@@ -62,11 +62,21 @@ def list_cliente(request):
 
         if numero_fiscal != "":
             lista_cliente = Cliente.objects.filter(numero_fiscal=numero_fiscal)
+            if lista_cliente.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif email_cliente != "":
             lista_cliente = Cliente.objects.filter(email=email_cliente)
+            if lista_cliente.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif nome_cliente != "":
             lista_cliente = Cliente.objects.filter(clientename__contains=nome_cliente)
+            if lista_cliente.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, {'lista_cliente': lista_cliente})
     else:

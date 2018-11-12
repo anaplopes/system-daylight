@@ -2,6 +2,9 @@
 from django.forms import ModelForm
 from django import forms
 from core.models.servicomodel import Servico
+from core.models.itemservicomodel import ItemServico
+from core.forms.itemservicoform import ItemServicoForm
+
 
 class ServicoForm(forms.ModelForm):
     class Meta:
@@ -9,13 +12,14 @@ class ServicoForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'prestador': forms.Select(attrs={'class':'form-control'}),
-            'data_servico': forms.DateInput(attrs={'class':'form-control data'}),
-            'data_entrega': forms.DateInput(attrs={'class':'form-control data'}),
-            'tipo_servico': forms.Select(attrs={'class':'form-control'}),
-            'servico': forms.Select(attrs={'class':'form-control'}),
-            'status': forms.Select(attrs={'class':'form-control'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control', 'id':'total_pedido'}),
-            'observacao': forms.Textarea(attrs={'class':'form-control', 'rows':'3'}),
-            'numero_pedido': forms.Select(attrs={'class':'form-control'}),
+            'numero_servico': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'type':'hidden'}),
+            'prestador': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'data_servico': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
+            'data_entrega': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
+            'tipo_servico': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'servico': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'status': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'observacao': forms.Textarea(attrs={'class':'form-control form-control-sm', 'rows':'3'}),
+            'numero_pedido': forms.Select(attrs={'class':'form-control form-control-sm'}),
             }

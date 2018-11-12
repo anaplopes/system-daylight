@@ -24,4 +24,4 @@ class Material(models.Model):
         db_table = 'Material'
 
     def __str__(self):
-        return '{} {}'.format(self.material, self.tipo_material, self.Subtipo_material)
+        return '{} {}'.format(self.tipo_material, self.Subtipo_material)

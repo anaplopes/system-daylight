@@ -62,11 +62,21 @@ def list_produto(request):
 
         if tipo_produto != "":
             lista_produto = Produto.objects.filter(tipo_produto__contains=tipo_produto)
+            if lista_produto.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif class_produto != "":
             lista_produto = Produto.objects.filter(classificacao__contains=class_produto)
+            if lista_produto.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif desc_produto != "":
             lista_produto = Produto.objects.filter(produto__contains=desc_produto)
+            if lista_produto.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, {'lista_produto': lista_produto})
     else:

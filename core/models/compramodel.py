@@ -23,11 +23,7 @@ class Compra(models.Model):
     responsavel = models.CharField('Nome do Responsavel', max_length=50, null=True, blank=True)
     status = models.CharField('Status do Pedido', default='Em andamento', choices=STATUS_CHOICES, max_length=20, null=False, blank=False)
     observacao = models.TextField('Observação', max_length=1000, null=True, blank=True)
-    numero_pedido = models.ForeignKey(to='Pedido', on_delete=models.CASCADE, null=False, blank=False)
-    tecido = models.ForeignKey(to='Tecido', on_delete=models.CASCADE, null=False, blank=False)
-    qtd_tecido = models.IntegerField('Quantidade Tecido', null=False, blank=False)
-    valor_tecido = models.DecimalField('Valor Tecido', max_digits=10, decimal_places=2, null=False, max_length=5000, blank=False)
-    cor_tecido = models.CharField('Cor Tecido', choices=COR_CHOICES, max_length=30, null=False, blank=False)
+    numero_pedido = models.ForeignKey(to='Pedido', on_delete=models.CASCADE, null=True, blank=True)
 
 
     class Meta:

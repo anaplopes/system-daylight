@@ -24,13 +24,13 @@ def register_pedido(request):
 
         if form_pedido.is_valid():
             pedido = form_pedido.save(commit=False)
-            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido, prefix='formset')
+            form_itempedido = ItemPedidoFormSet(request.POST, request.FILES, instance=pedido)
             
             if form_itempedido.is_valid():
                 pedido.save()
                 form_itempedido.save()
                 
-                messages.success(request, 'Pedido cadastrado com sucesso.', 'Sucesso')
+                messages.success(request, 'Pedido registrado com sucesso.', 'Sucesso')
                 return redirect('list_pedido')
 
         else:
@@ -94,22 +94,38 @@ def list_pedido(request):
     if request.method == 'POST':
 
         numpedido = request.POST.get('numpedido')
-        dtcompra = request.POST.get('dtcompra')
+        dtpedido = request.POST.get('dtpedido')
         dtentrega = request.POST.get('dtentrega')
         name_cliente = request.POST.get('cliente')
         status_pedido = request.POST.get('status_pedido')
 
         if numpedido != "":
             lista_pedido = Pedido.objects.filter(numero_pedido=numpedido)
+            if lista_pedido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif name_cliente != "":
             lista_pedido = Pedido.objects.filter(cliente__in=Cliente.objects.filter(clientename__iexact=name_cliente))
-        elif dtcompra != "":
-            lista_pedido = Pedido.objects.filter(data_compra__contains=dtcompra)
+            if lista_pedido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
+        elif dtpedido != "":
+            lista_pedido = Pedido.objects.filter(data_pedido__contains=dtpedido)
+            if lista_pedido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif dtentrega != "":
             lista_pedido = Pedido.objects.filter(data_entrega__contains=dtentrega)
+            if lista_pedido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif status_pedido != "--Selecione--":
             lista_pedido = Pedido.objects.filter(status=status_pedido)
+            if lista_pedido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, {'lista_pedido': lista_pedido})
     else:

@@ -25,6 +25,15 @@
                             {% csrf_token %}
 
                             <div class="form-row">
+                                <div class="col-12">
+                                    <div class="pull-right">
+                                        <a href="/comercial/gerenciarcompra"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
+                                        <a href="{% url 'register_compra' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Data de Compra</label>
@@ -38,6 +47,7 @@
                                         {{ form_compra.numero_pedido }}
                                     </div>
                                 </div>
+                                {{ form_compra.numero_compra }}
                             </div>
 
                             <div class="form-row">
@@ -97,31 +107,10 @@
                             <br />
 
                             <div class="table-responsive">
-                                <table role="grid" class="table table-hover table-sm table-secundary" id="">
-                                    <thead scope="col" class="card-header small text-center">
-                                        <tr>
-                                            <th>Tecido</th>
-                                            <th>Cor</th>
-                                            <th>Quantidade</th>
-                                            <th>Valor do Tecido</th>
-                                        </tr>
-                                    </thead>
-                            
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ form_compra.tecido }}</td>
-                                            <td>{{ form_compra.cor_tecido }}</td>
-                                            <td>{{ form_compra.qtd_tecido }}</td>
-                                            <td>{{ form_compra.valor_tecido }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="table-responsive">
                                 <table role="grid" class="table table-hover table-sm table-secundary" id="compraFormsetTable">
                                     <thead scope="col" class="card-header small text-center">
                                         <tr>
+                                            <th>Tecido</th>
                                             <th>Material</th>
                                             <th>Cor</th>
                                             <th>Quantidade</th>
@@ -132,27 +121,22 @@
                                     </thead>
 
                                     <tbody>
-                                        {% for form in form_itemcompra.forms %}
+                                        {% for f in form_itemcompra.forms %}
+                                        {{ f.uuid }}
+                                        {{ f.numero_compra }}
                                         <tr>
-                                            <td>{{ form.material }}</td>
-                                            <td>{{ form.cor }}</td>
-                                            <td>{{ form.quantidade }}</td>
-                                            <td>{{ form.valor_unitario }}</td>
-                                            <td>{{ form.valor_total }}</td>
-                                            <td>{% if form.instance.uuid %}{{ form.DELETE }}{% endif %}</td>
+                                            <td>{{ f.tecido }}</td>
+                                            <td>{{ f.material }}</td>
+                                            <td>{{ f.cor }}</td>
+                                            <td>{{ f.quantidade }}</td>
+                                            <td>{{ f.valor_unitario }}</td>
+                                            <td>{{ f.valor_total }}</td>
+                                            <td>{{ f.DELETE }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
                                 {{ form_itemcompra.management_form }}
-                            </div>
-
-                            <br />
-                            <br />
-                            
-                            <div class="pull-right">
-                                <a href="/comercial/gerenciarcompra"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'register_compra' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

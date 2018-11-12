@@ -63,9 +63,16 @@ def list_material(request):
 
         if material != "":
             lista_material = Material.objects.filter(tipo_material__contains=material)
+            if lista_material.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif desc_material != "":
             lista_material = Material.objects.filter(material__contains=desc_material)
+            if lista_material.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, {'lista_material': lista_material})
     else:

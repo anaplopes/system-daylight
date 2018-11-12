@@ -25,12 +25,22 @@
                             {% csrf_token %}
 
                             <div class="form-row">
+                                <div class="col-12">
+                                    <div class="pull-right">
+                                        <a href="/producao/gerenciarservico"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
+                                        <a href="{% url 'register_servico' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Numero do Pedido</label>
                                         {{ form_servico.numero_pedido }}
                                     </div>
                                 </div>
+                                {{ form_servico.numero_servico }}
                             </div>
 
                             <div class="form-row">
@@ -112,27 +122,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for form in form_itemservico.forms %}
+                                        {% for f in form_itemservico.forms %}
+                                        {{ f.uuid }}
+                                        {{ f.numero_servico }}
                                         <tr>
-                                            <td>{{ form.produto }}</td>
-                                            <td>{{ form.cor }}</td>
-                                            <td>{{ form.quantidade }}</td>
-                                            <td>{{ form.valor_unitario }}</td>
-                                            <td>{{ form.valor_total }}</td>
-                                            <td>{% if form.instance.uuid %}{{ form.DELETE }}{% endif %}</td>
+                                            <td>{{ f.produto }}</td>
+                                            <td>{{ f.cor }}</td>
+                                            <td>{{ f.quantidade }}</td>
+                                            <td>{{ f.valor_unitario }}</td>
+                                            <td>{{ f.valor_total }}</td>
+                                            <td>{{ f.DELETE }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
                                 {{ form_itemservico.management_form }}
-                            </div>
-
-                            <br />
-                            <br />
-
-                            <div class="pull-right">
-                                <a href="/producao/gerenciarservico"><input type="button" class="btn btn-danger btn-md" value="Cancelar"></a>
-                                <a href="{% url 'register_servico' %}"><input type="submit" class="btn btn-success btn-md" value="Salvar"></a>
                             </div>
                         </form>
                     </div>

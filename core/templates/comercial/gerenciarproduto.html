@@ -33,21 +33,21 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Tipo de Produto</label>
-                                        <input class="form-control form-control-sm" type="text" size="50" id="tipo_produto" name="tipo_produto">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="50" id="tipo_produto" name="tipo_produto">
                                     </div>
                                 </div>
 
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Classificação</label>
-                                        <input class="form-control form-control-sm" type="text" size="50" id="classificacao_produto" name="classificacao_produto">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="50" id="classificacao_produto" name="classificacao_produto">
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label class="small">Descrição do Produto</label>
-                                        <input class="form-control form-control-sm" type="text" size="100" id="desc_produto" name="desc_produto">
+                                        <input class="form-control form-control-sm textcapitalize" type="text" size="100" id="desc_produto" name="desc_produto">
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +96,16 @@
 
                          {% if produto %}
                         <td>
-                            <a href="{% url 'update_produto' produto.uuid %}"><button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button></a>
-                            <a href="{% url 'delete_produto' produto.uuid %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></a>
+                            <a href="{% url 'update_produto' produto.uuid %}">
+                                <button class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'delete_produto' produto.uuid %}">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </a>
                         </td>
                         {% endif %}
                     </tr>

@@ -17,11 +17,11 @@ def register_compra(request):
 
     instance_compra = Compra()
     form_compra = CompraForm(instance=instance_compra)
-    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm)
+    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, fk_name='numero_compra', min_num=1, max_num=50, can_delete=True)
+    form_itemcompra = ItemCompraFormSet(instance=instance_compra)
 
     if request.method == 'POST':
         form_compra = CompraForm(request.POST)
-        form_itemcompra = ItemCompraFormSet(request.POST, request.FILES)
 
         if form_compra.is_valid():
             compra = form_compra.save(commit=False)
@@ -33,12 +33,16 @@ def register_compra(request):
 
                 messages.success(request, 'Compra registrada com sucesso.', 'Sucesso')
                 return redirect('list_compra')
+
+            else:
+                messages.error(request, form_itemcompra.errors, 'Erro itens de compra.')
+
         else:
-            tipo_erro1 = ''
-            for erro in form_compra.errors.values():
-                tipo_erro1 += '\n'
-                tipo_erro1 += erro[0]
-            messages.error(request, tipo_erro1, 'Erro dados de compra.')
+            erro_compra = ''
+            for erro in form_itemcompra.errors.values():
+                erro_compra += '\n'
+                erro_compra += erro[0]
+            messages.error(request, erro_compra, 'Erro itens de compra.')
 
             return render(request, template, { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra })
     return render(request, template, { 'form_compra': CompraForm(instance=instance_compra), 'form_itemcompra': ItemCompraFormSet()})
@@ -47,9 +51,10 @@ def register_compra(request):
 
 @login_required(login_url='/entrar')
 def update_compra(request, uuid):
-    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm)
+
     update_compra = Compra.objects.get(uuid=uuid)
     form_compra = CompraForm(instance=update_compra)
+    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, fk_name='numero_compra', min_num=1, max_num=50, can_delete=True)
     form_itemcompra = ItemCompraFormSet(instance=update_compra)
 
     if request.method == 'POST':
@@ -61,26 +66,21 @@ def update_compra(request, uuid):
 
             if form_itemcompra.is_valid():
                 compra.save()
-                instances = form_itemcompra.save(commit=False)
-                for instance in instances:
-                    instance.save()
+                form_itemcompra.save()
 
                 messages.success(request, 'Compra atualizado com sucesso.', 'Sucesso')
                 return redirect('list_compra')
+            else:
+                messages.error(request, form_itemcompra.errors, 'Erro itens de compra.')
+
         else:
-            tipo_erro1 = ''
+            erro_compra = ''
             for erro in form_compra.errors.values():
-                tipo_erro1 += '\n'
-                tipo_erro1 += erro[0]
-            messages.error(request, tipo_erro1, 'Erro dados de compra.')
+                erro_compra += '\n'
+                erro_compra += erro[0]
+            messages.error(request, erro_compra, 'Erro dados de compra.')
 
-            tipo_erro2 = ''
-            for erro in form_itemcompra.errors.values():
-                tipo_erro2 += '\n'
-                tipo_erro2 += erro[0]
-            messages.error(request, tipo_erro2, 'Erro itens de compra.')
-
-    return render(request, 'comercial/registrarcompra.html', { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra, 'update_compra': update_compra })
+    return render(request, 'comercial/registrarcompra.html', { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra })
 
 
 
@@ -96,13 +96,26 @@ def list_compra(request):
 
         if ordemcompra != "":
             lista_compra = Compra.objects.filter(numero_compra=ordemcompra)
+            if lista_compra.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif name_fornecedor != "":
             lista_compra = Compra.objects.filter(fornecedor__in=Fornecedor.objects.filter(fornecedorname__iexact=name_fornecedor))
+            if lista_compra.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif dtordemcompra != "":
             lista_compra = Compra.objects.filter(data_compra__contains=dtordemcompra)
+            if lista_compra.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif status_compra != "--Selecione--":
             lista_compra = Compra.objects.filter(status=status_compra)
+            if lista_compra.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, {'lista_compra': lista_compra})
     else:

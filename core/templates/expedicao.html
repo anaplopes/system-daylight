@@ -32,7 +32,7 @@
                         <th><input type="checkbox" class="checkAll" name="checkAll" onclick="checkAll()"/></th>
                         <th scope="col">Pedido</th>
                         <th scope="col">Cliente</th>
-                        <th scope="col">Data de Compra</th>
+                        <th scope="col">Data do Pedido</th>
                         <th scope="col">Previsão de Entrega</th>
                         <th scope="col">Status</th>
                     </tr>
@@ -46,7 +46,7 @@
                         </td>
                         <th scope="row">{{ entrega.numero_pedido }}</th>
                         <td>{{ entrega.cliente }}</td>
-                        <td>{{ entrega.data_compra|date:'d/m/Y' }}</td>
+                        <td>{{ entrega.data_pedido|date:'d/m/Y' }}</td>
                         <td>{{ entrega.data_entrega|date:'d/m/Y' }}</td>
                         <td>Disponível para entrega</td>
                     </tr>

@@ -62,11 +62,21 @@ def list_prestador(request):
 
         if numero_fiscal != "":
             lista_prestador = PrestadorServico.objects.filter(numero_fiscal=numero_fiscal)
+            if lista_prestador.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif email_prestador != "":
             lista_prestador = PrestadorServico.objects.filter(email=email_prestador)
+            if lista_prestador.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif nome_prestador != "":
             lista_prestador = PrestadorServico.objects.filter(prestadorname__contains=nome_prestador)
+            if lista_prestador.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, {'lista_prestador': lista_prestador})
     else:

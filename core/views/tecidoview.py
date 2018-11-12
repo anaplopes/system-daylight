@@ -64,11 +64,21 @@ def list_tecido(request):
 
         if tipo_tecido != "":
             lista_tecido = Tecido.objects.filter(tipo_tecido__contains=tipo_tecido)
+            if lista_tecido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif fabricante != "":
             lista_tecido = Tecido.objects.filter(nome_fabricante__contains=fabricante)
+            if lista_tecido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         elif desc_tecido != "":
             lista_tecido = Tecido.objects.filter(tecido__contains=desc_tecido)
+            if lista_tecido.count() == 0:
+                messages.success(request, 'Sua pesquisa não retornou registros.', 'Informação')
+
         else:
+            messages.success(request, 'Nenhuma opção de pesquisa foi selecionada.', 'Erro')
             return render(request, template)
         return render(request, template, { 'lista_tecido': lista_tecido })
     else:
