@@ -1,4 +1,42 @@
 
+// calculo de total de linha
+function calcTotalPedido(){
+    let total_form = parseInt($('#id_itempedido_set-TOTAL_FORMS').val());
+    let index=0
+
+    while (index < total_form){
+        let qtd = parseInt($("#id_itempedido_set-"+index+"-quantidade").val());
+        let valor_unit= parseFloat($("#id_itempedido_set-"+index+"-valor_unitario").val());
+        $("#id_itempedido_set-"+index+"-valor_total").val(`${(valor_unit * qtd).toFixed(2)}`);
+        total_geral.push(valor_unit * qtd)
+        $('#id_valor_total').val(total_geral.reduce((ac,at) => ac + at))
+        index++
+    }
+};
+
+function calcTotalCompra(){
+    let total_form = parseInt($('#id_itemcompra_set-TOTAL_FORMS').val());
+    let index=0
+    while (index < total_form){
+        let qtd = parseInt($("#id_itemcompra_set-"+index+"-quantidade").val());
+        let valor_unit= parseFloat($("#id_itemcompra_set-"+index+"-valor_unitario").val());
+        $("#id_itemcompra_set-"+index+"-valor_total").val(`${(valor_unit * qtd).toFixed(2)}`);
+        index++
+    }
+};
+
+
+function calcTotalServico(){
+    let total_form = parseInt($('#id_itemservico_set-TOTAL_FORMS').val());
+    let index=0
+    while (index < total_form){
+        let qtd = parseInt($("#id_itemservico_set-"+index+"-quantidade").val());
+        let valor_unit= parseFloat($("#id_itemservico_set-"+index+"-valor_unitario").val());
+        $("#id_itemservico_set-"+index+"-valor_total").val(`${(valor_unit * qtd).toFixed(2)}`);
+        index++
+    }
+};
+
 
 // Disable em item compra
 $('#item_c_tecido').change(function () {
@@ -72,7 +110,7 @@ $(".pesq_cpfcnpj").keydown(function () {
         $(".pesq_cpfcnpj").unmask();
     } catch (e) { }
 
-    var tamanho = $(".pesq_cpfcnpj").val().length;
+    let tamanho = $(".pesq_cpfcnpj").val().length;
 
     if (tamanho < 11) {
         $(".pesq_cpfcnpj").mask("999.999.999-99");
@@ -81,13 +119,13 @@ $(".pesq_cpfcnpj").keydown(function () {
     }
 
     // ajustando foco
-    var elem = this;
+    let elem = this;
     setTimeout(function () {
         // mudo a posição do seletor
         elem.selectionStart = elem.selectionEnd = 10000;
     }, 0);
     // reaplico o valor para mudar o foco
-    var currentValue = $(this).val();
+    let currentValue = $(this).val();
     $(this).val('');
     $(this).val(currentValue);
 });
@@ -202,11 +240,4 @@ $('#btn_pedidoentregue').click(function() {
         error : function (error) {
         }
     });
-});
-
-
-$('tr td #vlr_tt').each(function () {
-    let x = $('#vlr_unit').val();
-    let y = $('#qtd').val();
-    let z = $('#vlr_tt').val(x * y);
 });

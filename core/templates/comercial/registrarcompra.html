@@ -72,14 +72,14 @@
                                         {{ form_compra.forma_pagamento }}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Prazo de Pagamento</label>
                                         {{ form_compra.prazo_pagamento }}
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="small">Valor Total</label>
@@ -128,8 +128,8 @@
                                             <td>{{ f.tecido }}</td>
                                             <td>{{ f.material }}</td>
                                             <td>{{ f.cor }}</td>
-                                            <td>{{ f.quantidade }}</td>
-                                            <td>{{ f.valor_unitario }}</td>
+                                            <td onchange='calcTotalCompra()'>{{ f.quantidade }}</td>
+                                            <td onchange='calcTotalCompra()'>{{ f.valor_unitario }}</td>
                                             <td>{{ f.valor_total }}</td>
                                             <td>{{ f.DELETE }}</td>
                                         </tr>

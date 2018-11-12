@@ -136,7 +136,7 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tbody>
                                         {% for f in form_itempedido.forms %}
                                         {{ f.uuid }}
@@ -145,13 +145,13 @@
                                             <td>{{ f.produto }}</td>
                                             <td>{{ f.cor }}</td>
                                             <td>{{ f.tecido }}</td>
-                                            <td>{{ f.quantidade }}</td>
-                                            <td>{{ f.valor_unitario }}</td>
+                                            <td onchange='calcTotalPedido()'>{{ f.quantidade }}</td>
+                                            <td onchange='calcTotalPedido()'>{{ f.valor_unitario }}</td>
                                             <td>{{ f.valor_total }}</td>
                                             <td>{{ f.DELETE }}</td>
                                         </tr>
                                         {% endfor %}
-                                        
+
                                     </tbody>
                                 </table>
                                 {{ form_itempedido.management_form }}

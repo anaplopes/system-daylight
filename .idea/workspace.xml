@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16c97de1-bea1-48d4-9b8f-dee4bfc573e8" name="Default Changelist" comment="" />
+    <list default="true" id="16c97de1-bea1-48d4-9b8f-dee4bfc573e8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/core/forms/itempedidoform.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms/itempedidoform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models/itemcompramodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models/itemcompramodel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/static/jquery/custom_daylight.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/jquery/custom_daylight.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/comercial/registrarcompra.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/comercial/registrarcompra.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/comercial/registrarpedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/comercial/registrarpedido.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/producao/registrarservico.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/producao/registrarservico.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,11 +20,12 @@
     <session id="1990688355">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -24,6 +33,7 @@
           <entry key="html" value="4" />
           <entry key="js" value="1" />
           <entry key="py" value="37" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -31,6 +41,7 @@
           <entry key="HTML" value="4" />
           <entry key="JavaScript" value="1" />
           <entry key="Python" value="37" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -71,19 +82,18 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1342" />
+    <option name="x" value="62" />
     <option name="y" value="-11" />
-    <option name="width" value="1859" />
-    <option name="height" value="1092" />
+    <option name="width" value="1219" />
+    <option name="height" value="732" />
   </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+        <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
           <expand>
             <path>
               <item name="DayLight" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -94,23 +104,34 @@
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Changed Files'; set:Changed Files; ALL; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
             <path>
               <item name="DayLight" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="DayLight" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="jquery" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="DayLight" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -174,9 +195,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1342" y="-11" width="1859" height="1092" extended-state="6" />
+    <frame x="62" y="-11" width="1219" height="732" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22860298" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2322801" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -310,6 +331,9 @@
           <caret line="38" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

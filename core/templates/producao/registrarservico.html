@@ -128,8 +128,8 @@
                                         <tr>
                                             <td>{{ f.produto }}</td>
                                             <td>{{ f.cor }}</td>
-                                            <td>{{ f.quantidade }}</td>
-                                            <td>{{ f.valor_unitario }}</td>
+                                            <td onchange='calcTotalServico()'>{{ f.quantidade }}</td>
+                                            <td onchange='calcTotalServico()'>{{ f.valor_unitario }}</td>
                                             <td>{{ f.valor_total }}</td>
                                             <td>{{ f.DELETE }}</td>
                                         </tr>

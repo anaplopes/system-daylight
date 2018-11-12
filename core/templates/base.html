@@ -161,6 +161,9 @@
   <!-- Custom -->
   <script src="{% static 'js/sb-admin.min.js' %}"></script>
 
+  <!-- custom daylight -->
+  <script src="{% static 'jquery/custom_daylight.js' %}"></script>
+
   <!-- pnotify -->
   <script src="{% static 'pnotify/dist/pnotify.js' %}"></script>
   <script src="{% static 'pnotify/dist/pnotify.buttons.js' %}"></script>
@@ -169,20 +172,13 @@
   <!-- alertas_isme -->
   <script src="{% static 'jquery/alertas.js' %}"></script>
 
-  <!-- custom daylight -->
-  <script src="{% static 'jquery/custom_daylight.js' %}"></script>
+
 
   <script type="text/javascript">
     $(function () {
-      $('#pedidoFormsets tbody tr').formset({
-        prefix: '{{ formset.prefix }}'
-      });
-            $('#compraFormsets tbody tr').formset({
-        prefix: '{{ formset.prefix }}'
-      });
-            $('#servicoFormsets tbody tr').formset({
-        prefix: '{{ formset.prefix }}'
-      });
+      $('#pedidoFormsets tbody tr').formset();
+      $('#compraFormsets tbody tr').formset();
+      $('#servicoFormsets tbody tr').formset();
     })
   </script>
 
