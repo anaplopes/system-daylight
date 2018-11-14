@@ -25,26 +25,26 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-xl-12 col-sm-12">
                         <form method="POST">
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-2">
+                                <div class="col-xl-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <label class="small">Numero do Serviço</label>
+                                        <label class="small">Ordem de Serviço</label>
                                         <input class="form-control form-control-sm" type="number" size="50" id="numservico" name="numservico">
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Data do Serviço</label>
                                         <input class="form-control form-control-sm" type="date" id="dtservico" name="dtservico">
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Status</label>
                                         <select class="form-control form-control-sm custom-select" id="status_servico" name="status_servico">
@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-xl-8 col-sm-8 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Prestador</label>
                                         <input class="form-control form-control-sm textcapitalize" type="text" size="100" id="prestador" name="prestador">
@@ -80,11 +80,11 @@
 </div>
 <br />
 <div class="row">
-    <div class="col-sm-12">
-        <div class="card table-responsive small">
-            <table role="grid" class="table table-hover text-center">
-                <thead class="card-header">
-                    <tr scope="col" class="card-header text-center">
+    <div class="col-xl-12 col-sm-12 col-xs-12 mb-3 text-center small">
+        <div class="table-responsive border rounded">
+            <table role="grid" class="table table-hover table-sm table-secundary">
+                <thead scope="col" class="card-header">
+                    <tr>
                         <th scope="col">OS</th>
                         <th scope="col">Pedido</th>
                         <th scope="col">Prestador</th>

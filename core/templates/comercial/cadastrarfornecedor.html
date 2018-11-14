@@ -25,7 +25,7 @@
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-12">
+                                <div class="col-xl-12 col-sm-12 col-xs-12 mb-3">
                                     <div class="pull-right">
                                         <a href="/comercial/gerenciarfornecedor"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
                                         <a href="{% url 'create_fornecedor' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-xl-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Classificação Fiscal</label>
                                         {{ form.class_fiscal }}
@@ -42,7 +42,7 @@
                                 </div>
 
 
-                                <div class="col-4">
+                                <div class="col-xl-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">CNPJ/CPF</label>
                                         {{ form.numero_fiscal}}
@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-xl-8 col-sm-8 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Fornecedor</label>
                                         {{ form.fornecedorname }}
@@ -60,14 +60,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-xl-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">E-mail</label>
                                         {{ form.email }}
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-xl-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Telefone</label>
                                         {{ form.telefone }}
@@ -76,14 +76,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-2">
+                                <div class="col-xl-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">CEP</label>
                                         {{ form.cep }}
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-xl-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Endereço</label>
                                         {{ form.endereco }}
@@ -92,21 +92,21 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-4">
+                                <div class="col-xl-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Bairro</label>
                                         {{ form.bairro }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Cidade</label>
                                         {{ form.cidade }}
                                     </div>
                                 </div>
 
-                                <div class="col-1">
+                                <div class="col-xl-1 col-sm-1 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">UF</label>
                                         {{ form.uf }}

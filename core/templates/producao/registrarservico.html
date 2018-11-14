@@ -21,11 +21,11 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" id="servicoFormsets" class="">
+                        <form method="POST" id="servicoFormsets">
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-12">
+                                <div class="col-xl-12 col-sm-12 col-xs-12 mb-3">
                                     <div class="pull-right">
                                         <a href="/producao/gerenciarservico"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
                                         <a href="{% url 'register_servico' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Numero do Pedido</label>
                                         {{ form_servico.numero_pedido }}
@@ -44,14 +44,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Data do Serviço</label>
                                         {{ form_servico.data_servico}}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Data de Entrega</label>
                                         {{ form_servico.data_entrega}}
@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-xl-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Prestador</label>
                                         {{ form_servico.prestador }}
@@ -69,21 +69,21 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Tipo de Serviço</label>
                                         {{ form_servico.tipo_servico }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Serviço</label>
                                         {{ form_servico.servico }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Valor Total</label>
                                         {{ form_servico.valor_total }}
@@ -92,14 +92,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-xl-8 col-sm-8 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Observação</label>
                                         {{ form_servico.observacao }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Status do Serviço</label>
                                         {{ form_servico.status }}
@@ -109,34 +109,38 @@
 
                             <br />
 
-                            <div class="table-responsive">
-                                <table role="grid" class="table table-hover table-sm table-secundary" id="servicoFormsetTable">
-                                    <thead scope="col" class="card-header small text-center">
-                                        <tr>
-                                            <th>Produto</th>
-                                            <th>Cor</th>
-                                            <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Valor Total</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for f in form_itemservico.forms %}
-                                        {{ f.uuid }}
-                                        {{ f.numero_servico }}
-                                        <tr>
-                                            <td>{{ f.produto }}</td>
-                                            <td>{{ f.cor }}</td>
-                                            <td onchange='calcTotalServico()'>{{ f.quantidade }}</td>
-                                            <td onchange='calcTotalServico()'>{{ f.valor_unitario }}</td>
-                                            <td>{{ f.valor_total }}</td>
-                                            <td>{{ f.DELETE }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                {{ form_itemservico.management_form }}
+                            <div class="row">
+                                <div class="col-xl-12 col-sm-12 col-xs-12 mb-3 text-center small">
+                                    <div class="table-responsive border rounded">
+                                        <table role="grid" class="table table-hover table-sm table-secundary">
+                                            <thead scope="col" class="card-header">
+                                                <tr>
+                                                    <th>Produto</th>
+                                                    <th>Cor</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Valor Unitário</th>
+                                                    <th>Valor Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for f in form_itemservico.forms %}
+                                                {{ f.uuid }}
+                                                {{ f.numero_servico }}
+                                                <tr>
+                                                    <td>{{ f.produto }}</td>
+                                                    <td>{{ f.cor }}</td>
+                                                    <td onchange='calcTotalServico()'>{{ f.quantidade }}</td>
+                                                    <td onchange='calcTotalServico()'>{{ f.valor_unitario }}</td>
+                                                    <td>{{ f.valor_total }}</td>
+                                                    <td>{{ f.DELETE }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        {{ form_itemservico.management_form }}
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

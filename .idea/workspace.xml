@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16c97de1-bea1-48d4-9b8f-dee4bfc573e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/core/forms/itempedidoform.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms/itempedidoform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/models/itemcompramodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models/itemcompramodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/jquery/custom_daylight.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/jquery/custom_daylight.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/comercial/registrarcompra.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/comercial/registrarcompra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/comercial/registrarpedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/comercial/registrarpedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/producao/registrarservico.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/producao/registrarservico.html" afterDir="false" />
-    </list>
+    <list default="true" id="16c97de1-bea1-48d4-9b8f-dee4bfc573e8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +12,13 @@
     <session id="1990688355">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -92,6 +85,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
           <expand>
@@ -131,7 +125,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -197,13 +190,13 @@
   <component name="ToolWindowManager">
     <frame x="62" y="-11" width="1219" height="732" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2322801" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23654996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.25627616" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.25503355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />

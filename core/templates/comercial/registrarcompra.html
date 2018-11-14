@@ -21,11 +21,11 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" id="compraFormsets" class="">
+                        <form method="POST" id="compraFormsets">
                             {% csrf_token %}
 
                             <div class="form-row">
-                                <div class="col-12">
+                                <div class="col-xl-12 col-sm-12 col-xs-12 mb-3">
                                     <div class="pull-right">
                                         <a href="/comercial/gerenciarcompra"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
                                         <a href="{% url 'register_compra' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
@@ -34,14 +34,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Data de Compra</label>
                                         {{ form_compra.data_compra}}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Numero do Pedido</label>
                                         {{ form_compra.numero_pedido }}
@@ -51,14 +51,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-xl-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Fornecedor</label>
                                         {{ form_compra.fornecedor }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Nome do Responsável</label>
                                         {{ form_compra.responsavel }}
@@ -66,21 +66,21 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Forma de Pagamento</label>
                                         {{ form_compra.forma_pagamento }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Prazo de Pagamento</label>
                                         {{ form_compra.prazo_pagamento }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Valor Total</label>
                                         {{ form_compra.valor_total }}
@@ -89,14 +89,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-6">
+                                <div class="col-xl-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Observação</label>
                                         {{ form_compra.observacao }}
                                     </div>
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Status da Compra</label>
                                         {{ form_compra.status }}
@@ -106,37 +106,41 @@
 
                             <br />
 
-                            <div class="table-responsive">
-                                <table role="grid" class="table table-hover table-sm table-secundary" id="compraFormsetTable">
-                                    <thead scope="col" class="card-header small text-center">
-                                        <tr>
-                                            <th>Tecido</th>
-                                            <th>Material</th>
-                                            <th>Cor</th>
-                                            <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Valor Total</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
+                            <div class="row">
+                                <div class="col-xl-12 col-sm-12 col-xs-12 mb-3 text-center small">
+                                    <div class="table-responsive border rounded">
+                                        <table role="grid" class="table table-hover table-sm table-secundary">
+                                            <thead scope="col" class="card-header">
+                                                <tr>
+                                                    <th>Tecido</th>
+                                                    <th>Material</th>
+                                                    <th>Cor</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Valor Unitário</th>
+                                                    <th>Valor Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
 
-                                    <tbody>
-                                        {% for f in form_itemcompra.forms %}
-                                        {{ f.uuid }}
-                                        {{ f.numero_compra }}
-                                        <tr>
-                                            <td>{{ f.tecido }}</td>
-                                            <td>{{ f.material }}</td>
-                                            <td>{{ f.cor }}</td>
-                                            <td onchange='calcTotalCompra()'>{{ f.quantidade }}</td>
-                                            <td onchange='calcTotalCompra()'>{{ f.valor_unitario }}</td>
-                                            <td>{{ f.valor_total }}</td>
-                                            <td>{{ f.DELETE }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                {{ form_itemcompra.management_form }}
+                                            <tbody>
+                                                {% for f in form_itemcompra.forms %}
+                                                {{ f.uuid }}
+                                                {{ f.numero_compra }}
+                                                <tr>
+                                                    <td>{{ f.tecido }}</td>
+                                                    <td>{{ f.material }}</td>
+                                                    <td>{{ f.cor }}</td>
+                                                    <td onchange='calcTotalCompra()'>{{ f.quantidade }}</td>
+                                                    <td onchange='calcTotalCompra()'>{{ f.valor_unitario }}</td>
+                                                    <td>{{ f.valor_total }}</td>
+                                                    <td>{{ f.DELETE }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        {{ form_itemcompra.management_form }}
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
