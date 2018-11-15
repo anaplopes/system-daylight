@@ -53,13 +53,13 @@ function calcTotalServico(){
 
 
 // Disable em item compra
-$('#item_c_tecido').change(function () {
-    $('#item_c_material').attr('disabled', 'disabled')
-});
+// $('#item_c_tecido').on('change', function () {
+//     $('#item_c_material').attr('disabled', 'disabled')
+// });
 
-$('#item_c_material').change(function () {
-    $('#item_c_tecido').attr('disabled', 'disabled')
-});
+// $('#item_c_material').on('change', function () {
+//     $('#item_c_tecido').attr('disabled', 'disabled')
+// });
 
 
 // Texto

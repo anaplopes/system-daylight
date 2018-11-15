@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16c97de1-bea1-48d4-9b8f-dee4bfc573e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/static/img/weather.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/printpedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/forms/itemcompraform.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms/itemcompraform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/forms/itempedidoform.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms/itempedidoform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/forms/itemservicoform.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms/itemservicoform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/_img/facebookaquarela.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/img/facebookaquarela.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/_img/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/img/favicon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/_img/fundologin.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/img/fundologin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/_img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/_img/siteaquarela.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/img/siteaquarela.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/_img/weather.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/jquery/custom_daylight.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/jquery/custom_daylight.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/jquery/formset.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/jquery/formset.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/comercial/registrarcompra.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/comercial/registrarcompra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/comercial/registrarpedido.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/comercial/registrarpedido.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/modal_exclusao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/producao/registrarservico.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/producao/registrarservico.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views/clienteview.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views/clienteview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views/compraview.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views/compraview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views/expedicaoview.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views/expedicaoview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views/pedidoview.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views/pedidoview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views/servicoview.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views/servicoview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="16c97de1-bea1-48d4-9b8f-dee4bfc573e8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +15,7 @@
     <session id="1990688355">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
@@ -91,17 +62,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/templates/exclusaoConf.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -218,7 +179,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/bitbucket/omnia/isme-flask" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -278,7 +239,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="62" y="-11" width="1305" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.26173428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -294,7 +254,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32919255" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32919255" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
