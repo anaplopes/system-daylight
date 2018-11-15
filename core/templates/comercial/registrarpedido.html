@@ -28,7 +28,7 @@
                                 <div class="col-xl-12 col-sm-12 col-xs-12 mb-3">
                                     <div class="pull-right">
                                         <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
-                                        <a href="{% url 'register_pedido' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                        <a href="{% url 'register_pedido' %}"><input onclick="window.print()" type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
                                     </div>
                                 </div>
                             </div>
@@ -140,10 +140,11 @@
                                             </thead>
 
                                             <tbody>
+                                            {{ form_itempedido.management_form }}
                                                 {% for f in form_itempedido.forms %}
                                                 {{ f.uuid }}
                                                 {{ f.numero_pedido }}
-                                                <tr>
+                                                <tr class="inline {{ form_itempedido.prefix }}">
                                                     <td>{{ f.produto }}</td>
                                                     <td>{{ f.cor }}</td>
                                                     <td>{{ f.tecido }}</td>
@@ -155,7 +156,6 @@
                                                 {% endfor %}
                                             </tbody>
                                         </table>
-                                        {{ form_itempedido.management_form }}
                                     </div>
                                 </div>
                             </div>

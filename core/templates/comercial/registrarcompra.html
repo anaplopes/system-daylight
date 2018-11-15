@@ -28,7 +28,7 @@
                                 <div class="col-xl-12 col-sm-12 col-xs-12 mb-3">
                                     <div class="pull-right">
                                         <a href="/comercial/gerenciarcompra"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
-                                        <a href="{% url 'register_compra' %}"><input type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                        <a href="{% url 'register_compra' %}"><input onclick="window.print()" type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
                                     </div>
                                 </div>
                             </div>
@@ -123,10 +123,11 @@
                                             </thead>
 
                                             <tbody>
+                                            {{ form_itemcompra.management_form }}
                                                 {% for f in form_itemcompra.forms %}
                                                 {{ f.uuid }}
                                                 {{ f.numero_compra }}
-                                                <tr>
+                                                <tr class="inline {{ form_itemcompra.prefix }}">
                                                     <td>{{ f.tecido }}</td>
                                                     <td>{{ f.material }}</td>
                                                     <td>{{ f.cor }}</td>
@@ -138,7 +139,6 @@
                                                 {% endfor %}
                                             </tbody>
                                         </table>
-                                        {{ form_itemcompra.management_form }}
                                     </div>
                                 </div>
                             </div>

@@ -20,8 +20,8 @@ def create_cliente(request):
                 tipo_erro += '\n'
                 tipo_erro += erro[0]
             messages.error(request, tipo_erro, 'Erro')
-            return render(request, 'comercial/cadastrarcliente.html', { 'form' : form })
-    return render(request, 'comercial/cadastrarcliente.html', { 'form' : ClienteForm() })
+            return render(request, 'comercial/cadastrarcliente.html', { 'form': form })
+    return render(request, 'comercial/cadastrarcliente.html', { 'form': ClienteForm() })
 
 
 @login_required(login_url='/entrar')

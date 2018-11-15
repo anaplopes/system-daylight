@@ -17,7 +17,7 @@ def register_compra(request):
 
     instance_compra = Compra()
     form_compra = CompraForm(instance=instance_compra)
-    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, fk_name='numero_compra', min_num=1, max_num=50, can_delete=True)
+    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, fk_name='numero_compra', extra=1, can_delete=True)
     form_itemcompra = ItemCompraFormSet(instance=instance_compra)
 
     if request.method == 'POST':
@@ -54,7 +54,7 @@ def update_compra(request, uuid):
 
     update_compra = Compra.objects.get(uuid=uuid)
     form_compra = CompraForm(instance=update_compra)
-    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, fk_name='numero_compra', min_num=1, max_num=50, can_delete=True)
+    ItemCompraFormSet = inlineformset_factory(Compra, ItemCompra, form=ItemCompraForm, fk_name='numero_compra', extra=0, can_delete=True)
     form_itemcompra = ItemCompraFormSet(instance=update_compra)
 
     if request.method == 'POST':

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import datetime
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 from core.models.pedidomodel import Pedido
 from core.models.servicomodel import Servico
 
@@ -49,5 +50,6 @@ def expedicao(request):
             pedido_entregue.status = 'Finalizado'
             pedido_entregue.data_entrega = data_hj
             pedido_entregue.save()
+        messages.success(request, 'Pedido finalizado.', 'Sucesso')
         
     return render(request, "expedicao.html", {'pronto_entrega': pronto_entrega, 'pedido_entregue': pedido_entregue})

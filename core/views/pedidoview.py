@@ -16,7 +16,7 @@ def register_pedido(request):
 
     instance_pedido = Pedido()
     form_pedido = PedidoForm(instance=instance_pedido)
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, fk_name='numero_pedido', min_num=0, max_num=50, can_delete=True)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, fk_name='numero_pedido', extra=1, can_delete=True)
     form_itempedido = ItemPedidoFormSet(instance=instance_pedido)
 
     if request.method == 'POST':
@@ -56,7 +56,7 @@ def update_pedido(request, uuid):
 
     update_pedido = Pedido.objects.get(uuid=uuid)
     form_pedido = PedidoForm(instance=update_pedido)
-    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, fk_name='numero_pedido', min_num=1, max_num=50, can_delete=True)
+    ItemPedidoFormSet = inlineformset_factory(Pedido, ItemPedido, form=ItemPedidoForm, fk_name='numero_pedido', extra=0, can_delete=True)
     form_itempedido = ItemPedidoFormSet(instance=update_pedido)
 
     if request.method == 'POST':

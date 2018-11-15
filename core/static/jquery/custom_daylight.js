@@ -1,41 +1,55 @@
 
+
+// $('#pedidoFormsets').on('submit', function(e){
+//     $('#printPedidoModal').modal('show');
+//     e.preventDefault();
+// });
+
+
+// calculo total geral (pedido, compra e serviço)
+$('.vlr_unitario').blur(function () {
+    let total = 0;
+    $('.totalitem').each(function(){
+        let valor = Number($(this).val());
+        total += valor;
+    });
+    $("#id_valor_total").val(total.toFixed(2));
+});
+
+
 // calculo de total de linha
 function calcTotalPedido(){
     let total_form = parseInt($('#id_itempedido_set-TOTAL_FORMS').val());
-    let index=0
-
+    let index=0;
     while (index < total_form){
-        let qtd = parseInt($("#id_itempedido_set-"+index+"-quantidade").val());
-        let valor_unit= parseFloat($("#id_itempedido_set-"+index+"-valor_unitario").val());
-        $("#id_itempedido_set-"+index+"-valor_total").val(`${(valor_unit * qtd).toFixed(2)}`);
-        total_geral.push(valor_unit * qtd)
-        $('#id_valor_total').val(total_geral.reduce((ac,at) => ac + at))
+        let qtd = Number($("#id_itempedido_set-"+index+"-quantidade").val());
+        let valor_unit= Number($("#id_itempedido_set-"+index+"-valor_unitario").val());
+        $("#id_itempedido_set-"+index+"-valor_total").val((valor_unit * qtd).toFixed(2));
         index++
     }
-};
+}
 
 function calcTotalCompra(){
     let total_form = parseInt($('#id_itemcompra_set-TOTAL_FORMS').val());
-    let index=0
+    let index=0;
     while (index < total_form){
-        let qtd = parseInt($("#id_itemcompra_set-"+index+"-quantidade").val());
-        let valor_unit= parseFloat($("#id_itemcompra_set-"+index+"-valor_unitario").val());
-        $("#id_itemcompra_set-"+index+"-valor_total").val(`${(valor_unit * qtd).toFixed(2)}`);
+        let qtd = Number($("#id_itemcompra_set-"+index+"-quantidade").val());
+        let valor_unit= Number($("#id_itemcompra_set-"+index+"-valor_unitario").val());
+        $("#id_itemcompra_set-"+index+"-valor_total").val((valor_unit * qtd).toFixed(2));
         index++
     }
-};
-
+}
 
 function calcTotalServico(){
     let total_form = parseInt($('#id_itemservico_set-TOTAL_FORMS').val());
-    let index=0
+    let index=0;
     while (index < total_form){
-        let qtd = parseInt($("#id_itemservico_set-"+index+"-quantidade").val());
-        let valor_unit= parseFloat($("#id_itemservico_set-"+index+"-valor_unitario").val());
-        $("#id_itemservico_set-"+index+"-valor_total").val(`${(valor_unit * qtd).toFixed(2)}`);
+        let qtd = Number($("#id_itemservico_set-"+index+"-quantidade").val());
+        let valor_unit= Number($("#id_itemservico_set-"+index+"-valor_unitario").val());
+        $("#id_itemservico_set-"+index+"-valor_total").val((valor_unit * qtd).toFixed(2));
         index++
     }
-};
+}
 
 
 // Disable em item compra
@@ -192,7 +206,6 @@ $(document).ready(function () {
         }
     });
 });
-
 
 
 function checkAll() {

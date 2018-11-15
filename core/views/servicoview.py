@@ -16,7 +16,7 @@ def register_servico(request):
 
     instance_servico = Servico()
     form_servico = ServicoForm(instance=instance_servico)
-    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm, fk_name='numero_servico', min_num=1, max_num=50, can_delete=True)
+    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm, fk_name='numero_servico', extra=1, can_delete=True)
     form_itemservico = ItemServicoFormSet(instance=instance_servico)
 
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def update_servico(request, uuid):
 
     update_servico = Servico.objects.get(uuid=uuid)
     form_servico = ServicoForm(instance=update_servico)
-    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm, fk_name='numero_servico', min_num=1, max_num=50, can_delete=True)
+    ItemServicoFormSet = inlineformset_factory(Servico, ItemServico, form=ItemServicoForm, fk_name='numero_servico', extra=0, can_delete=True)
     form_itemservico = ItemServicoFormSet(instance=update_servico)
 
     if request.method == 'POST':

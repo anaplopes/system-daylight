@@ -16,6 +16,6 @@ class ItemCompraForm(forms.ModelForm):
             'material': forms.Select(attrs={'class':'form-control form-control-sm', 'id':'item_c_material'}),
             'cor': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
-            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm totalitem'}),
             }
