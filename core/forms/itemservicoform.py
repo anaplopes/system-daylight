@@ -14,7 +14,7 @@ class ItemServicoForm(forms.ModelForm):
             'numero_servico': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'type':'hidden'}),
             'produto': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'cor': forms.Select(attrs={'class':'form-control form-control-sm'}),
-            'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
-            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario'}),
+            'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm qtd', 'onchange':'calcTotalCompra()'}),
+            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario', 'onchange':'calcTotalCompra()'}),
             'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm totalitem'}),
             }

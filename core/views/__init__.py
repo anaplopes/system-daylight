@@ -10,4 +10,4 @@ from .produtoview import create_produto, update_produto, delete_produto, list_pr
 from .compraview import register_compra, update_compra, list_compra
 from .pedidoview import register_pedido, update_pedido, list_pedido
 from .servicoview import register_servico, update_servico, list_servico
-from .expedicaoview import expedicao
+from .expedicaoview import expedicao, detalhes_pedido

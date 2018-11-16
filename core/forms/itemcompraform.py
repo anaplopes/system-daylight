@@ -12,10 +12,10 @@ class ItemCompraForm(forms.ModelForm):
 
         widgets = {
             'numero_compra': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'type':'hidden'}),
-            'tecido': forms.Select(attrs={'class':'form-control form-control-sm', 'id':'item_c_tecido'}),
-            'material': forms.Select(attrs={'class':'form-control form-control-sm', 'id':'item_c_material'}),
+            'tecido': forms.Select(attrs={'class':'form-control form-control-sm', 'onchange':'disableTecido()'}),
+            'material': forms.Select(attrs={'class':'form-control form-control-sm', 'onchange':'disableMaterial()'}),
             'cor': forms.Select(attrs={'class':'form-control form-control-sm'}),
-            'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
-            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario'}),
+            'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm qtd', 'onchange':'calcTotalCompra()'}),
+            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario', 'onchange':'calcTotalCompra()'}),
             'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm totalitem'}),
             }

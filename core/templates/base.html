@@ -179,21 +179,21 @@
       $(function() {
         $(".inline.{{ form_itempedido.prefix }}").formset({
             prefix: "{{ form_itempedido.prefix }}",
-            added: function () { reload_auto_complete(); },
+            added: function () { reload_auto_complete() },
         })
       });
 
       $(function() {
         $(".inline.{{ form_itemcompra.prefix }}").formset({
             prefix: "{{ form_itemcompra.prefix }}",
-            added: function () { reload_auto_complete(); },
+            added: function () { reload_auto_complete() },
         })
       });
 
       $(function() {
         $(".inline.{{ form_itemservico.prefix }}").formset({
             prefix: "{{ form_itemservico.prefix }}",
-            added: function () { reload_auto_complete(); },
+            added: function () { reload_auto_complete() },
         })
       })
   </script>

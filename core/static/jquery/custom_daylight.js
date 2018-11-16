@@ -1,13 +1,7 @@
 
 
-// $('#pedidoFormsets').on('submit', function(e){
-//     $('#printPedidoModal').modal('show');
-//     e.preventDefault();
-// });
-
-
 // calculo total geral (pedido, compra e serviço)
-$('.vlr_unitario').blur(function () {
+    $('.vlr_unitario, .qtd').blur(function () {
     let total = 0;
     $('.totalitem').each(function(){
         let valor = Number($(this).val());
@@ -52,14 +46,37 @@ function calcTotalServico(){
 }
 
 
-// Disable em item compra
-// $('#item_c_tecido').on('change', function () {
-//     $('#item_c_material').attr('disabled', 'disabled')
-// });
+// disable tipo de material de compra
+function disableTecido(){
+    let total_form = parseInt($('#id_itemcompra_set-TOTAL_FORMS').val());
+    let index=0;
+    while (index < total_form){
+        let selected = $("#id_itemcompra_set-"+index+"-tecido").find(":selected").val();
+        if (selected.length){
+            $("#id_itemcompra_set-"+index+"-material").prop('disabled', true);
+        }
+        else{
+            $("#id_itemcompra_set-"+index+"-material").prop('disabled', false);
+        }
+        index++
+    }
+}
 
-// $('#item_c_material').on('change', function () {
-//     $('#item_c_tecido').attr('disabled', 'disabled')
-// });
+
+function disableMaterial(){
+    let total_form = parseInt($('#id_itemcompra_set-TOTAL_FORMS').val());
+    let index=0;
+    while (index < total_form){
+        let selected = $("#id_itemcompra_set-"+index+"-material").find(":selected").val();
+        if (selected.length){
+            $("#id_itemcompra_set-"+index+"-tecido").prop('disabled', true);
+        }
+        else{
+            $("#id_itemcompra_set-"+index+"-tecido").prop('disabled', false);
+        }
+        index++
+    }
+}
 
 
 // Texto
@@ -254,3 +271,25 @@ $('#btn_pedidoentregue').click(function() {
         }
     });
 });
+
+
+
+// function detalhesPedido(uuid) {
+//     $.ajax({
+//         type: 'POST',
+//         url: "/detalhes_pedido/"+uuid,
+//         success : function(data){
+//             $('#detalhespedido').html(data);
+//             $('#modalDetalhes').modal('show');
+//         },
+//         error : function (error) {
+//         }
+//     });
+// }
+
+
+
+/ $('#pedidoFormsets').on('submit', function(e){
+//     $('#detalhespedido').modal('show');
+//     e.preventDefault();
+// });
