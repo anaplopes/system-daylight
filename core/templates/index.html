@@ -12,8 +12,11 @@
   <li class="breadcrumb-item active">Home</li>
 </ol>
 
+
 <!-- CARDS -->
 <div class="row">
+
+{% if user.perfil == 'G' or user.perfil == 'V' %}
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-papaya o-hidden h-80">
       <div class="card-body">
@@ -28,7 +31,9 @@
       </a>
     </div>
   </div>
+{% endif %}
 
+{% if user.perfil == 'G' %}
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-mustard o-hidden h-80">
       <div class="card-body">
@@ -45,7 +50,9 @@
       </a>
     </div>
   </div>
+{% endif %}
 
+{% if user.perfil == 'G' or user.perfil == 'A' %}
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-blush o-hidden h-80">
       <div class="card-body">
@@ -62,6 +69,7 @@
       </a>
     </div>
   </div>
+{% endif %}
 
   <div class="col-xl-3 col-sm-6 mb-3">
     <div class="card text-white bg-aqua o-hidden h-80">

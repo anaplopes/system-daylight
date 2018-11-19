@@ -9,11 +9,13 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('entrar/', views.login, name='login'),
     path('sair/', views.logout, {'next_page': '/account/login/'}, name='logout'),
+    path('change-password/', views.password_change, name='password_change'),
 
     path('gerencial/cadastrarusuario/', views.create_usuario, name='create_usuario'),
     path('gerencial/gerenciarusuario/', views.list_usuario, name='list_usuario'),
     #path('gerencial/gerenciarusuario/<uuid>/', views.delete_usuario, name='delete_usuario'),
     path('gerencial/cadastrarusuario/<uuid>/', views.update_usuario, name='update_usuario'),
+    
 
     path('comercial/cadastrarcliente/', views.create_cliente, name='create_cliente'),
     path('comercial/gerenciarcliente/', views.list_cliente, name='list_cliente'),

@@ -40,7 +40,7 @@ def update_produto(request, uuid):
         messages.error(request, tipo_erro, 'Erro')
     return render(request, 'comercial/cadastrarproduto.html', { 'form' : form, 'update_produto':update_produto })
 
-
+'''
 @login_required(login_url='/entrar')
 def delete_produto(request, uuid):
     delete_produto = Produto.objects.get(uuid=uuid)
@@ -49,6 +49,7 @@ def delete_produto(request, uuid):
         messages.success(request, 'Produto excluído com sucesso.', 'Sucesso')
         return redirect('list_produto')
     return render(request, "exclusaoConf.html", {'delete_produto': delete_produto})
+'''
 
 
 @login_required(login_url='/entrar')

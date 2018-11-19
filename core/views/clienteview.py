@@ -41,6 +41,7 @@ def update_cliente(request, uuid):
         return render(request, 'comercial/cadastrarcliente.html', { 'form' : form, 'update_cliente':update_cliente })
 
 
+'''
 @login_required(login_url='/entrar')
 def delete_cliente(request, uuid):
     delete_cliente = Cliente.objects.get(uuid=uuid)
@@ -49,6 +50,7 @@ def delete_cliente(request, uuid):
         messages.success(request, 'Cliente excluído com sucesso.', 'Sucesso')
         return redirect('list_cliente')
     return render(request, "exclusaoConf.html", {'delete_cliente': delete_cliente})
+'''
 
 
 @login_required(login_url='/entrar')

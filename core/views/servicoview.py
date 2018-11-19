@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.views.login import check_multiuser_a
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms.servicoform import ServicoForm
@@ -10,6 +11,7 @@ from core.forms.itemservicoform import ItemServicoForm
 from django.forms import inlineformset_factory
 
 
+@user_passes_test(check_multiuser_a, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def register_servico(request):
     template = 'producao/registrarservico.html'
@@ -49,7 +51,7 @@ def register_servico(request):
     return render(request, template, { 'form_servico': ServicoForm(instance=instance_servico), 'form_itemservico': ItemServicoFormSet()})
 
 
-
+@user_passes_test(check_multiuser_a, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_servico(request, uuid):
 
@@ -87,6 +89,7 @@ def update_servico(request, uuid):
     return render(request, 'producao/registrarservico.html', { 'form_servico' : form_servico, 'form_itemservico': form_itemservico })
 
 
+@user_passes_test(check_multiuser_a, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_servico(request):
     template = 'producao/gerenciarservico.html'

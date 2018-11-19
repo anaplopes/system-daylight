@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.views.login import check_gerente
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.models.materialmodel import Material
 from core.forms.materialform import MaterialForm
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def create_material(request):
     template = 'comercial/cadastrarmaterial.html'
@@ -25,6 +27,7 @@ def create_material(request):
     return render(request, template, { 'form' : MaterialForm() })
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_material(request, uuid):
     template = 'comercial/cadastrarmaterial.html'
@@ -43,6 +46,7 @@ def update_material(request, uuid):
     return render(request, template, { 'form' : form, 'update_material':update_material })
 
 
+'''
 @login_required(login_url='/entrar')
 def delete_material(request, uuid):
     delete_material = Material.objects.get(uuid=uuid)
@@ -51,8 +55,10 @@ def delete_material(request, uuid):
         messages.success(request, 'Material excluído com sucesso.', 'Sucesso')
         return redirect('list_material')
     return render(request, "exclusaoConf.html", {'delete_material': delete_material})
+'''
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_material(request):
     template = "comercial/gerenciarmaterial.html"

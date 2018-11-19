@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.views.login import check_gerente
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms.compraform import CompraForm
@@ -10,7 +11,7 @@ from core.forms.itemcompraform import ItemCompraForm
 from django.forms import inlineformset_factory
 
 
-
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def register_compra(request):
     template = 'comercial/registrarcompra.html'
@@ -48,7 +49,7 @@ def register_compra(request):
     return render(request, template, { 'form_compra': CompraForm(instance=instance_compra), 'form_itemcompra': ItemCompraFormSet()})
 
 
-
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_compra(request, uuid):
 
@@ -83,7 +84,7 @@ def update_compra(request, uuid):
     return render(request, 'comercial/registrarcompra.html', { 'form_compra' : form_compra, 'form_itemcompra': form_itemcompra })
 
 
-
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_compra(request):
     template = 'comercial/gerenciarcompra.html'

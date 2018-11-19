@@ -11,4 +11,4 @@ class CustomUser(AbstractUser):
     cpf = models.CharField('CPF', max_length=14, unique=True, null=True)
     dt_nascimento = models.DateField('Data de Nascimento', max_length=10, null=True)
     telefone = models.CharField('Telefone', max_length=14, null=True)
-    perfil = models.CharField('Perfil', choices=PERFIL_CHOICES, max_length=1, default='A')
+    perfil = models.CharField('Perfil', choices=PERFIL_CHOICES, max_length=1, default='G')

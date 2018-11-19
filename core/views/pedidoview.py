@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.views.login import check_multiuser_v
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms.pedidoform import PedidoForm
@@ -10,6 +11,7 @@ from core.forms.itempedidoform import ItemPedidoForm
 from django.forms import inlineformset_factory
 
 
+@user_passes_test(check_multiuser_v, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def register_pedido(request):
     template = 'comercial/registrarpedido.html'
@@ -50,7 +52,7 @@ def register_pedido(request):
     return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_itempedido': ItemPedidoFormSet()})
 
 
-
+@user_passes_test(check_multiuser_v, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_pedido(request, uuid):
 
@@ -88,6 +90,7 @@ def update_pedido(request, uuid):
     return render(request, 'comercial/registrarpedido.html', {'form_pedido': form_pedido, 'form_itempedido': form_itempedido})
 
 
+@user_passes_test(check_multiuser_v, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_pedido(request):
     template = 'comercial/gerenciarpedido.html'

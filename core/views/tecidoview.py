@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.views.login import check_gerente
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.models.tecidomodel import Tecido
 from core.forms.tecidoform import TecidoForm
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def create_tecido(request):
     template = 'comercial/cadastrartecido.html'
@@ -25,6 +27,7 @@ def create_tecido(request):
     return render(request, template, { 'form' : TecidoForm() })
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_tecido(request, uuid):
     template = 'comercial/cadastrartecido.html'
@@ -43,6 +46,7 @@ def update_tecido(request, uuid):
     return render(request, template, { 'form' : form, 'update_tecido':update_tecido })
 
 
+'''
 @login_required(login_url='/entrar')
 def delete_tecido(request, uuid):
     delete_tecido = Tecido.objects.get(uuid=uuid)
@@ -51,8 +55,10 @@ def delete_tecido(request, uuid):
         messages.success(request, 'Tecido excluído com sucesso.', 'Sucesso')
         return redirect('list_tecido')
     return render(request, "exclusaoConf.html", { 'delete_tecido': delete_tecido })
+'''
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_tecido(request):
     template = "comercial/gerenciartecido.html"

@@ -24,7 +24,7 @@
   <link href="{% static 'css/custom_daylight.css' %}" rel="stylesheet">
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
 
   {% for message in messages %}
     {% if message.extra_tags == 'Erro' %}<div class="alert_message" data-title="{{ message.extra_tags }}" data-type="error" hidden>{{ message }}</div>
@@ -55,23 +55,35 @@
       </ul>
 
       <ul class="navbar-nav navbar-sidenav" id="menu">
+
         <!-- ITEM COMERCIAL -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Comercial">
           <a class="nav-link nav-link-collapse collapsed" id="comercial" data-toggle="collapse" data-parent="#navbarResponsive" href="#itemcomercial" aria-expanded="false">
-            <i class="fa far fa-dollar"></i>
+            <i class="fa fa-handshake-o"></i>
             <span class="nav-link-text">Comercial</span>
           </a>
           <ul class="sidenav-second-level collapse" id="itemcomercial">
             <li><a href="/comercial/gerenciarcliente">Gerenciar Cliente</a></li>
+
+            {% if user.perfil == 'G' %}
             <li><a href="/comercial/gerenciarfornecedor">Gerenciar Fornecedor</a></li>
             <li><a href="/comercial/gerenciarmaterial">Gerenciar Material</a></li>
             <li><a href="/comercial/gerenciartecido">Gerenciar Tecido</a></li>
+            {% endif %}
+
             <li><a href="/comercial/gerenciarproduto">Gerenciar Produto</a></li>
+
+            {% if user.perfil == 'G' or user.perfil == 'V' %}
             <li><a href="/comercial/gerenciarpedido">Gerenciar Pedido</a></li>
+            {% endif %}
+
+            {% if user.perfil == 'G' %}
             <li><a href="/comercial/gerenciarcompra">Gerenciar Compra</a></li>
+            {% endif %}
           </ul>
         </li>
 
+        {% if user.perfil == 'G' or user.perfil == 'A' %}
         <!-- ITEM PRODUÇÃO -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Produção">
           <a class="nav-link nav-link-collapse collapsed" id="producao" data-toggle="collapse" data-parent="#navbarResponsive" href="#itemproducao" aria-expanded="false">
@@ -83,6 +95,7 @@
             <li><a href="/producao/gerenciarservico">Gerenciar Serviço</a></li>
           </ul>
         </li>
+        {% endif %}
 
         <!-- ITEM EXPEDIÇÃO -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Expedicao">
@@ -92,22 +105,25 @@
           </a>
         </li>
 
+        {% if user.perfil == 'G' %}
         <!-- ITEM GERENCIAL -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gerencial">
           <a class="nav-link nav-link-collapse collapsed" id="gerencial" data-toggle="collapse" data-parent="#navbarResponsive" href="#itemgerencial" aria-expanded="false">
-            <i class="fa fa-fw fa-area-chart"></i>
+            <i class="fa fa-bar-chart"></i>
             <span class="nav-link-text">Gerencial</span>
           </a>
             <ul class="sidenav-second-level collapse" id="itemgerencial">
               <li><a href="/gerencial/gerenciarusuario">Gerenciar Usuário</a></li>
             </ul>
         </li>
+        {% endif %}
+        
       </ul>
 
     <!-- USER E LOGOUT-->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal">
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <i class="fa fa-fw fa-user"></i>
             {% if user.is_authenticated %}
                 Olá {{ user.username }}
@@ -115,7 +131,11 @@
                 Perfil
               {% endif %}
           </a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/registration/senhausuario">Redefinir Senha</a></li>
+          </ul>
         </li>
+        
         <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#outModal">
               <i class="fa fa-sign-out"></i>Sair</a>

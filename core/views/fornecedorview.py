@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.views.login import check_gerente
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms.fornecedorform import FornecedorForm
 from core.models.fornecedormodel import Fornecedor
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def create_fornecedor(request):
     if request.method == 'POST':
@@ -24,6 +26,7 @@ def create_fornecedor(request):
     return render(request, 'comercial/cadastrarfornecedor.html', { 'form' : FornecedorForm() })
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_fornecedor(request, uuid):
     update_fornecedor = Fornecedor.objects.get(uuid=uuid)
@@ -41,6 +44,7 @@ def update_fornecedor(request, uuid):
     return render(request, 'comercial/cadastrarfornecedor.html', { 'form' : form, 'update_fornecedor':update_fornecedor })
 
 
+'''
 @login_required(login_url='/entrar')
 def delete_fornecedor(request, uuid):
     delete_fornecedor = Fornecedor.objects.get(uuid=uuid)
@@ -49,8 +53,10 @@ def delete_fornecedor(request, uuid):
         messages.success(request, 'Fornecedor excluído com sucesso.', 'Sucesso')
         return redirect('list_fornecedor')
     return render(request, "exclusaoConf.html", {'delete_fornecedor': delete_fornecedor})
+'''
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_fornecedor(request):
     template = "comercial/gerenciarfornecedor.html"

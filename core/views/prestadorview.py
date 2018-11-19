@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.views.login import check_multiuser_a
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms.prestadorform import PrestadorForm
 from core.models.prestadormodel import PrestadorServico
 
 
+@user_passes_test(check_multiuser_a, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def create_prestador(request):
     if request.method == 'POST':
@@ -24,6 +26,7 @@ def create_prestador(request):
     return render(request, 'producao/cadastrarprestador.html', { 'form' : PrestadorForm() })
 
 
+@user_passes_test(check_multiuser_a, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_prestador(request, uuid):
     update_prestador = PrestadorServico.objects.get(uuid=uuid)
@@ -41,6 +44,7 @@ def update_prestador(request, uuid):
     return render(request, 'producao/cadastrarprestador.html', { 'form' : form, 'update_prestador':update_prestador })
 
 
+'''
 @login_required(login_url='/entrar')
 def delete_prestador(request, uuid):
     delete_prestador = PrestadorServico.objects.get(uuid=uuid)
@@ -49,8 +53,10 @@ def delete_prestador(request, uuid):
         messages.success(request, 'Prestador excluído com sucesso.', 'Sucesso')
         return redirect('list_prestador')
     return render(request, "exclusaoConf.html", {'delete_prestador': delete_prestador})
+'''
 
 
+@user_passes_test(check_multiuser_a, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_prestador(request):
     template = "producao/gerenciarprestador.html"

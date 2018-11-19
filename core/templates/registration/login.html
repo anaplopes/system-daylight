@@ -24,24 +24,17 @@
     </head>
 
     <body class="body-Login-back form-signin vertical-center">
-        <div class="container col-md-3 col-sm-4">
+        <div class="container col-xl-4 col-sm-4 col-xs-12">
             <div class="panel panel-login mx-auto mt-5">
                 <div class="panel-heading">
                     <h3 class="panel-title text-center">DayLight Manage System</h3>
                     <p class="text-center">Sistema de gerenciamento desenvolvido para Aquarela Uniformes.</p>
                 </div>
-                <div class="panel-body">
-                    <form method="POST" action="{% url 'login' %}" autofocus>
+                <div class="panel-body col-xl-10 col-sm-10 col-xs-12 horizontal-center">
+                    <form method="POST" action="{% url 'login' %}">
                         {% csrf_token %}
-
-                        {% if messages %}
-                        <ul>
-                            {% for message in messages %}
-                            <li>{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-
+                        
+                        <br />
                         <div class="form-group">
                             <input class="form-control" id="username" name="username" type="text" placeholder="Username">
                         </div>

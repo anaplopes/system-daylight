@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from core.forms.usuarioform import CustomUserCreationForm, CustomUserChangeForm
+from core.views.login import check_gerente
+from core.forms.usuarioform import CustomUserCreationForm, CustomUserChangeForm, PasswordChangeCustomForm
 from core.models.usuariomodel import CustomUser
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def create_usuario(request):
+    template = 'gerencial/cadastrarusuario.html'
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -20,10 +24,11 @@ def create_usuario(request):
                 tipo_erro += '\n'
                 tipo_erro += erro[0]
             messages.error(request, tipo_erro, 'Erro')
-            return render(request, 'gerencial/cadastrarusuario.html', { 'form': form })
-    return render(request, 'gerencial/cadastrarusuario.html', { 'form': CustomUserCreationForm() })
+            return render(request, template, { 'form': form })
+    return render(request, template, { 'form': CustomUserCreationForm() })
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def update_usuario(request, uuid):
     update_usuario = CustomUser.objects.get(uuid=uuid)
@@ -41,6 +46,21 @@ def update_usuario(request, uuid):
     return render(request, 'gerencial/atualizarusuario.html', { 'form' : form, 'update_usuario':update_usuario })
 
 
+def password_change(request):
+    template = 'registration/senhausuario.html'
+    if request.method == 'POST':
+        form = PasswordChangeCustomForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Senha alterada com sucesso.', 'Sucesso')
+            return redirect('home')
+    else:
+        form = PasswordChangeCustomForm(request.user)
+    return render(request, template, { 'form': form }) 
+
+
+'''
 @login_required(login_url='/entrar')
 def delete_usuario(request, uuid):
     delete_usuario = Profile.objects.get(uuid=uuid)
@@ -49,8 +69,10 @@ def delete_usuario(request, uuid):
         messages.success(request, 'Usuário excluído com sucesso.', 'Sucesso')
         return redirect('list_usuario')
     return render(request, "exclusaoConf.html", {'delete_usuario': delete_usuario})
+'''
 
 
+@user_passes_test(check_gerente, login_url='/?error=acesso', redirect_field_name=None)
 @login_required(login_url='/entrar')
 def list_usuario(request):
     template = "gerencial/gerenciarusuario.html"
