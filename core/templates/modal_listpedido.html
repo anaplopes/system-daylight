@@ -8,7 +8,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{ detalhes.uuid }}
+                {% for detalhe in detalhes %}
+                    {{ detalhe }}
+                {% endfor %}
             </div>
             <div class="modal-footer">
                 <a class="btn btn-primary" href="">Sair</a>

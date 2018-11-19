@@ -274,22 +274,22 @@ $('#btn_pedidoentregue').click(function() {
 
 
 
-// function detalhesPedido(uuid) {
-//     $.ajax({
-//         type: 'POST',
-//         url: "/detalhes_pedido/"+uuid,
-//         success : function(data){
-//             $('#detalhespedido').html(data);
-//             $('#modalDetalhes').modal('show');
-//         },
-//         error : function (error) {
-//         }
-//     });
-// }
+function detalhesPedido(uuid) {
+    $.ajax({
+        type: 'GET',
+        url: "/detalhes_pedido/"+uuid,
+        success : function(data){
+            $('#espacoModal').html(data);
+            $('#modalDetalhes').modal('show');
+        },
+        error : function (error) {
+        }
+    });
+}
 
 
 
-/ $('#pedidoFormsets').on('submit', function(e){
+// $('#pedidoFormsets').on('submit', function(e){
 //     $('#detalhespedido').modal('show');
 //     e.preventDefault();
 // });

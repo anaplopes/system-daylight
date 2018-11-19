@@ -51,12 +51,13 @@
                         <td>{{ entrega.data_entrega|date:'d/m/Y' }}</td>
                         <td>Disponível para entrega</td>
                         <td>
-                            <a href="{% url 'detalhes_pedido' entrega.uuid %}" data-toggle="modal" data-target="#modalDetalhes" data-remote="false">
+                            <a onclick="detalhesPedido({{ entrega.uuid }})" data-toggle="modal" data-target="#modalDetalhes" data-remote="false">
                                 <button class="btn btn-warning btn-sm">
                                     <i class="fa fa-eye"></i>
                                 </button>
                             </a>
                         </td>
+                        <div id="espacoModal"></div>
                     </tr>
                 </tbody>
                 {% endfor %}
@@ -64,5 +65,4 @@
         </div>
     </div>
 </div>
-    {% include "modal_listpedido.html" %}
 {% endblock %}
