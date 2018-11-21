@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('entrar/', views.login, name='login'),
     path('sair/', views.logout, {'next_page': '/account/login/'}, name='logout'),
-    path('change-password/', views.password_change, name='password_change'),
+    path('change-password/', views.password_change, name='change-password'),
 
     path('gerencial/cadastrarusuario/', views.create_usuario, name='create_usuario'),
     path('gerencial/gerenciarusuario/', views.list_usuario, name='list_usuario'),
@@ -50,15 +50,17 @@ urlpatterns = [
     path('comercial/registrarpedido/', views.register_pedido, name='register_pedido'),
     path('comercial/gerenciarpedido/', views.list_pedido, name='list_pedido'),
     path('comercial/registrarpedido/<uuid>/', views.update_pedido, name='update_pedido'),
+    path('detalhes_pedido/<uuid>', views.detalhes_pedido, name='detalhes_pedido'),
 
     path('comercial/registrarcompra/', views.register_compra, name='register_compra'),
     path('comercial/gerenciarcompra/', views.list_compra, name='list_compra'),
     path('comercial/registrarcompra/<uuid>/', views.update_compra, name='update_compra'),
+    path('detalhes_compra/<uuid>', views.detalhes_compra, name='detalhes_compra'),
 
     path('producao/registrarservico/', views.register_servico, name='register_servico'),
     path('producao/gerenciarservico/', views.list_servico, name='list_servico'),
     path('producao/registrarservico/<uuid>/', views.update_servico, name='update_servico'),
+    path('detalhes_servico/<uuid>', views.detalhes_servico, name='detalhes_servico'),
 
     path('expedicao', views.expedicao, name='expedicao'),
-    path('detalhes_pedido/<uuid>', views.detalhes_pedido, name='detalhes_pedido'),
 ]

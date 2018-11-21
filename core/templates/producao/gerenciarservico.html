@@ -108,6 +108,11 @@
 
                          {% if servico %}
                         <td>
+                            <a onclick="detalhesServico('{{ servico.uuid }}')" data-toggle="modal" data-target="#modalServico" data-remote="false">
+                                <button class="btn bg-aqua btn-sm">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                            </a>
                             <a href="{% url 'update_servico' servico.uuid %}">
                                 <button class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil"></i>
@@ -123,4 +128,9 @@
     </div>
 </div>
 <br />
+<div class="modal fade" id="modalServico" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="containerServico"></div>
+    </div>
+</div>
 {% endblock %}

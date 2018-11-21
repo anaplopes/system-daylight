@@ -1,6 +1,6 @@
 <!-- Large modal -->
 <div class="modal-header">
-    <h4 class="modal-title">Itens do Pedido</h4>
+    <h4 class="modal-title">Itens do Compra</h4>
     <button type="button" class="close" data-dismiss="modal">×</button>
 </div>
 
@@ -12,9 +12,9 @@
                     <table role="grid" class="table table-hover table-sm table-secundary">
                         <thead scope="col" class="card-header">
                             <tr>
-                                <th>Produto</th>
-                                <th>Cor</th>
                                 <th>Tecido</th>
+                                <th>Material</th>
+                                <th>Cor</th>
                                 <th>Quantidade</th>
                             </tr>
                         </thead>
@@ -22,9 +22,17 @@
                         <tbody>
                             {% for detalhe in detalhes %}
                             <tr>
-                                <td>{{ detalhe.produto }}</td>
-                                <td>{{ detalhe.cor }}</td>
+                                {% if detalhe.tecido == None %}
+                                <td>-</td>
+                                {% else %}
                                 <td>{{ detalhe.tecido }}</td>
+                                {% endif %}
+                                {% if detalhe.material == None %}
+                                <td>-</td>
+                                {% else %}
+                                <td>{{ detalhe.material }}</td>
+                                {% endif %}
+                                <td>{{ detalhe.cor }}</td>
                                 <td>{{ detalhe.quantidade }}</td>
                             </tr>
                             {% endfor %}

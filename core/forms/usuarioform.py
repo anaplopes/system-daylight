@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from core.models.usuariomodel import CustomUser
 
 
@@ -40,18 +40,4 @@ class CustomUserChangeForm(UserChangeForm):
             'is_active': forms.CheckboxInput(attrs={'class':'form-check-input'}),
             'telefone': forms.TextInput(attrs={'class':'form-control form-control-sm', 'id':'telefone'}),
             'perfil': forms.Select(attrs={'class':'form-control form-control-sm'}),
-            }
-
-
-class PasswordChangeCustomForm(PasswordChangeForm):
-    
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'password']
-        exclude = ['nome', 'cpf', 'dt_nascimento', 'email', 'is_staff', 'is_active', 'telefone', 'perfil']
-
-        widgets = {
-            'old_password': forms.PasswordInput(attrs={'class':'form-control'}),
-            'new_password1': forms.PasswordInput(attrs={'class':'form-control'}),
-            'new_password2': forms.PasswordInput(attrs={'class':'form-control'}),
             }

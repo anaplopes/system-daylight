@@ -31,7 +31,7 @@ def register_pedido(request):
             if form_itempedido.is_valid():
                 pedido.save()
                 form_itempedido.save()
-
+                
                 messages.success(request, 'Pedido registrado com sucesso.', 'Sucesso')
                 return redirect('list_pedido')
 
@@ -133,3 +133,10 @@ def list_pedido(request):
         return render(request, template, {'lista_pedido': lista_pedido})
     else:
         return render(request, template)
+
+
+
+@login_required(login_url='/entrar')
+def detalhes_pedido(request, uuid):
+    detalhes = ItemPedido.objects.filter(numero_pedido=uuid)
+    return render(request, "modal_listpedido.html", {'detalhes': detalhes})

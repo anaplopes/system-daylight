@@ -102,6 +102,11 @@
 
                         {% if compra %}
                         <td>
+                            <a onclick="detalhesCompra('{{ compra.uuid }}')" data-toggle="modal" data-target="#modalCompra" data-remote="false">
+                                <button class="btn bg-aqua btn-sm">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                            </a>
                             <a href="{% url 'update_compra' compra.uuid %}">
                                 <button class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil"></i>
@@ -117,4 +122,9 @@
     </div>
 </div>
 <br />
+<div class="modal fade" id="modalCompra" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="containerCompra"></div>
+    </div>
+</div>
 {% endblock %}

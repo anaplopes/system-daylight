@@ -3,7 +3,7 @@
 {% block main %}
 
 <!-- CABEÇALHO PAGINA -->
-<ol class="breadcrumb">
+<ol class="breadcrumb d-print-none" id="title_compra">
     <li class="breadcrumb-item">
         <a href="/">
             <i class="fa fa-home fa-lg"></i>
@@ -24,11 +24,11 @@
                         <form method="POST" id="compraFormsets">
                             {% csrf_token %}
 
-                            <div class="form-row">
+                            <div class="form-row d-print-none">
                                 <div class="col-xl-12 col-sm-12 col-xs-12 mb-3">
                                     <div class="pull-right">
                                         <a href="/comercial/gerenciarcompra"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
-                                        <a href="{% url 'register_compra' %}"><input onclick="window.print()" type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                        <a href="{% url 'register_compra' %}"><input id="btn_compra" type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-sm-3 col-xs-12">
+                                <div class="col-xl-3 col-sm-3 col-xs-12 d-print-none">
                                     <div class="form-group">
                                         <label class="small">Status da Compra</label>
                                         {{ form_compra.status }}
@@ -118,7 +118,7 @@
                                                     <th>Quantidade</th>
                                                     <th>Valor Unitário</th>
                                                     <th>Valor Total</th>
-                                                    <th></th>
+                                                    <th class="d-print-none"></th>
                                                 </tr>
                                             </thead>
 
@@ -134,7 +134,7 @@
                                                     <td>{{ f.quantidade }}</td>
                                                     <td>{{ f.valor_unitario }}</td>
                                                     <td>{{ f.valor_total }}</td>
-                                                    <td>{{ f.DELETE }}</td>
+                                                    <td class="d-print-none">{{ f.DELETE }}</td>
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>

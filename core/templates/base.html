@@ -132,7 +132,7 @@
               {% endif %}
           </a>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="/registration/senhausuario">Redefinir Senha</a></li>
+            <li><a class="dropdown-item" onclick="redefinirSenha()" data-toggle="modal" data-target="#modalRedefinirSenha" data-remote="false">Redefinir Senha</a></li>
           </ul>
         </li>
         
@@ -156,7 +156,7 @@
 
 
   <!-- RODAPÉ -->
-  <footer class="sticky-footer">
+  <footer class="sticky-footer d-print-none">
     <div class="container">
       <div class="text-center small">
         <small>&copy; 2018 DayLight Manager System. Todos os direitos reservados.</small>
@@ -219,6 +219,13 @@
   </script>
 
   {% include "modal_logout.html" %}
+
+
+  <div class="modal fade" id="modalRedefinirSenha" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content" id="containerRedefinirSenha"></div>
+    </div>
+  </div>
 
 </body>
 </html>

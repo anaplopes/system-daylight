@@ -126,3 +126,10 @@ def list_servico(request):
         return render(request, template, {'lista_servico': lista_servico})
     else:
         return render(request, template)
+
+
+
+@login_required(login_url='/entrar')
+def detalhes_servico(request, uuid):
+    detalhes = ItemServico.objects.filter(numero_servico=uuid)
+    return render(request, "modal_listservico.html", {'detalhes': detalhes})

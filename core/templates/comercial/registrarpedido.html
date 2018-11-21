@@ -3,7 +3,7 @@
 {% block main %}
 
 <!-- CABEÇALHO PAGINA -->
-<ol class="breadcrumb">
+<ol class="breadcrumb d-print-none" id="title_pedido">
     <li class="breadcrumb-item">
         <a href="/">
             <i class="fa fa-home fa-lg"></i>
@@ -24,11 +24,11 @@
                         <form method="POST" id="pedidoFormsets">
                             {% csrf_token %}
 
-                            <div class="form-row">
+                            <div class="form-row d-print-none">
                                 <div class="col-xl-12 col-sm-12 col-xs-12 mb-3">
                                     <div class="pull-right">
                                         <a href="/comercial/gerenciarpedido"><input type="button" class="btn btn-danger btn-sm" value="Cancelar"></a>
-                                        <a href="{% url 'register_pedido' %}"><input onclick="window.print()" type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
+                                        <a href="{% url 'register_pedido' %}"><input id="btn_pedido" type="submit" class="btn btn-success btn-sm" value="Salvar"></a>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-row">
+                            <div class="form-row d-print-none">
                                 <div class="col-xl-3 col-sm-3 col-xs-12">
                                     <div class="form-group">
                                         <label class="small">Forma de Pagamento</label>
@@ -74,14 +74,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-sm-3 col-xs-12">
+                                <div class="col-xl-3 col-sm-3 col-xs-12 d-print-none">
                                     <div class="form-group">
                                         <label class="small">Prazo de Pagamento</label>
                                         {{ form_pedido.prazo_pagamento }}
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-sm-3 col-xs-12">
+                                <div class="col-xl-3 col-sm-3 col-xs-12 d-print-none">
                                     <div class="form-group">
                                         <label class="small">Valor Total</label>
                                         {{ form_pedido.valor_total }}
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-sm-3 col-xs-12">
+                                <div class="col-xl-3 col-sm-3 col-xs-12 d-print-none">
                                     <div class="form-group">
                                         <label class="small">Status do Pedido</label>
                                         {{ form_pedido.status }}
@@ -133,9 +133,9 @@
                                                     <th>Cor</th>
                                                     <th>Tecido</th>
                                                     <th>Quantidade</th>
-                                                    <th>Valor Unitário</th>
-                                                    <th>Valor Total</th>
-                                                    <th></th>
+                                                    <th class="d-print-none">Valor Unitário</th>
+                                                    <th class="d-print-none">Valor Total</th>
+                                                    <th class="d-print-none"></th>
                                                 </tr>
                                             </thead>
 
@@ -148,10 +148,10 @@
                                                     <td>{{ f.produto }}</td>
                                                     <td>{{ f.cor }}</td>
                                                     <td>{{ f.tecido }}</td>
-                                                    <td onchange='calcTotalPedido()'>{{ f.quantidade }}</td>
-                                                    <td onchange='calcTotalPedido()'>{{ f.valor_unitario }}</td>
-                                                    <td>{{ f.valor_total }}</td>
-                                                    <td>{{ f.DELETE }}</td>
+                                                    <td>{{ f.quantidade }}</td>
+                                                    <td class="d-print-none">{{ f.valor_unitario }}</td>
+                                                    <td class="d-print-none">{{ f.valor_total }}</td>
+                                                    <td class="d-print-none">{{ f.DELETE }}</td>
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>

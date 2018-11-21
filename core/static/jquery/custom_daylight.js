@@ -1,7 +1,7 @@
 
 
 // calculo total geral (pedido, compra e serviço)
-    $('.vlr_unitario, .qtd').blur(function () {
+$('.vlr_unitario, .qtd').blur(function () {
     let total = 0;
     $('.totalitem').each(function(){
         let valor = Number($(this).val());
@@ -225,6 +225,7 @@ $(document).ready(function () {
 });
 
 
+// check todos itens em expedição
 function checkAll() {
     let checkAll_item = $('input[name=checkAll]:checked');
     if (checkAll_item.length){
@@ -240,6 +241,7 @@ function checkAll() {
 }
 
 
+// botão pedido entregue para finalizar pedido
 $('#btn_pedidoentregue').click(function() {
     let pedido_check = $('input[name=check]:checked');
 
@@ -273,23 +275,70 @@ $('#btn_pedidoentregue').click(function() {
 });
 
 
-
-function detalhesPedido(uuid) {
+// modal detalhes do pedido em expedição e gerenciar pedido
+function detalhesPedido(uuid){
     $.ajax({
         type: 'GET',
-        url: "/detalhes_pedido/"+uuid,
+        url: '/detalhes_pedido/'+uuid,
         success : function(data){
-            $('#espacoModal').html(data);
-            $('#modalDetalhes').modal('show');
-        },
-        error : function (error) {
+            $("#containerPedido").html(data)
+            $("#modalPedido").modal('show')
+        }
+    });
+}
+
+// modal detalhes da compra em gerenciar compra
+function detalhesCompra(uuid){
+    $.ajax({
+        type: 'GET',
+        url: '/detalhes_compra/'+uuid,
+        success : function(data){
+            $("#containerCompra").html(data)
+            $("#modalCompra").modal('show')
+        }
+    });
+}
+
+// modal detalhes do pedido em gerenciar serviço
+function detalhesServico(uuid){
+    $.ajax({
+        type: 'GET',
+        url: '/detalhes_servico/'+uuid,
+        success : function(data){
+            $("#containerServico").html(data)
+            $("#modalServico").modal('show')
         }
     });
 }
 
 
+function redefinirSenha(){
+    $.ajax({
+        type: 'GET',
+        url: '/change-password',
+        success : function(data){
+            $("#containerRedefinirSenha").html(data)
+            $("#modalRedefinirSenha").modal('show')
+        }
+    });
+}
 
-// $('#pedidoFormsets').on('submit', function(e){
-//     $('#detalhespedido').modal('show');
-//     e.preventDefault();
-// });
+
+// print depois do submit e add title
+$('#pedidoFormsets').submit(function () {
+    $( "#title_pedido" ).replaceWith("<h1 class='breadcrumb d-none d-print-block'>Pedido</h1>").fadeIn();
+    window.print();
+    $( "#title_pedido" ).replaceWith("<h1 class='breadcrumb d-none d-print-block'></h1>").fadeOut();
+});
+
+$('#compraFormsets').submit(function () {
+    $( "#title_compra" ).replaceWith("<h1 class='breadcrumb d-none d-print-block'>Compra</h1>").fadeIn();
+    window.print();
+    $( "#title_compra" ).replaceWith("<h1 class='breadcrumb d-none d-print-block'></h1>").fadeOut();
+});
+
+$('#servicoFormsets').submit(function () {
+    $( "#title_servico" ).replaceWith("<h1 class='breadcrumb d-none d-print-block'>Serviço</h1>").fadeIn();
+    window.print();
+    $( "#title_servico" ).replaceWith("<h1 class='breadcrumb d-none d-print-block'></h1>").fadeOut();
+});

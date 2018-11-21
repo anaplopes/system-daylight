@@ -15,7 +15,7 @@ class ItemPedidoForm(forms.ModelForm):
             'produto': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'cor': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'tecido': forms.Select(attrs={'class':'form-control form-control-sm'}),
-            'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm qtd', 'onchange':'calcTotalCompra()'}),
-            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario', 'onchange':'calcTotalCompra()'}),
+            'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm qtd', 'onchange':'calcTotalPedido()'}),
+            'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario', 'onchange':'calcTotalPedido()'}),
             'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm totalitem'}),
             }

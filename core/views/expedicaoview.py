@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.shortcuts import render
 from core.models.pedidomodel import Pedido
 from core.models.servicomodel import Servico
-from core.models.itempedidomodel import ItemPedido
 
 
 @login_required(login_url='/entrar')
@@ -54,11 +53,3 @@ def expedicao(request):
         messages.success(request, 'Pedido finalizado.', 'Sucesso')
         
     return render(request, "expedicao.html", {'pronto_entrega': pronto_entrega, 'pedido_entregue': pedido_entregue})
-
-
-
-
-@login_required(login_url='/entrar')
-def detalhes_pedido(request, uuid):
-    detalhes = ItemPedido.objects.all()
-    return render(request, "modal_listpedido.html", {'detalhes': detalhes})

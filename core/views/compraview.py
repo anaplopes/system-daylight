@@ -121,3 +121,10 @@ def list_compra(request):
         return render(request, template, {'lista_compra': lista_compra})
     else:
         return render(request, template)
+
+
+
+@login_required(login_url='/entrar')
+def detalhes_compra(request, uuid):
+    detalhes = ItemCompra.objects.filter(numero_compra=uuid)
+    return render(request, "modal_listcompra.html", {'detalhes': detalhes})
