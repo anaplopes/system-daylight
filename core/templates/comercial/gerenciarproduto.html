@@ -85,13 +85,7 @@
                         <th scope="row">{{ produto.tipo_produto }}</th>
                         <td>{{ produto.classificacao }}</td>
                         <td>{{ produto.produto }}</td>
-                        <td>{% if produto.modelo == 'M' %}
-                            {{ 'Masculino' }}
-                            {% elif produto.modelo == 'F' %}
-                            {{ 'Feminino' }}</td>
-                            {% else %}
-                            {{ 'Unissex' }}
-                            {% endif %}
+                        <td>{{ produto.modelo }}</td>
                         <td>{{ produto.tamanho }}</td>
 
                          {% if produto %}
