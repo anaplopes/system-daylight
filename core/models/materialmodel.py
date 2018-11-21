@@ -3,12 +3,13 @@ from django.db import models
 
 
 TIPOMATERIAL_CHOICES = (('Linha', 'Linha'), ('Botão', 'Botão'), ('Zíper', 'Zíper'),
-                        ('Barbante', 'Barbante'), ('Fita', 'Fita'), ('Laço', 'Laço'), ('Barbante', 'Barbante'),
+                        ('Barbante', 'Barbante'), ('Fita', 'Fita'), ('Laço', 'Laço'),
                         ('Viés', 'Viés'), ('Pedrarias', 'Pedrarias'), ('Renda', 'Renda'),)
 
-SUBTIPO_CHOICES = (('Algodão', 'Algodão'), ('Couro', 'Couro'), ('Nylon', 'Nylon'), ('Acrilico', 'Acrilico'),
+SUBTIPO_CHOICES = (('Algodão', 'Algodão'), ('Couro', 'Couro'), ('Nylon', 'Nylon'), ('Viscose', 'Viscose'), ('Acrílico', 'Acrílico'),
                         ('Alumínio', 'Alumínio'), ('Metal', 'Metal'), ('Plástico', 'Plástico'), ('Strass', 'Strass'),
-                        ('Vidrilho', 'Vidrilho'),)
+                        ('Vidrilho', 'Vidrilho'), ('Poliéster', 'Poliéster'), ('Seda', 'Seda'), ('Lã', 'Lã'), ('Bombê', 'Bombê'),
+                         ('Madeira', 'Madeira'), ('Ferro', 'Ferro'),)
 
 
 ###################### MATERIAL
