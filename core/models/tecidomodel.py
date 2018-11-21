@@ -4,7 +4,9 @@ from django.db import models
 
 TIPOTECIDO_CHOICES = (('Algodão', 'Algodão'), ('Tricoline', 'Tricoline'), ('Oxford', 'Oxford'), ('Linho', 'Linho'),
                         ('Brim', 'Brim'), ('Cetim', 'Cetim'), ('Moleton', 'Moleton'), ('Jeans', 'Jeans'),
-                        ('Couro', 'Couro'), ('Malha', 'Malha'),)
+                        ('Couro', 'Couro'), ('Malha', 'Malha'), ('Seda', 'Seda'), ('Tencel', 'Tencel'), ('Viscose', 'Viscose'),
+                        ('Viscolaycra', 'Viscolaycra'), ('Cambraia', 'Cambraia'), ('Tricoline', 'Tricoline'), ('Laise', 'Laise'),
+                        ('Sarja Acetinada', 'Sarja Acetinada'),)
 
 
 ###################### TECIDO
