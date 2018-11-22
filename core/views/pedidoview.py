@@ -35,18 +35,15 @@ def register_pedido(request):
                 messages.success(request, 'Pedido registrado com sucesso.', 'Sucesso')
                 return redirect('list_pedido')
 
+            else:
+                messages.error(request, form_itempedido.errors, 'Erro itens de pedido.')
+
         else:
             tipo_erro1 = ''
             for erro in form_pedido.errors.values():
                 tipo_erro1 += '\n'
                 tipo_erro1 += erro[0]
             messages.error(request, tipo_erro1, 'Erro dados de pedido.')
-
-            tipo_erro2 = ''
-            for erro in form_itempedido.errors.values():
-                tipo_erro2 += '\n'
-                tipo_erro2 += erro[0]
-            messages.error(request, tipo_erro2, 'Erro itens de pedido.')
 
             return render(request, template, { 'form_pedido' : form_pedido, 'form_itempedido': form_itempedido })
     return render(request, template, { 'form_pedido': PedidoForm(instance=instance_pedido), 'form_itempedido': ItemPedidoFormSet()})
@@ -75,18 +72,15 @@ def update_pedido(request, uuid):
                 messages.success(request, 'Pedido atualizado com sucesso.', 'Sucesso')
                 return redirect('list_pedido')
 
+            else:
+                messages.error(request, form_itempedido.errors, 'Erro itens de pedido.')
+
         else:
             tipo_erro1 = ''
             for erro in form_pedido.errors.values():
                 tipo_erro1 += '\n'
                 tipo_erro1 += erro[0]
             messages.error(request, tipo_erro1, 'Erro dados de pedido.')
-
-            tipo_erro2 = ''
-            for erro in form_itempedido.errors.values():
-                tipo_erro2 += '\n'
-                tipo_erro2 += erro[0]
-            messages.error(request, tipo_erro2, 'Erro itens de pedido.')
     return render(request, 'comercial/registrarpedido.html', {'form_pedido': form_pedido, 'form_itempedido': form_itempedido})
 
 

@@ -34,18 +34,16 @@ def register_servico(request):
 
                 messages.success(request, 'Serviço registrado com sucesso.', 'Sucesso')
                 return redirect('list_servico')
+
+            else:
+                messages.error(request, form_itemservico.errors, 'Erro itens de pedido.')
+
         else:
             tipo_erro1 = ''
-            for erro in form_servico.errors.values():
+            for erro in form_pedido.errors.values():
                 tipo_erro1 += '\n'
                 tipo_erro1 += erro[0]
-            messages.error(request, tipo_erro1, 'Erro dados de serviço.')
-
-            tipo_erro2 = ''
-            for erro in form_itemservico.errors.values():
-                tipo_erro2 += '\n'
-                tipo_erro2 += erro[0]
-            messages.error(request, tipo_erro2, 'Erro itens de serviço.')
+            messages.error(request, tipo_erro1, 'Erro dados de pedido.')
 
             return render(request, template, { 'form_servico' : form_servico, 'form_itemservico': form_itemservico })
     return render(request, template, { 'form_servico': ServicoForm(instance=instance_servico), 'form_itemservico': ItemServicoFormSet()})
@@ -74,18 +72,15 @@ def update_servico(request, uuid):
                 messages.success(request, 'Serviço atualizado com sucesso.', 'Sucesso')
                 return redirect('list_servico')
 
+            else:
+                messages.error(request, form_itemservico.errors, 'Erro itens de pedido.')
+
         else:
             tipo_erro1 = ''
-            for erro in form_servico.errors.values():
+            for erro in form_pedido.errors.values():
                 tipo_erro1 += '\n'
                 tipo_erro1 += erro[0]
-            messages.error(request, tipo_erro1, 'Erro dados de serviço.')
-
-            tipo_erro2 = ''
-            for erro in form_itemservico.errors.values():
-                tipo_erro2 += '\n'
-                tipo_erro2 += erro[0]
-            messages.error(request, tipo_erro2, 'Erro itens de serviço.')
+            messages.error(request, tipo_erro1, 'Erro dados de pedido.')
     return render(request, 'producao/registrarservico.html', { 'form_servico' : form_servico, 'form_itemservico': form_itemservico })
 
 

@@ -17,5 +17,5 @@ class ItemCompraForm(forms.ModelForm):
             'cor': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'quantidade': forms.NumberInput(attrs={'class':'form-control form-control-sm qtd', 'onchange':'calcTotalCompra()'}),
             'valor_unitario': forms.NumberInput(attrs={'class':'form-control form-control-sm vlr_unitario', 'onchange':'calcTotalCompra()'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm totalitem'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm totalitem', 'readonly':'readonly'}),
             }

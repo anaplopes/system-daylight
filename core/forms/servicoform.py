@@ -19,7 +19,7 @@ class ServicoForm(forms.ModelForm):
             'tipo_servico': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'servico': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'status': forms.Select(attrs={'class':'form-control form-control-sm'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'readonly':'readonly'}),
             'observacao': forms.Textarea(attrs={'class':'form-control form-control-sm', 'rows':'3'}),
             'numero_pedido': forms.Select(attrs={'class':'form-control form-control-sm'}),
             }

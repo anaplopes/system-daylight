@@ -15,7 +15,7 @@ class CompraForm(forms.ModelForm):
             'numero_compra': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'type':'hidden'}),
             'fornecedor': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'data_compra': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'readonly':'readonly'}),
             'forma_pagamento': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'prazo_pagamento': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'responsavel': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),

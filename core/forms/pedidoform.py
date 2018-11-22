@@ -16,7 +16,7 @@ class PedidoForm(forms.ModelForm):
             'cliente': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'data_pedido': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
             'data_entrega': forms.DateInput(attrs={'class':'form-control form-control-sm data'}),
-            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm'}),
+            'valor_total': forms.NumberInput(attrs={'class':'form-control form-control-sm', 'readonly':'readonly'}),
             'forma_pagamento': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'prazo_pagamento': forms.Select(attrs={'class':'form-control form-control-sm'}),
             'endereco_entrega': forms.TextInput(attrs={'class':'form-control form-control-sm textcapitalize'}),
