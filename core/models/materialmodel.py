@@ -2,14 +2,15 @@ import uuid
 from django.db import models
 
 
-TIPOMATERIAL_CHOICES = (('Linha', 'Linha'), ('Botão', 'Botão'), ('Zíper', 'Zíper'),
-                        ('Barbante', 'Barbante'), ('Fita', 'Fita'), ('Laço', 'Laço'),
-                        ('Viés', 'Viés'), ('Pedrarias', 'Pedrarias'), ('Renda', 'Renda'),)
+TIPOMATERIAL_CHOICES = (('Botão', 'Botão'), ('Barbante', 'Barbante'), ('Fita', 'Fita'), ('Laço', 'Laço'),
+                        ('Linha', 'Linha'), ('Pedrarias', 'Pedrarias'), ('Renda', 'Renda'),
+                        ('Viés', 'Viés'), ('Zíper', 'Zíper'),)
 
-SUBTIPO_CHOICES = (('Algodão', 'Algodão'), ('Couro', 'Couro'), ('Nylon', 'Nylon'), ('Viscose', 'Viscose'), ('Acrílico', 'Acrílico'),
-                        ('Alumínio', 'Alumínio'), ('Metal', 'Metal'), ('Plástico', 'Plástico'), ('Strass', 'Strass'),
-                        ('Vidrilho', 'Vidrilho'), ('Poliéster', 'Poliéster'), ('Seda', 'Seda'), ('Lã', 'Lã'), ('Bombê', 'Bombê'),
-                         ('Madeira', 'Madeira'), ('Ferro', 'Ferro'),)
+SUBTIPO_CHOICES = (('Acrílico', 'Acrílico'), ('Algodão', 'Algodão'), ('Alumínio', 'Alumínio'), ('Bombê', 'Bombê'),
+                   ('Couro', 'Couro'), ('Cetim', 'Cetim'), ('Ferro', 'Ferro'), ('Lã', 'Lã'), ('Madeira', 'Madeira'),
+                   ('Metal', 'Metal'), ('Nylon', 'Nylon'), ('Poliéster', 'Poliéster'), ('Plástico', 'Plástico'),
+                   ('Seda', 'Seda'), ('Strass', 'Strass'), ('Vidrilho', 'Vidrilho'), ('Viscose', 'Viscose'),)
+                    
 
 
 ###################### MATERIAL
