@@ -2,11 +2,11 @@ import uuid
 from django.db import models
 
 
-TIPOTECIDO_CHOICES = (('Algodão', 'Algodão'), ('Tricoline', 'Tricoline'), ('Oxford', 'Oxford'), ('Linho', 'Linho'),
-                        ('Brim', 'Brim'), ('Cetim', 'Cetim'), ('Moleton', 'Moleton'), ('Jeans', 'Jeans'),
-                        ('Couro', 'Couro'), ('Malha', 'Malha'), ('Seda', 'Seda'), ('Tencel', 'Tencel'), ('Viscose', 'Viscose'),
-                        ('Viscolaycra', 'Viscolaycra'), ('Cambraia', 'Cambraia'), ('Tricoline', 'Tricoline'), ('Laise', 'Laise'),
-                        ('Sarja Acetinada', 'Sarja Acetinada'),)
+TIPOTECIDO_CHOICES = (('Algodão', 'Algodão'), ('Brim', 'Brim'), ('Cambraia', 'Cambraia'), ('Cetim', 'Cetim'),
+                      ('Couro', 'Couro'), ('Jeans', 'Jeans'), ('Laise', 'Laise'), ('Linho', 'Linho'),
+                      ('Malha', 'Malha'), ('Moleton', 'Moleton'), ('Oxford', 'Oxford'), ('Sarja Acetinada', 'Sarja Acetinada'),
+                      ('Seda', 'Seda'), ('Tencel', 'Tencel'), ('Tricoline', 'Tricoline'), ('Viscose', 'Viscose'),
+                      ('Viscolaycra', 'Viscolaycra'),)
 
 
 ###################### TECIDO
