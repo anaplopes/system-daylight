@@ -2,19 +2,22 @@ import uuid
 from django.db import models
 
 
-MODELOPRODUTO_CHOICES = (('Unissex', 'Unissex'), ('Feminino', 'Feminino'), ('Masculino', 'Masculino'),)
+MODELOPRODUTO_CHOICES = (('Feminino', 'Feminino'), ('Masculino', 'Masculino'),('Unissex', 'Unissex'),)
 
 TAMANHOPRODUTO_CHOICES = (('Único', 'Único'), ('PP', 'PP'), ('P', 'P'), ('M', 'M'), ('G', 'G'), ('GG', 'GG'), ('2G', '2G'),
                             ('3G', '3G'), ('4G', '4G'), ('XG', 'XG'), ('EXG', 'EXG'),)
 
-TIPOPRODUTO_CHOICES = (('Calça', 'Calça'), ('Camiseta', 'Camiseta'), ('Camisa Polo', 'Camisa Polo'), ('Dolma', 'Dolma'), ('Jaleco', 'Jaleco'), ('Avental', 'Avental'),
-                        ('Toca', 'Toca'), ('Macacão', 'Macacão'), ('Jardineira', 'Jardineira'), ('Conjunto', 'Conjunto'), ('Uniforme', 'Uniforme'),
-                        ('Meio Avental', 'Meio Avental'), ('Camisa Social', 'Camisa Social'),)
+TIPOPRODUTO_CHOICES = (('Avental', 'Avental'), ('Camiseta', 'Camiseta'), ('Camisa Polo', 'Camisa Polo'),
+                       ('Camisa Social', 'Camisa Social'), ('Calça', 'Calça'), ('Conjunto', 'Conjunto'), ('Dolma', 'Dolma'),
+                       ('Jaleco', 'Jaleco'), ('Jardineira', 'Jardineira'), ('Macacão', 'Macacão'), 
+                       ('Meio Avental', 'Meio Avental'), ('Toca', 'Toca'), ('Uniforme', 'Uniforme'),)
 
-CLASSIFICACAO_CHOICES = (('Camuflada', 'Camuflada'), ('Baby Look', 'Baby Look'), ('Tradicional', 'Tradicional'), ('Chefe Ronaldo Zara', 'Chefe Ronaldo Zara'),
-                            ('Esmalteria', 'Esmalteria'), ('Restaurante', 'Restaurante'), ('Confeitaria', 'Confeitaria'), ('Garçom', 'Garçom'),
-                            ('Chefe', 'Chefe'), ('Padaria', 'Padaria'), ('Kimono Sushiman', 'Kimono Sushiman'), ('Atendente', 'Atendente'), ('Japones', 'Japones'),
-                            ('Recepcionista', 'Recepcionista'), ('Aux. Cozinha', 'Aux. Cozinha'), ('Aux. Limpeza', 'Aux. Limpeza'), ('Cozinheiro', 'Cozinheiro'),)
+CLASSIFICACAO_CHOICES = (('Atendente', 'Atendente'), ('Aux. Cozinha', 'Aux. Cozinha'), ('Aux. Limpeza', 'Aux. Limpeza'),
+                         ('Baby Look', 'Baby Look'), ('Camuflada', 'Camuflada'), ('Confeitaria', 'Confeitaria'), 
+                         ('Cozinheiro', 'Cozinheiro'), ('Chefe', 'Chefe'), ('Chefe Ronaldo Zara', 'Chefe Ronaldo Zara'),
+                         ('Esmalteria', 'Esmalteria'), ('Garçom', 'Garçom'), ('Japones', 'Japones'),
+                         ('Kimono Sushiman', 'Kimono Sushiman'), ('Padaria', 'Padaria'), ('Recepcionista', 'Recepcionista'),
+                         ('Restaurante', 'Restaurante'), ('Tradicional', 'Tradicional'),)
 
 
 ###################### PRODUTO
