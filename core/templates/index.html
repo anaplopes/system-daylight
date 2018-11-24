@@ -124,7 +124,7 @@
         <br />
         <br />
         {% if cidade == None %}
-            <h2 class="card-title">Osasco</h2>
+            <h2 class="card-title">Indisponível</h2>
         {% else %}
             <h2 class="card-title">{{ cidade }}</h2>
         {% endif %}
@@ -134,7 +134,7 @@
             <h4 class="card-text">{{ temperatura }} Cº</h4>
         {% endif %}
         {% if clima == None %}
-            Previsão indefinida
+            Previsão indisponível
         {% else %}
             Previsão de {{ clima }}
         {% endif %}
