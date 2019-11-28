@@ -23,9 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4lze&k&ju2a&+f5da_tci+hn-6d04we#s3db@zfwv121o6a@k0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['.herokuapp.com', '.pythonanywhere.com', '127.0.0.1']
+if socket.gethostname().endswith(".local"): # True in your local computer
+    DEBUG = True
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
+else:
+    DEBUG = False
+    ALLOWED_HOSTS = ['.herokuapp.com', '.pythonanywhere.com']
 
 
 # Application definition
