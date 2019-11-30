@@ -2,8 +2,9 @@
 # Created by https://www.gitignore.io/api/python
 # Edit at https://www.gitignore.io/?templates=python
 
-.vscode
-sqlite
+.vscode/
+.idea/
+db.sqlite3
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
