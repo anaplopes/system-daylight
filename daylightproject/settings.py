@@ -85,9 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'daylightsystem',
-        'USER': 'root',
+        'USER': 'systemdaylight',
         'PASSWORD': 'rootdaylight',
-        'HOST': 'localhost',
+        'HOST': 'systemdaylight.mysql.pythonanywhere-services.com',
 		'PORT': '3306',
     }
 }
