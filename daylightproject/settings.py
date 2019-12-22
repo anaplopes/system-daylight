@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'daylightsystem',
         'USER': 'systemdaylight',
         'PASSWORD': 'rootdaylight',
-        'HOST': '127.0.0.1',
+        'HOST': 'systemdaylight.mysql.pythonanywhere-services.com',
 		'PORT': '3306',
     }
 }
